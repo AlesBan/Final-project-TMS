@@ -26,7 +26,6 @@ namespace Playlist_for_party.Mapping
             
             builder.HasMany(b => b.CreatedPlaylists)
                 .WithOne(cp => cp.Owner);
-            
         }
     }
 }

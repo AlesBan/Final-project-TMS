@@ -18,15 +18,17 @@ namespace Playlist_for_party.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult HomePage()
+        {
+            return View();
+        }
+        
+        public IActionResult Playlist()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
 
    }
 }

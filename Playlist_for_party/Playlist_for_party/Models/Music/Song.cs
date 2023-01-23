@@ -8,10 +8,8 @@ namespace Playlist_for_party.Models.Music
     {
         public Guid SongId { get; set; }
         public string Title { get; set; }
-        public Artist Artist { get; set; }
-        public Guid ArtistId { get; set; }
-        public Album Album { get; set; }
-        public Guid AlbumId { get; set; }
+        public string Artist { get; set; }
+        public string Album { get; set; }
         public int Popularity { get; set; }
         public double Duration { get; set; }
         public string ImageRef { get; set; }

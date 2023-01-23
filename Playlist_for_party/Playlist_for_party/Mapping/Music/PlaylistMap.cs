@@ -18,8 +18,10 @@ namespace Playlist_for_party.Mapping
             builder.Property(b => b.UrlRef)
                 .HasMaxLength(50)
                 .IsRequired();
-            
-
+            builder.Property(b => b.ImageRef)
+                .HasMaxLength(80);
+            builder.Property(b => b.Duration)
+                .HasDefaultValue(0);
         }
     }
 }

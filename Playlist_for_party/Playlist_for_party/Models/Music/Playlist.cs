@@ -18,7 +18,9 @@ namespace Playlist_for_party.Models.Music
         }
 
         public string ImageRef { get; set; }
-        public double Duration { get; set; }
+
+        public double Duration{ get; set; }
+
         public ICollection<PlaylistSongs> PlaylistSongs { get; set; }
         public ICollection<UserEditorPlaylists> UserEditorPlaylists { get; set; }
     }

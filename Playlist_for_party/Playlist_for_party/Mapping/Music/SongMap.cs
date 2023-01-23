@@ -15,21 +15,20 @@ namespace Playlist_for_party.Mapping
                 .HasMaxLength(36);
             builder.Property(b => b.Title)
                 .HasMaxLength(50)
-                .IsRequired();   
-            builder.Property(b => b.ArtistId)
-                .HasMaxLength(40)
-                .IsRequired();
-            builder.Property(b => b.AlbumId)
-                .HasMaxLength(40)
                 .IsRequired();
             builder.Property(b => b.Popularity)
                 .HasDefaultValue(0);
             builder.Property(b => b.Duration)
                 .HasDefaultValue(0);
             builder.Property(b => b.ImageRef)
+                .HasMaxLength(80)
+                .IsRequired();
+            builder.Property(b => b.Album)
+                .HasMaxLength(50)
+                .IsRequired();            
+            builder.Property(b => b.Artist)
                 .HasMaxLength(50)
                 .IsRequired();
-            
         }
     }
 }

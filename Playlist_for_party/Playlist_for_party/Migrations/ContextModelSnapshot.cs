@@ -49,56 +49,6 @@ namespace Playlist_for_party.Migrations
                     b.ToTable("UserEditorPlaylists");
                 });
 
-            modelBuilder.Entity("Playlist_for_party.Models.Music.Album", b =>
-                {
-                    b.Property<Guid>("AlbumId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasMaxLength(36);
-
-                    b.Property<Guid?>("ArtistId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<double>("Duration")
-                        .HasColumnType("float");
-
-                    b.Property<string>("ImageRef")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.HasKey("AlbumId");
-
-                    b.HasIndex("ArtistId");
-
-                    b.ToTable("Albums");
-                });
-
-            modelBuilder.Entity("Playlist_for_party.Models.Music.Artist", b =>
-                {
-                    b.Property<Guid>("ArtistId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasMaxLength(36);
-
-                    b.Property<string>("ArtistName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("ImageRef")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.HasKey("ArtistId");
-
-                    b.ToTable("Artists");
-                });
-
             modelBuilder.Entity("Playlist_for_party.Models.Music.Playlist", b =>
                 {
                     b.Property<Guid>("PlaylistId")
@@ -107,10 +57,13 @@ namespace Playlist_for_party.Migrations
                         .HasMaxLength(40);
 
                     b.Property<double>("Duration")
-                        .HasColumnType("float");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
 
                     b.Property<string>("ImageRef")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(80)")
+                        .HasMaxLength(80);
 
                     b.Property<Guid?>("OwnerUserId")
                         .HasColumnType("uniqueidentifier");
@@ -139,13 +92,15 @@ namespace Playlist_for_party.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasMaxLength(36);
 
-                    b.Property<Guid>("AlbumId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasMaxLength(40);
+                    b.Property<string>("Album")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
-                    b.Property<Guid>("ArtistId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasMaxLength(40);
+                    b.Property<string>("Artist")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<double>("Duration")
                         .ValueGeneratedOnAdd()
@@ -154,8 +109,8 @@ namespace Playlist_for_party.Migrations
 
                     b.Property<string>("ImageRef")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(80)")
+                        .HasMaxLength(80);
 
                     b.Property<int>("Popularity")
                         .ValueGeneratedOnAdd()
@@ -168,10 +123,6 @@ namespace Playlist_for_party.Migrations
                         .HasMaxLength(50);
 
                     b.HasKey("SongId");
-
-                    b.HasIndex("AlbumId");
-
-                    b.HasIndex("ArtistId");
 
                     b.ToTable("Songs");
                 });
@@ -237,33 +188,11 @@ namespace Playlist_for_party.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Playlist_for_party.Models.Music.Album", b =>
-                {
-                    b.HasOne("Playlist_for_party.Models.Music.Artist", "Artist")
-                        .WithMany("Albums")
-                        .HasForeignKey("ArtistId");
-                });
-
             modelBuilder.Entity("Playlist_for_party.Models.Music.Playlist", b =>
                 {
                     b.HasOne("Playlist_for_party.Models.User", "Owner")
                         .WithMany("CreatedPlaylists")
                         .HasForeignKey("OwnerUserId");
-                });
-
-            modelBuilder.Entity("Playlist_for_party.Models.Music.Song", b =>
-                {
-                    b.HasOne("Playlist_for_party.Models.Music.Album", "Album")
-                        .WithMany("Songs")
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Playlist_for_party.Models.Music.Artist", "Artist")
-                        .WithMany("Songs")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
