@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -5,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Playlist_for_party.Data;
+using Playlist_for_party.Interfaсes.Services;
+using Playlist_for_party.Services;
 
 namespace Playlist_for_party
 {
@@ -17,15 +20,24 @@ namespace Playlist_for_party
 
         private IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<ISpotifyAccountService, SpotifyAccountService>(c => 
+            {
+                c.BaseAddress = new Uri("https://accounts.spotify.com/api/");
+            });
+
+            services.AddHttpClient<ISpotifyService, SpotifyService>(c => 
+            {
+                c.BaseAddress = new Uri("https://api.spotify.com/v1/");
+                c.DefaultRequestHeaders.Add("Accept", "application/.json");
+            });
+            
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddControllersWithViews();
             services.AddDbContext<Context>(options => options.UseSqlServer(connection));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -49,7 +61,7 @@ namespace Playlist_for_party
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=HomePage}");
+                    pattern: "{controller=Home}/{action=homepage}");
             });
         }
     }

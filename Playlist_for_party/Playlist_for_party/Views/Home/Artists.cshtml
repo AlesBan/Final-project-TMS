@@ -1,4 +1,4 @@
-@model IEnumerable<Playlist_for_party.Models.SpotifyApiConnection.Release>
+@model IEnumerable<Playlist_for_party.Models.Music.ArtistMy>
 @{
     ViewData["Title"] = "Главная";
     Layout = "_Layout";
@@ -24,11 +24,9 @@
             {
                 <div class="card m-1" style="width:200px;">
                     <div class="card-body">
-                        <img style="color: #a2ded8" src="@Html.DisplayFor(modelItem => item.ImageUrl)" width="150" height="150" alt="Release picture"/>
-                        <h5 class="card-title" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Artists)</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Name)</h6>
-                        <p class="card-text" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Date)</p>
-                        <a href="@Html.DisplayFor(modelItem => item.Link)" target="_blank">Listen</a>
+                        <img style="color: #a2ded8" src="@Html.DisplayFor(modelItem => item.ImageRef)" width="150" height="150" alt="Release picture"/>
+                        <h5 class="card-title" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.ArtistName)</h5>
+                        <a href="@Html.DisplayFor(modelItem => item.Href)" target="_blank">Listen</a>
                     </div>
                 </div>
             }
