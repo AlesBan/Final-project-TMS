@@ -49,9 +49,7 @@ namespace Playlist_for_party.Controllers
         {
             try
             {
-                var token = await _spotifyAccountService.GetToken(
-                    _configuration["Spotify:ClientId"],
-                    _configuration["Spotify:ClientSecret"]);
+                var token = await _spotifyAccountService.GetAccessToken();
 
                 var newReleases = await _spotifyService.GetNewReleases("BY", 20, token);
                 return newReleases;
@@ -68,9 +66,7 @@ namespace Playlist_for_party.Controllers
         {
             try
             {
-                var token = await _spotifyAccountService.GetToken(
-                    _configuration["Spotify:ClientId"],
-                    _configuration["Spotify:ClientSecret"]);
+                var token = await _spotifyAccountService.GetAccessToken();
                 var artists = await _spotifyService.GetItems(20, token, query);
                 return artists;
             }

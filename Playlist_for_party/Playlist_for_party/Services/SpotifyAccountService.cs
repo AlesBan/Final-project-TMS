@@ -1,44 +1,57 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.SpotifyApiConnection;
 
 namespace Playlist_for_party.Services
 {
-    public class SpotifyAccountService: ISpotifyAccountService
+    public class SpotifyAccountService : ISpotifyAccountService
     {
         private readonly HttpClient _httpClient;
+        private readonly IConfiguration _configuration;
 
-        public SpotifyAccountService(HttpClient httpClient)
+        public SpotifyAccountService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
+            _configuration = configuration;
         }
-        
-        public async Task<string> GetToken(string clientId, string clientSecret)
+
+        private static HttpRequestMessage CreateRequest(string clientId, string clientSecret)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "token");
-
             request.Headers.Authorization = new AuthenticationHeaderValue(
                 "Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}")));
-
-            request.Content = new FormUrlEncodedContent(new Dictionary<string, string> 
+            request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
             {
-                {"grant_type", "client_credentials"}
+                { "grant_type", "client_credentials" }
             });
+            return request;
+        }
 
-            var response = await _httpClient.SendAsync(request);
-
+        private async Task<HttpResponseMessage> GetResponse(string clientId, string clientSecret)
+        {
+            var response = await _httpClient.SendAsync(CreateRequest(clientId, clientSecret));
             response.EnsureSuccessStatusCode();
+            return response;
+        }
 
-            var responseStream = await response.Content.ReadAsStreamAsync();
-            var authResult = await JsonSerializer.DeserializeAsync<AuthResult>(responseStream);
+        public async Task<string> GetAccessToken()
+        {
+            return await GetToken(_configuration["Spotify:ClientId"], _configuration["Spotify:ClientSecret"]);
+        }
 
-            return authResult.access_token;
+        public async Task<string> GetToken(string clientId, string clientSecret)
+        {
+            var authResult = await GetResponse(clientId, clientSecret).Result.Content.ReadFromJsonAsync<AuthResult>();
+            return authResult?.access_token;
         }
     }
 }
