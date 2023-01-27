@@ -6,12 +6,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../devOps/devopslearning" beforeDir="false" afterPath="$PROJECT_DIR$/../../../devOps/devopslearning" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/NewRelease.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/SearchArtists.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Albums.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Artist.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Artists.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/External_Urls.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Followers.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Image.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Tracks.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyApiConnection/NewRelease.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyApiConnection/Release.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/Release.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/HomePage.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/HomePage.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +38,6 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60da6fc3a33742959a5c168b54b0c4d21aed88/2d/c3bee42f/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27eb1e53c33f2e16ba4fd6114faaf6118a2f30d7bb3d8d1d95c22e3ef3ca3156/HttpRuleParser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33ce9818a9d64ef295864723b14cb15abc6a92eefb61a1ccc294c51c2328a/EqualityComparer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -125,6 +135,7 @@
       <workItem from="1674650016734" duration="11003000" />
       <workItem from="1674662113896" duration="56000" />
       <workItem from="1674662205543" duration="10088000" />
+      <workItem from="1674837886509" duration="1571000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -133,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674467104736</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="improved Services">
+      <created>1674837669109</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674837669109</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,59 +173,60 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Add home and playlist Views, change some tables in db" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add home and playlist Views, change some tables in db" />
+    <MESSAGE value="improved Services" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved Services" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>44</line>
+          <line>45</line>
           <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="43" containingFunctionPresentation="method 'Artists'">
             <startOffsets>
-              <option value="1412" />
+              <option value="1463" />
             </startOffsets>
             <endOffsets>
-              <option value="1433" />
+              <option value="1484" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>74</line>
+          <line>71</line>
           <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="74" containingFunctionPresentation="method 'GetArtists'">
             <startOffsets>
-              <option value="2433" />
+              <option value="2266" />
             </startOffsets>
             <endOffsets>
-              <option value="2447" />
+              <option value="2280" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>80</line>
+          <line>77</line>
           <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="80" containingFunctionPresentation="method 'GetArtists'">
             <startOffsets>
-              <option value="2560" />
+              <option value="2393" />
             </startOffsets>
             <endOffsets>
-              <option value="2628" />
+              <option value="2461" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>56</line>
+          <line>55</line>
           <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="56" containingFunctionPresentation="method 'GetReleases'">
             <startOffsets>
-              <option value="1838" />
+              <option value="1780" />
             </startOffsets>
             <endOffsets>
-              <option value="1857" />
+              <option value="1799" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="25" />

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.Music;
 using Playlist_for_party.Models.SpotifyApiConnection;
+using Playlist_for_party.Models.SpotifyModels.DTO;
 
 namespace Playlist_for_party.Controllers
 {

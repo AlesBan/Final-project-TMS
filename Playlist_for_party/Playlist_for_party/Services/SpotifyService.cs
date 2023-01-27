@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.Music;
 using Playlist_for_party.Models.SpotifyApiConnection;
+using Playlist_for_party.Models.SpotifyModels.DTO;
+using Playlist_for_party.Models.SpotifyModels.Main;
 
 namespace Playlist_for_party.Services
 {
@@ -29,11 +31,11 @@ namespace Playlist_for_party.Services
             var responseStream = await response.Content.ReadAsStreamAsync();
             var responseObject = await JsonSerializer.DeserializeAsync<SearchArtists>(responseStream);
 
-            return responseObject.artists.items.Where(i => i.images.Length != 0).Select(i => new ArtistMy()
+            return responseObject?.artists.Items.Where(i => i.Images.Length != 0).Select(i => new ArtistMy()
             {
-                ArtistName = i.name,
-                ImageRef = i.images[0].url,
-                Href = i.href
+                ArtistName = i.Name,
+                ImageRef = i.Images[0].Url,
+                Href = i.Href
             });
         }
         
@@ -48,13 +50,13 @@ namespace Playlist_for_party.Services
             var responseStream = await response.Content.ReadAsStreamAsync();
             var responseObject = await JsonSerializer.DeserializeAsync<NewRelease>(responseStream);
 
-            return responseObject?.albums?.items.Select(i => new Release
+            return responseObject?.Albums?.Items.Select(i => new Release
             {
-                Name = i.name,
-                Date = i.release_date,
-                ImageUrl = i.images.FirstOrDefault().url,
-                Link = i.external_urls.spotify,
-                Artists = string.Join(",", i.artists.Select(i => i.name))
+                Name = i.Name,
+                Date = i.ReleaseDate,
+                ImageUrl = i.Images.FirstOrDefault()?.Url,
+                Link = i.ExternalUrls.Spotify,
+                Artists = string.Join(",", i.Artists.Select(a => a.Name))
             });
         }
     }

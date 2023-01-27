@@ -1,4 +1,4 @@
-﻿namespace Playlist_for_party.Models.SpotifyApiConnection
+﻿namespace Playlist_for_party.Models.SpotifyModels.DTO
 {
     public class Release
     {
