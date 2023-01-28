@@ -4,9 +4,11 @@ using Playlist_for_party.Models.SpotifyModels.Secondary;
 
 namespace Playlist_for_party.Models.SpotifyModels.Main
 {
-    public class SearchArtists
+    public class Search
     {
         [JsonPropertyName("artists")]
-        public Artists artists { get; set; }
+        public Artists Artists { get; set; }
+        [JsonPropertyName("tracks")]
+        public Tracks Tracks { get; set; }
     }
 }

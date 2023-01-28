@@ -15,8 +15,8 @@ namespace Playlist_for_party.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
-        public DbSet<Song> Songs { get; set; }
-        public DbSet<PlaylistSongs> PlaylistSongs { get; set; }
+        public DbSet<Track> Songs { get; set; }
+        public DbSet<PlaylistTracks> PlaylistSongs { get; set; }
         public DbSet<UserEditorPlaylists> UserEditorPlaylists { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,8 +25,8 @@ namespace Playlist_for_party.Data
 
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new PlaylistMap());
-            modelBuilder.ApplyConfiguration(new SongMap());
-            modelBuilder.ApplyConfiguration(new PlaylistSongsMap());
+            modelBuilder.ApplyConfiguration(new TrackMap());
+            modelBuilder.ApplyConfiguration(new PlaylistTracksMap());
             modelBuilder.ApplyConfiguration(new UserEditorPlaylistsMap());
         }
         

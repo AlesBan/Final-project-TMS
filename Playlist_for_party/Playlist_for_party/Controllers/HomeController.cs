@@ -1,15 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Playlist_for_party.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.Music;
-using Playlist_for_party.Models.SpotifyApiConnection;
 using Playlist_for_party.Models.SpotifyModels.DTO;
 
 namespace Playlist_for_party.Controllers
@@ -17,16 +13,12 @@ namespace Playlist_for_party.Controllers
     public class HomeController : Controller
     {
         private readonly ISpotifyAccountService _spotifyAccountService;
-        private readonly IConfiguration _configuration;
         private readonly ISpotifyService _spotifyService;
-
-        public HomeController(
-            ISpotifyAccountService spotifyAccountService,
-            IConfiguration configuration,
-            ISpotifyService spotifyService)
+        private const int LimitNum = 5;
+        private const string CountryCode = "BY";
+        public HomeController(ISpotifyAccountService spotifyAccountService, ISpotifyService spotifyService)
         {
             _spotifyAccountService = spotifyAccountService;
-            _configuration = configuration;
             _spotifyService = spotifyService;
         }
         
@@ -38,44 +30,70 @@ namespace Playlist_for_party.Controllers
             return View(newReleases);
         }
         
-        [Route("artists/{query}")]
-        public async Task<IActionResult> Artists(string query)
+        [Route("search/{query}")]
+        public async Task<IActionResult> Search(string query)
         {
-            var artists = await GetArtists(query);
-
-            return View(artists);
+            var searchItems = await GetItems(query);
+            ViewBag.query = query;
+            return View(searchItems);
         }
-
-        private async Task<IEnumerable<Release>> GetReleases()
+        
+        [Route("playlist")]
+        public async Task<IActionResult> Playlist()
+        {
+            var playlist = new Playlist();
+            return View(playlist);
+        }
+        
+        [HttpPost("search/{query}")]
+        public async Task<IActionResult> AddTrackToPlaylist(string trackId)
         {
             try
             {
                 var token = await _spotifyAccountService.GetAccessToken();
 
-                var newReleases = await _spotifyService.GetNewReleases("BY", 20, token);
+                var track = await _spotifyService.GetTrack(token, trackId);
+                _spotifyService.Playlist.AddTrack(track);
+                return NoContent();
+            }                
+            catch (Exception ex)
+            {
+                Debug.Write(ex);
+
+                return Ok();
+            }
+        }
+        
+        private async Task<IEnumerable<ReleaseDto>> GetReleases()
+        {
+            try
+            {
+                var token = await _spotifyAccountService.GetAccessToken();
+
+                var newReleases = await _spotifyService.GetNewReleases(CountryCode, LimitNum, token);
                 return newReleases;
             }
             catch (Exception ex)
             {
                 Debug.Write(ex);
 
-                return Enumerable.Empty<Release>();
+                return Enumerable.Empty<ReleaseDto>();
             }
         }
         
-        private async Task<IEnumerable<ArtistMy>> GetArtists(string query)
+        private async Task<IEnumerable<ItemDto>> GetItems(string query)
         {
             try
             {
                 var token = await _spotifyAccountService.GetAccessToken();
-                var artists = await _spotifyService.GetItems(20, token, query);
-                return artists;
+                var items = await _spotifyService.GetItems(LimitNum, token, query);
+                return items;
             }
             catch (Exception ex)
             {
                 Debug.Write(ex);
 
-                return Enumerable.Empty<Playlist_for_party.Models.Music.ArtistMy>();
+                return Enumerable.Empty<ItemDto>();
             }
         }
     }

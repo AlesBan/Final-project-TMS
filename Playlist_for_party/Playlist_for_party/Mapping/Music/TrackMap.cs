@@ -5,15 +5,15 @@ using Playlist_for_party.Models.Music;
 
 namespace Playlist_for_party.Mapping
 {
-    public class SongMap : IEntityTypeConfiguration<Song>
+    public class TrackMap : IEntityTypeConfiguration<Track>
     {
-        public void Configure(EntityTypeBuilder<Song> builder)
+        public void Configure(EntityTypeBuilder<Track> builder)
         {
-            builder.HasKey(b => b.SongId);
+            builder.HasKey(b => b.TrackId);
             
-            builder.Property(b => b.SongId)
+            builder.Property(b => b.TrackId)
                 .HasMaxLength(36);
-            builder.Property(b => b.Title)
+            builder.Property(b => b.Name)
                 .HasMaxLength(50)
                 .IsRequired();
             builder.Property(b => b.Popularity)

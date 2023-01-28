@@ -8,7 +8,7 @@ namespace Playlist_for_party.Models.Music
     public class Playlist
     {
         public Guid PlaylistId { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
         public User Owner { get; set; }
         public string UrlRef { get; set; }
 
@@ -19,9 +19,15 @@ namespace Playlist_for_party.Models.Music
 
         public string ImageRef { get; set; }
 
-        public double Duration{ get; set; }
+        public double Duration { get; set; }
+        public IList<Track> Tracks { get; set; }
 
-        public ICollection<PlaylistSongs> PlaylistSongs { get; set; }
+        public ICollection<PlaylistTracks> PlaylistTracks { get; set; }
         public ICollection<UserEditorPlaylists> UserEditorPlaylists { get; set; }
+
+        public void AddTrack(Track track)
+        {
+            Tracks.Add(track);
+        }
     }
 }

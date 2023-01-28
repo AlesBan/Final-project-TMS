@@ -12,7 +12,7 @@ namespace Playlist_for_party.Mapping
             builder.HasKey(b => b.PlaylistId);
             builder.Property(b => b.PlaylistId)
                 .HasMaxLength(40);
-            builder.Property(b => b.Title)
+            builder.Property(b => b.Name)
                 .HasMaxLength(50)
                 .IsRequired();
             builder.Property(b => b.UrlRef)

@@ -1,6 +1,6 @@
 ﻿namespace Playlist_for_party.Models.SpotifyModels.DTO
 {
-    public class Release
+    public class ReleaseDto
     {
         public string Name { get; set; }
         public string Artists { get; set; }

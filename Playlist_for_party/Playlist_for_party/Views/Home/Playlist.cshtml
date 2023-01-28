@@ -1,3 +1,5 @@
+@using Playlist_for_party.Models.SpotifyModels.DTO
+@model Playlist_for_party.Models.Music.Playlist
 @{
     ViewData["Title"] = "Playlist";
     Layout = "_Layout";
@@ -30,4 +32,27 @@
         <span class="right-icon-search"></span>
     </div>
 
+</section>
+<section class="section">
+    <h2 class="section-title">Свежие релизы</h2>
+
+    <div class="section-body">
+        @if (Model.Tracks.Any())
+        {
+            @foreach (var item in Model.Tracks.Where(i => i.GetType() == typeof(TrackDto)))
+            {
+                <div class="card m-1" style="width:200px;">
+                    <div class="card-body">
+                        <img style="color: #a2ded8" src="@Html.DisplayFor(modelItem => item.ImageRef)" width="150" height="150" alt="Release picture"/>
+                        <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Name)</h6>
+                        <a href="@Html.DisplayFor(modelItem => item.Href)" target="_blank">Listen</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="color: white">No data available</p>
+        }
+    </div>
 </section>

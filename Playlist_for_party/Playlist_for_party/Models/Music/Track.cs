@@ -4,17 +4,16 @@ using Playlist_for_party.Models.Connections;
 
 namespace Playlist_for_party.Models.Music
 {
-    public class Song
+    public class Track
     {
-        public Guid SongId { get; set; }
-        public string Title { get; set; }
+        public string TrackId { get; set; }
+        public string Name { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
         public int Popularity { get; set; }
         public double Duration { get; set; }
         public string ImageRef { get; set; }
-        public ICollection<PlaylistSongs> PlaylistSongs { get; set; }
-
-        
+        public string Href { get; set; }
+        public ICollection<PlaylistTracks> PlaylistTracks { get; set; }
     }
 }

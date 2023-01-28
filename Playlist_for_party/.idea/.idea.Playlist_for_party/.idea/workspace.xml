@@ -6,24 +6,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/NewRelease.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/SearchArtists.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Albums.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Artist.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Artists.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/External_Urls.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Followers.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Image.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Tracks.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Mapping/Connections/PlaylistTracksMap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ArtistDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ItemDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/TrackDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Album.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/ExternalIds.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Data/Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Data/Context.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyApiConnection/NewRelease.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyApiConnection/Release.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/Release.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Mapping/Connections/PlaylistSongsMap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/PlaylistMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/PlaylistMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/SongMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/TrackMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Connections/PlaylistSongs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/Connections/PlaylistTracks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Album.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Artist.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Playlist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Playlist.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Song.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Track.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/Release.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ReleaseDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/SearchArtists.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/Search.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Artists.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Artists.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/HomePage.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/HomePage.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/SearchPage.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +57,9 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60da6fc3a33742959a5c168b54b0c4d21aed88/2d/c3bee42f/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad010a730b8e4d9b85224bcde58a60a991e180/89/c0fddbf2/IEnumerable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27eb1e53c33f2e16ba4fd6114faaf6118a2f30d7bb3d8d1d95c22e3ef3ca3156/HttpRuleParser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33ce9818a9d64ef295864723b14cb15abc6a92eefb61a1ccc294c51c2328a/EqualityComparer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3c47bb336c326e5ee17c16f73883559f7eb05679032d9581f3456368994f4/AuthenticationHeaderValue.cs" root0="SKIP_HIGHLIGHTING" />
@@ -49,9 +70,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b52e52e9461eef74d96cb18431b65da59ec6af4cab028e3adf87fdae211c8e/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b5a1af99f5ea07164de5aa95892ff79955c0ccf3bcc4bc1973b4c06d3e766/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85205d343f2b81cde14cc45fc7fe9bbd4a4f2a96f2691fc52bdb336baacea0/HttpContent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/882f3ad15673d0f7709dd2af6fb10eeca924a50d24672ae52698820234d6eff/Environment.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a221793e4b13ae450dccb6e74f6985a273b27d67dca5c4bc2c2e56df33bfe7/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8b7fb876911ea0a458c92232d5e433bfa9a5f75f912064966e313fcb57eecbd/JsonClassInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8d415afbb22842cbaef64d937f4bf58e32add6e16259dc1dd09e48eb49894c/Future.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9f7c1bd7e6fd28981cdd67a69785ab253b163c2eb519c469dbd25277b2419e3/Where.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a5f6a8a40f3360dfc161ee28fe15a79a2fe12d55c8464d7f843666453af217/String.Manipulation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/afdb9066c2224c2ca693b338c57624786b5a84c757a9c562c9a61297c6e/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b5de6aadfd520b9bb89cf7babe01f9e6348bc669cbba35ff13e8da88880f4/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -62,7 +85,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd4658679135d6bfae2a2d758cacd738e857f683199e3b9be85528fb2f05d/JsonClassInfo.Helpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e172353254e0bfe3be1ba5c23169c077538a61a827da59499f4a6ee971cb4642/ParamsArray.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1ccf7738c74ce1b77ed3f844a1c673f3ee387e03737f71726ae92da6773b/Uri.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.map" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -135,7 +157,9 @@
       <workItem from="1674650016734" duration="11003000" />
       <workItem from="1674662113896" duration="56000" />
       <workItem from="1674662205543" duration="10088000" />
-      <workItem from="1674837886509" duration="1571000" />
+      <workItem from="1674837886509" duration="3020000" />
+      <workItem from="1674909453216" duration="1929000" />
+      <workItem from="1674911503105" duration="23199000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -174,66 +198,16 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Add home and playlist Views, change some tables in db" />
     <MESSAGE value="improved Services" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved Services" />
+    <MESSAGE value="json prop names brought to c-sharp stype" />
+    <option name="LAST_COMMIT_MESSAGE" value="json prop names brought to c-sharp stype" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>45</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="43" containingFunctionPresentation="method 'Artists'">
-            <startOffsets>
-              <option value="1463" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1484" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>71</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="74" containingFunctionPresentation="method 'GetArtists'">
-            <startOffsets>
-              <option value="2266" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2280" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>77</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="80" containingFunctionPresentation="method 'GetArtists'">
-            <startOffsets>
-              <option value="2393" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2461" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>55</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="56" containingFunctionPresentation="method 'GetReleases'">
-            <startOffsets>
-              <option value="1780" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1799" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Artists.cshtml</url>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Artists.cshtml" initialLine="0" isMultiMethodBreakpoint="true">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml</url>
+          <line>39</line>
+          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Playlist.cshtml" initialLine="39" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
               <option value="-1" />
@@ -242,12 +216,38 @@
               <option value="-1" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Artists.cshtml</url>
-          <line>1</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Artists.cshtml" initialLine="1" isMultiMethodBreakpoint="true">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
+          <line>44</line>
+          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="44" containingFunctionPresentation="method 'Playlist'">
+            <startOffsets>
+              <option value="1443" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1465" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Models/Music/Playlist.cs</url>
+          <line>29</line>
+          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Models\Music\Playlist.cs" initialLine="29" containingFunctionPresentation="method 'AddTrack'">
+            <startOffsets>
+              <option value="822" />
+            </startOffsets>
+            <endOffsets>
+              <option value="840" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml</url>
+          <line>118</line>
+          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Search.cshtml" initialLine="58" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
               <option value="-1" />
@@ -256,12 +256,25 @@
               <option value="-1" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Artists.cshtml</url>
-          <line>20</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Artists.cshtml" initialLine="20" isMultiMethodBreakpoint="true">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
+          <line>50</line>
+          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="50" containingFunctionPresentation="method 'AddTrackToPlaylist'">
+            <startOffsets>
+              <option value="1620" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2037" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml</url>
+          <line>122</line>
+          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Search.cshtml" initialLine="62" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
               <option value="-1" />
@@ -270,14 +283,20 @@
               <option value="-1" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="29" />
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Frame#Playlist_for_party.Services.SpotifyService.GetItemDtosLIst" memberName="trackDtos" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="LaunchSettings">
         <watch expression="response" />
         <watch expression="Model" language="Razor" />
+        <watch expression="id" language="Razor" />
       </configuration>
     </watches-manager>
   </component>
