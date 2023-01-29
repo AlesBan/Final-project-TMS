@@ -8,7 +8,7 @@ using Playlist_for_party.Data;
 
 namespace Playlist_for_party.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(MusicContext))]
     partial class ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

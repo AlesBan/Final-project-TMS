@@ -17,6 +17,7 @@ namespace Playlist_for_party
         {
             Configuration = configuration;
         }
+        public static readonly MusicRepository MusicRepository = new MusicRepository();
 
         private IConfiguration Configuration { get; }
 
@@ -35,7 +36,7 @@ namespace Playlist_for_party
             
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddControllersWithViews();
-            services.AddDbContext<Context>(options => options.UseSqlServer(connection));
+            services.AddDbContext<MusicContext>(options => options.UseSqlServer(connection));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -60,8 +61,15 @@ namespace Playlist_for_party
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=homepage}");
+                    name: "home",
+                    pattern: "{controller=Home}/{action=Home}",
+                    defaults: new { controller = "Home" });
+                endpoints.MapControllerRoute(
+                    name: "search/{query?}",
+                    pattern: "{controller=Home}/{action=Search}");
+                endpoints.MapControllerRoute(
+                    name: "playlist",
+                    pattern: "{controller=Home}/{action=Playlist}");
             });
         }
     }

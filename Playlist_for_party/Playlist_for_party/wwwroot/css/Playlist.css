@@ -1,17 +1,14 @@
-html 
-{
+html {
     font-size: 16px;
 }
 
-body 
-{
+body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     color: black;
 }
 
-.sidebar 
-{
+.sidebar {
     position: fixed;
     left: 0;
     top: 0;
@@ -21,26 +18,23 @@ body
     padding: 24px;
 }
 
-.sidebar .logo img 
-{
+.sidebar .logo img {
     width: 110px;
+
 }
 
-.menu 
-{
+.menu {
     padding-top: 50px;
 }
 
-.menu-item 
-{
+.menu-item {
     color: white;
     text-decoration: none;
     font-size: 15px;
 }
 
 
-.header 
-{
+.header {
     position: fixed;
     top: 0;
     left: 244px; /* sidebar width */
@@ -49,20 +43,44 @@ body
     background-color: rgb(18, 18, 18);
 }
 
-main 
-{
+main {
     min-height: 100vh;
     background: #101010;
 }
 
-.header 
-{
+a {
+    position: relative;
+    display: inline-block;
+    color: darkgrey;
+    overflow: hidden;
+}
+
+a {
+    background: linear-gradient(to right, slategrey,
+    slategrey 50%, darkgrey 50%);
+}
+
+a {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+}
+
+a {
+    transition: background-position 275ms ease;
+}
+
+a:hover {
+    background-position: 0 100%;
+}
+
+.header {
     display: flex;
     align-items: flex-start;
 }
 
-.header-image img 
-{
+.header-image img {
     height: 150px;
     width: 150px;
     padding-left: 30px;
@@ -70,42 +88,43 @@ main
 
 }
 
-.h5-img-text 
-{
+.h5-img-text {
     padding-left: 10px;
     padding-top: 12px;
     color: white;
 }
-
-.h1-img-text 
-{
+.h1-img-text {
     padding-left: 10px;
     padding-top: 10px;
     color: white;
 }
 
 
-.main-part 
-{
+.main-part {
     padding-top: 210px;
     padding-left: 270px;
 }
 
-.h2-text 
-{
+.h2-text {
     color: white;
     font-size: 20px;
 }
 
-.input-actions 
-{
+.input-actions {
     padding-top: 10px;
+
 }
 
-.input-playlist 
-{
-    width: 250px;
+.input-playlist {
+    margin: 0;
+    border: 0;
+    position: relative;
     z-index: 1;
-    height: 25px;
-    border-radius: 20px;
+    height: 35px;
+    border-radius: 25px;
+    width: 250px;
+}
+
+.input-actions .input-playlist {
+    padding-left: 50px;
 }

@@ -7,9 +7,9 @@ using Playlist_for_party.Models.Music;
 
 namespace Playlist_for_party.Data
 {
-    public class Context : DbContext
+    public class MusicContext : DbContext
     {
-        public Context(DbContextOptions<Context> options) : base(options)
+        public MusicContext(DbContextOptions<MusicContext> options) : base(options)
         {
         }
 
@@ -29,6 +29,5 @@ namespace Playlist_for_party.Data
             modelBuilder.ApplyConfiguration(new PlaylistTracksMap());
             modelBuilder.ApplyConfiguration(new UserEditorPlaylistsMap());
         }
-        
     }
 }

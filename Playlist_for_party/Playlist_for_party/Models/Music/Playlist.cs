@@ -20,11 +20,15 @@ namespace Playlist_for_party.Models.Music
         public string ImageRef { get; set; }
 
         public double Duration { get; set; }
-        public IList<Track> Tracks { get; set; }
+        public List<Track> Tracks { get; set; }
 
         public ICollection<PlaylistTracks> PlaylistTracks { get; set; }
         public ICollection<UserEditorPlaylists> UserEditorPlaylists { get; set; }
 
+        public Playlist()
+        {
+            Tracks = new List<Track>();
+        }
         public void AddTrack(Track track)
         {
             Tracks.Add(track);

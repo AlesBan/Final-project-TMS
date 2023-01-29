@@ -25,7 +25,7 @@ namespace Playlist_for_party.Services
         {
             _httpClient = httpClient;
         }
-        
+
         public async Task<Track> GetTrack(string accessToken, string trackId)
         {
             Authorization(accessToken);
@@ -43,8 +43,6 @@ namespace Playlist_for_party.Services
             };
             return track;
         }
-
-
 
         public async Task<IEnumerable<ItemDto>> GetItems(int limit, string accessToken, string query)
         {
@@ -67,7 +65,8 @@ namespace Playlist_for_party.Services
                 Name = i.Name,
                 ImageRef = i.album.images != null ? i.album.images[0].Url : ImageUri,
                 Href = i.Href,
-                Id = i.Id
+                Id = i.Id,
+                ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))
             });
             var itemDtos = new List<ItemDto>();
 
@@ -75,7 +74,7 @@ namespace Playlist_for_party.Services
             {
                 itemDtos.AddRange(artistDtos);
             }
-            
+
             if (trackDtos != null)
             {
                 itemDtos.AddRange(trackDtos);

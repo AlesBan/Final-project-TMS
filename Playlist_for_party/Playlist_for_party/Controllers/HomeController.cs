@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.Music;
 using Playlist_for_party.Models.SpotifyModels.DTO;
@@ -16,37 +18,42 @@ namespace Playlist_for_party.Controllers
         private readonly ISpotifyService _spotifyService;
         private const int LimitNum = 5;
         private const string CountryCode = "BY";
+        
         public HomeController(ISpotifyAccountService spotifyAccountService, ISpotifyService spotifyService)
         {
             _spotifyAccountService = spotifyAccountService;
             _spotifyService = spotifyService;
         }
         
-        [Route("homepage")]
-        public async Task<IActionResult> HomePage()
+        [Route("home")]
+        public async Task<IActionResult> Home()
         {
             var newReleases = await GetReleases();
 
             return View(newReleases);
         }
-        
-        [Route("search/{query}")]
+        [Route("search/{query?}")]
         public async Task<IActionResult> Search(string query)
         {
-            var searchItems = await GetItems(query);
-            ViewBag.query = query;
-            return View(searchItems);
+            if (string.IsNullOrEmpty(query))
+            {
+                return View(Enumerable.Empty<ItemDto>());
+            }
+            else
+            {
+                var searchItems = await GetItems(query);
+                ViewBag.query = query;
+                return View(searchItems);
+            }
         }
         
         [Route("playlist")]
-        public async Task<IActionResult> Playlist()
+        public IActionResult Playlist()
         {
-            var playlist = new Playlist();
-            return View(playlist);
+            return View(Startup.MusicRepository.Playlist);
         }
         
         
-        [HttpPost("search/{query}")]
         public async Task<IActionResult> AddTrackToPlaylist(string trackId)
         {
             try
@@ -54,7 +61,7 @@ namespace Playlist_for_party.Controllers
                 var token = await _spotifyAccountService.GetAccessToken();
 
                 var track = await _spotifyService.GetTrack(token, trackId);
-                _spotifyService.Playlist.AddTrack(track);
+                Startup.MusicRepository.Playlist.AddTrack(track);
                 return NoContent();
             }                
             catch (Exception ex)
