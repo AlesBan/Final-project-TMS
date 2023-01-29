@@ -6,43 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Mapping/Connections/PlaylistTracksMap.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ArtistDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ItemDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/TrackDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Album.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/ExternalIds.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/js/Search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Data/Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Data/Context.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Mapping/Connections/PlaylistSongsMap.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/PlaylistMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/PlaylistMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/SongMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Mapping/Music/TrackMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Connections/PlaylistSongs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/Connections/PlaylistTracks.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Album.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Artist.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Playlist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Playlist.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Song.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/Music/Track.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/Release.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ReleaseDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/SearchArtists.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Main/Search.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Artists.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Artists.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/HomePage.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/HomePage.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/SearchPage.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/LICENSE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +27,6 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60da6fc3a33742959a5c168b54b0c4d21aed88/2d/c3bee42f/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad010a730b8e4d9b85224bcde58a60a991e180/89/c0fddbf2/IEnumerable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27eb1e53c33f2e16ba4fd6114faaf6118a2f30d7bb3d8d1d95c22e3ef3ca3156/HttpRuleParser.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,11 +40,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b5a1af99f5ea07164de5aa95892ff79955c0ccf3bcc4bc1973b4c06d3e766/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85205d343f2b81cde14cc45fc7fe9bbd4a4f2a96f2691fc52bdb336baacea0/HttpContent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/882f3ad15673d0f7709dd2af6fb10eeca924a50d24672ae52698820234d6eff/Environment.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/89944b5f48d1781dad0a6ed3630525f6080b1fdb6f0cbf9e9b3f0f348843a/DiagnosticListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a221793e4b13ae450dccb6e74f6985a273b27d67dca5c4bc2c2e56df33bfe7/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8b7fb876911ea0a458c92232d5e433bfa9a5f75f912064966e313fcb57eecbd/JsonClassInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8d415afbb22842cbaef64d937f4bf58e32add6e16259dc1dd09e48eb49894c/Future.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9f7c1bd7e6fd28981cdd67a69785ab253b163c2eb519c469dbd25277b2419e3/Where.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a5f6a8a40f3360dfc161ee28fe15a79a2fe12d55c8464d7f843666453af217/String.Manipulation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9c5c7129ee39ce29bead23aa8f6014e679f91a81f3cb5208f9ffdd8d1b428/RazorView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/af47127c2aa37eca51894189436b2dd9f0588cc79cbdb8b39b58dc539dbdd/ViewExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/afdb9066c2224c2ca693b338c57624786b5a84c757a9c562c9a61297c6e/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b5de6aadfd520b9bb89cf7babe01f9e6348bc669cbba35ff13e8da88880f4/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b66fb3cd92676af8e27945ac1af7ff99dd3430fd59013755a7c92de132e4c59/RuntimeType.cs" root0="SKIP_HIGHLIGHTING" />
@@ -159,7 +131,8 @@
       <workItem from="1674662205543" duration="10088000" />
       <workItem from="1674837886509" duration="3020000" />
       <workItem from="1674909453216" duration="1929000" />
-      <workItem from="1674911503105" duration="23199000" />
+      <workItem from="1674911503105" duration="23356000" />
+      <workItem from="1674983499352" duration="6656000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -245,45 +218,17 @@
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml</url>
-          <line>118</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Search.cshtml" initialLine="58" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>50</line>
+          <line>51</line>
           <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="50" containingFunctionPresentation="method 'AddTrackToPlaylist'">
             <startOffsets>
-              <option value="1620" />
+              <option value="1629" />
             </startOffsets>
             <endOffsets>
-              <option value="2037" />
+              <option value="2046" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml</url>
-          <line>122</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Search.cshtml" initialLine="62" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

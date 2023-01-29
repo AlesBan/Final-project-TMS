@@ -45,6 +45,7 @@ namespace Playlist_for_party.Controllers
             return View(playlist);
         }
         
+        
         [HttpPost("search/{query}")]
         public async Task<IActionResult> AddTrackToPlaylist(string trackId)
         {

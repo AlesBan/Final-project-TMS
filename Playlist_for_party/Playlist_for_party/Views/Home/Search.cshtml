@@ -1,9 +1,10 @@
 @using Playlist_for_party.Models.SpotifyModels.DTO
 @model IEnumerable<Playlist_for_party.Models.SpotifyModels.DTO.ItemDto>
+
 @{
     ViewData["Title"] = "Home";
     Layout = "_Layout";
-    string query = ViewBag.query;
+    string uri = "http://localhost:5001/search/" + ViewBag.query.ToString();
 }
 
 
@@ -28,7 +29,7 @@
                         <img style="color: #a2ded8; margin: 0" src="@Html.DisplayFor(modelItem => item.ImageRef)" width="150" height="150" alt="Release picture"/>
                         <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8;  margin: 0">@Html.DisplayFor(modelItem => item.Name)</h6>
                         <a href="@Html.DisplayFor(modelItem => item.Href)" target="_blank">Listen</a>
-                        <button class="btn btn-primary" type="submit" onclick="SendData(this)" id="@item.Id" >Add</button>
+                        <button class="btn-primary" type="submit" id="@item.Id" >Add</button>
                     </div>
                 </div>
             }
@@ -51,28 +52,77 @@
 </section>
 
 
-<script>
-function SendData(obj){
 
-    let id = obj.id;
-    fetch('http://localhost:5001/search/@query', {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ "trackId": id.toString() })
-})
-.then(response => response.json())
-.then(response => console.log(JSON.stringify(response)))
+
+@section Scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script>
+     $(function (){
+        let buttons = document.querySelectorAll("button"); 
+            alert("start")
+            buttons.forEach((butt)=>{
+                butt.addEventListener("click", (e) => alert("sec"), false)
+                
+            })
+     })
+    function SendData(event) {
+        let trackId = event.target.id;
+        sendUser(trackId);
+    }
+    function SubmitBut(trackId) {
+         fetch( @uri, {
+             method: 'POST',
+             headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+             },
+             data: trackId,
+             body: JSON.stringify({ "trackId": trackId })
+          })
+    }
+    const sendUser = async (trackId) => {
+    
+        let res = await fetch("@uri", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(trackId)
+        })
+        if (res.ok) {
+            alert("Сообщение отправлено!")
+        }
+    }
+    </script>
 }
+    
 
-</script>
+    
+
+@* <script> *@
+@* function SendData(obj){ *@
+@* *@
+@*     let trackId = obj.id; *@
+@*     fetch('http://localhost:5001/search/@query', { *@
+@*     method: 'POST', *@
+@*     data: trackId, *@
+@*     headers: { *@
+@*         'Accept': 'application/json', *@
+@*         'Content-Type': 'application/json' *@
+@*     }, *@
+@*     body: JSON.stringify({ "trackId": trackId.toString() }) *@
+@* }) *@
+@* .then(response => response.json()) *@
+@* .then(response => console.log(JSON.stringify(response))) *@
+@* } *@
+@* *@
+@* </script> *@
 
 
 
 
-@* <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> *@
+
 @* *@
 @* <script type = "text/javascript"> *@
 @* *@
@@ -111,23 +161,5 @@ function SendData(obj){
 
 
 
-@* <script> *@
-@* *@
-@* function SendData(obj){ *@
-@* *@
-@*     const id = obj.ID; *@
-@*     SubmitBut(id); *@
-@* } *@
-@* function SubmitBut(id){ *@
-@*     $.ajax({ *@
-@*         url: "http://localhost:5001/search/{@query}", *@
-@*         method: "POST", *@
-@*         headers: { *@
-@*                 'Accept': 'application/json', *@
-@*                 'Content-Type': 'application/json' *@
-@*             }, *@
-@*         data: id.toString() *@
-@*     }) *@
-@* } *@
-@* </script> *@
+
 
