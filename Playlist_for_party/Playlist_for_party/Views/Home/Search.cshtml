@@ -5,9 +5,18 @@
     ViewData["Title"] = "Search";
 }
 
-
 @section Styles{
-    <link href="@Url.Content("~/css/Search.css")" rel="stylesheet" type="text/css"/>
+    <link href="css/Search.css" rel="stylesheet" type="text/css"/>
+}
+
+@section Searchdiv{
+        <div class="header-actions">
+            <div class="header-search input-group has-left-icon has-right-icon can-delete">
+                <span class="left-icon-search"></span>
+                <input type="text" id="search" class="input" placeholder="Найти трек">
+                <span class="right-icon-search"></span>
+            </div>
+        </div>
 }
 
 <section class="section">

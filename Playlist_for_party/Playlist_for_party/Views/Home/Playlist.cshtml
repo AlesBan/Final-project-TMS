@@ -2,22 +2,14 @@
 @model Playlist_for_party.Models.Music.Playlist
 @{
     ViewData["Title"] = "Playlist";
-    Layout = "_PlaylistLayout";
 }
 
 @section Styles{
-    <link href="@Url.Content("~/css/Playlist.css")" rel="stylesheet" type="text/css"/>
+    <link href="css/Playlist.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+              rel="stylesheet">
 }
 
-@section Searchdiv{
-        <div class="header-actions">
-            <div class="header-search input-group has-left-icon has-right-icon can-delete">
-                <span class="left-icon-search"></span>
-                <input type="text" id="search" class="input" placeholder="Найдите трек">
-                <span class="right-icon-search"></span>
-            </div>
-        </div>
-}
 <section class="main-part">
     <h2 class="h2-text">Все треки</h2>
     <div class="section-body">

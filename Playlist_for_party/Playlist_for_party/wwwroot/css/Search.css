@@ -213,7 +213,7 @@ a:hover {
     color: white;
 }
 
-.floating-button, .btn-primary {
+.floating-button {
     text-decoration: none;
     width: 65px;
     height: 30px;
@@ -232,3 +232,4 @@ a:hover {
     background: darkgrey;
     transform: translateY(-1px);
 }
+
