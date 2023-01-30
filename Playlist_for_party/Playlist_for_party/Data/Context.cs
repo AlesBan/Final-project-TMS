@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Playlist_for_party.Mapping;
 using Playlist_for_party.Mapping.Connections;
+using Playlist_for_party.Mapping.Music;
 using Playlist_for_party.Models;
 using Playlist_for_party.Models.Connections;
 using Playlist_for_party.Models.Music;

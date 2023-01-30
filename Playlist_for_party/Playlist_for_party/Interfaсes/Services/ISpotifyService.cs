@@ -11,6 +11,5 @@ namespace Playlist_for_party.Interfaсes.Services
         Task<IEnumerable<ReleaseDto>> GetNewReleases(string countryCode, int limit, string accessToken);
         Task<IEnumerable<ItemDto>> GetItems(int limit, string accessToken, string query);
         Task<Track> GetTrack(string accessToken, string trackId);
-        Playlist Playlist { get; set; }
     }
 }

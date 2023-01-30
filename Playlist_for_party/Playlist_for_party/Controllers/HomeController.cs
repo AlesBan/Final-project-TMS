@@ -18,22 +18,25 @@ namespace Playlist_for_party.Controllers
         private readonly ISpotifyService _spotifyService;
         private const int LimitNum = 5;
         private const string CountryCode = "BY";
-        
-        public HomeController(ISpotifyAccountService spotifyAccountService, ISpotifyService spotifyService)
+        private IMusicRepository MusicRepository { get; }
+
+
+        public HomeController(ISpotifyAccountService spotifyAccountService, ISpotifyService spotifyService,
+            IMusicRepository musicRepository)
         {
             _spotifyAccountService = spotifyAccountService;
             _spotifyService = spotifyService;
+            MusicRepository = musicRepository;
         }
-        
-        [Route("home")]
-        public async Task<IActionResult> Home()
-        {
-            var newReleases = await GetReleases();
 
-            return View(newReleases);
+        [HttpGet("home")]
+        public ViewResult Home()
+        {
+            return View(MusicRepository);
         }
-        [Route("search/{query?}")]
-        public async Task<IActionResult> Search(string query)
+
+        [HttpGet("search/{query?}")]
+        public ViewResult Search(string query)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -41,29 +44,40 @@ namespace Playlist_for_party.Controllers
             }
             else
             {
-                var searchItems = await GetItems(query);
+                var searchItems = GetItems(query).Result;
                 ViewBag.query = query;
+                ViewBag.Playlists = MusicRepository.Playlists;
                 return View(searchItems);
             }
         }
-        
-        [Route("playlist")]
-        public IActionResult Playlist()
+
+        [HttpGet("playlist/{id:guid?}")]
+        public IActionResult Playlist(Guid id)
         {
-            return View(Startup.MusicRepository.Playlist);
+            if (id != Guid.Empty)
+            {
+                return View(MusicRepository.GetPlaylist(id));
+            }
+
+            var playlist = MusicRepository.CreatePlaylist();
+            return Redirect($"playlist/{playlist.PlaylistId}");
         }
-        
-        
-        public async Task<IActionResult> AddTrackToPlaylist(string trackId)
+
+        [HttpPost]
+        public async Task<IActionResult> AddTrackToPlaylist(string trackId, string playlistId)
         {
             try
             {
+                var random = new Random();
                 var token = await _spotifyAccountService.GetAccessToken();
 
                 var track = await _spotifyService.GetTrack(token, trackId);
-                Startup.MusicRepository.Playlist.AddTrack(track);
+                var playlists = MusicRepository.Playlists;
+                var playlistIdGuid = Guid.Parse(playlistId);
+                MusicRepository.Playlists[playlists.IndexOf(playlists.First(p => p.PlaylistId.Equals(playlistIdGuid)))]
+                    .AddTrack(track);
                 return NoContent();
-            }                
+            }
             catch (Exception ex)
             {
                 Debug.Write(ex);
@@ -71,7 +85,7 @@ namespace Playlist_for_party.Controllers
                 return Ok();
             }
         }
-        
+
         private async Task<IEnumerable<ReleaseDto>> GetReleases()
         {
             try
@@ -88,7 +102,7 @@ namespace Playlist_for_party.Controllers
                 return Enumerable.Empty<ReleaseDto>();
             }
         }
-        
+
         private async Task<IEnumerable<ItemDto>> GetItems(string query)
         {
             try

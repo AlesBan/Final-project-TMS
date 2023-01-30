@@ -1,35 +1,44 @@
-@model IEnumerable<Playlist_for_party.Models.SpotifyModels.DTO.ReleaseDto>
+@model Playlist_for_party.Data.IMusicRepository
 @{
     ViewData["Title"] = "Home";
 }
 
 
 @section Styles{
-    <link href="css/Home.css" rel="stylesheet" type="text/css"/>
+    <link href="~/css/Home.css" rel="stylesheet" type="text/css"/>
 }
 
 
-<div class="row">
-
-</div>
-
 <section class="section">
-    <h2 class="section-title">Свежие релизы</h2>
+    <h2 class="section-title">Плейлисты</h2>
 
     <div class="section-body">
-        @if (Model.Any())
+        @if (Model.Playlists.Count!=0)
         {
-            @foreach (var item in Model)
+            @foreach (var item in Model.Playlists)
             {
                 <div class="card m-1" style="width:200px;">
                     <div class="card-body">
-                        <img style="color: #a2ded8" src="@Html.DisplayFor(modelItem => item.ImageUrl)" width="150" height="150" alt="Release picture"/>
-                        <h5 class="card-title" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Artists)</h5>
                         <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Name)</h6>
-                        <p class="card-text" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Date)</p>
-                        <a href="@Html.DisplayFor(modelItem => item.Link)" target="_blank">Listen</a>
+                        <a asp-controller="Home" asp-action="Playlist" asp-route-id="@item.PlaylistId">
+                            <p class="card-text" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.PlaylistId)</p>
+                        </a>
                     </div>
                 </div>
+                foreach (var track in item.Tracks)
+                {
+                    <div class="track">
+                        <div class="trackInfo">
+                            <a href=@Html.DisplayFor(modelItem => track.Href)>
+                                <img src="@Html.DisplayFor(modelItem => track.ImageUrl)" alt="Track picture">
+                            </a>
+                        </div>
+                        <div class="track-content">
+                            <div class="trackName">@Html.DisplayFor(modelItem => track.Name)</div>
+                            <div class="artist">@Html.DisplayFor(modelItem => track.Artist)</div>
+                        </div>
+                    </div>
+                }
             }
         }
         else

@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Playlist_for_party.Models;
 using Playlist_for_party.Models.Music;
 
-namespace Playlist_for_party.Mapping
+namespace Playlist_for_party.Mapping.Music
 {
     public class PlaylistMap : IEntityTypeConfiguration<Playlist>
     {
@@ -15,10 +14,10 @@ namespace Playlist_for_party.Mapping
             builder.Property(b => b.Name)
                 .HasMaxLength(50)
                 .IsRequired();
-            builder.Property(b => b.UrlRef)
+            builder.Property(b => b.Href)
                 .HasMaxLength(50)
                 .IsRequired();
-            builder.Property(b => b.ImageRef)
+            builder.Property(b => b.ImageUrl)
                 .HasMaxLength(80);
             builder.Property(b => b.Duration)
                 .HasDefaultValue(0);

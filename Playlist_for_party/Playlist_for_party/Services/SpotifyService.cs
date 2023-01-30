@@ -16,10 +16,8 @@ namespace Playlist_for_party.Services
     {
         private readonly HttpClient _httpClient;
 
-        private const string ImageUri =
+        private const string DefImageUrl =
             @"https://media.wired.com/photos/5f9ca518227dbb78ec30dacf/master/w_2560%2Cc_limit/Gear-RIP-Google-Music-1194411695.jpg";
-
-        public Playlist Playlist { get; set; }
 
         public SpotifyService(HttpClient httpClient)
         {
@@ -36,9 +34,9 @@ namespace Playlist_for_party.Services
                 TrackId = responseObj.Id,
                 Name = responseObj.Name,
                 Artist = string.Join(", ", responseObj.Artists.ToList()),
-                Album = responseObj.album.name,
-                Duration = responseObj.duration_ms,
-                ImageRef = responseObj.album.images != null ? responseObj.album.images[0].Url : ImageUri,
+                Album = responseObj.Album.Name,
+                Duration = responseObj.DurationMs,
+                ImageUrl = responseObj.Album.Images != null ? responseObj.Album.Images[0].Url : DefImageUrl,
                 Href = responseObj.Href
             };
             return track;
@@ -57,13 +55,13 @@ namespace Playlist_for_party.Services
             var artistDtos = responseObj?.Artists.Items.Select(i => new ArtistDto()
             {
                 Name = i.Name,
-                ImageRef = i.Images != null ? i.Images[0].Url : ImageUri,
+                ImageRef = i.Images != null ? i.Images[0].Url : DefImageUrl,
                 Href = i.Href
             });
             var trackDtos = responseObj?.Tracks.Items.Select(i => new TrackDto()
             {
                 Name = i.Name,
-                ImageRef = i.album.images != null ? i.album.images[0].Url : ImageUri,
+                ImageRef = i.Album.Images != null ? i.Album.Images[0].Url : DefImageUrl,
                 Href = i.Href,
                 Id = i.Id,
                 ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))

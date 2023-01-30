@@ -12,8 +12,13 @@ namespace Playlist_for_party.Models.Music
         public string Album { get; set; }
         public int Popularity { get; set; }
         public double Duration { get; set; }
-        public string ImageRef { get; set; }
+        public string ImageUrl { get; set; }
         public string Href { get; set; }
         public ICollection<PlaylistTracks> PlaylistTracks { get; set; }
+
+        public Track()
+        {
+            Popularity = 0;
+        }
     }
 }

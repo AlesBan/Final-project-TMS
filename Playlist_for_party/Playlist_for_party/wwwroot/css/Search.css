@@ -143,7 +143,6 @@ a:hover {
 }
 
 .dropdown-content {
-    display: none;
     position: absolute;
     margin-top: 10px;
     margin-left: 3px;
@@ -232,4 +231,3 @@ a:hover {
     background: darkgrey;
     transform: translateY(-1px);
 }
-

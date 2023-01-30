@@ -1,4 +1,5 @@
 @using Playlist_for_party.Models.SpotifyModels.DTO
+@using Playlist_for_party.Models.Music
 @model IEnumerable<Playlist_for_party.Models.SpotifyModels.DTO.ItemDto>
 
 @{
@@ -6,17 +7,17 @@
 }
 
 @section Styles{
-    <link href="css/Search.css" rel="stylesheet" type="text/css"/>
+    <link href="~/css/Search.css" rel="stylesheet" type="text/css"/>
 }
 
 @section Searchdiv{
-        <div class="header-actions">
-            <div class="header-search input-group has-left-icon has-right-icon can-delete">
-                <span class="left-icon-search"></span>
-                <input type="text" id="search" class="input" placeholder="Найти трек">
-                <span class="right-icon-search"></span>
-            </div>
+    <div class="header-actions">
+        <div class="header-search input-group has-left-icon has-right-icon can-delete">
+            <span class="left-icon-search"></span>
+            <input type="text" id="search" class="input" placeholder="Найти трек">
+            <span class="right-icon-search"></span>
         </div>
+    </div>
 }
 
 <section class="section">
@@ -42,10 +43,20 @@
                         <div class="artist">@Html.DisplayFor(modelItem => item.ArtistName)</div>
                     </div>
                 </div>
-                <div class="trackPopularity">13</div>
+                <div class="trackPopularity">12</div>
                 <div class="trackTime">4:11</div>
                 <div class="add-btn">
-                    <button type="submit" class="floating-button btn-primary" id="@item.Id">Add</button>
+                    <div class="dropdown">
+                        <button class="floating-button btn-primary">Add</button>
+                        <div class="dropdown-content" id="@item.Id">
+                            @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
+                            {
+                                <button  style="color: white; font-size: 13px" class="add-dropdown-button" id="@playlist.PlaylistId">@playlist.Name</button>
+                            }
+                        </div>
+                    </div>
+
+
                 </div>
             }
         </div>
@@ -80,7 +91,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
      $(function (){
-        let buttons = document.querySelectorAll("button"); 
+        let buttons = document.querySelectorAll("button.add-dropdown-button"); 
             buttons.forEach((butt)=>{
                 butt.addEventListener("click", (e) => SendData(e), false)
                 
@@ -88,8 +99,10 @@
      })
      
     function SendData(event) {
-        let trackId = event.target.id;
-        $.post("@Url.Action("AddTrackToPlaylist", "Home")", {trackId: trackId})
+        let playlistId = event.target.id;
+        let parent = document.getElementById(playlistId).parentNode
+        let trackId = parent.id;
+        $.post("@Url.Action("AddTrackToPlaylist", "Home")", {trackId: trackId, playlistId: playlistId})
     }
     </script>
 }
