@@ -12,7 +12,7 @@ namespace Playlist_for_party.Models.SpotifyModels.Secondary
         [JsonPropertyName("available_markets")]
         public string[] AvailableMarkets { get; set; }
 
-        [JsonPropertyName("external_urls")] public External_Urls ExternalUrls { get; set; }
+        [JsonPropertyName("external_urls")] public ExternalUrls ExternalUrls { get; set; }
         [JsonPropertyName("href")] public string Href { get; set; }
         [JsonPropertyName("id")] public string Id { get; set; }
         [JsonPropertyName("images")] public Image[] Images { get; set; }

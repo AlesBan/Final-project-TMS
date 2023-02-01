@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Playlist_for_party.Exceptions;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.Music;
 using Playlist_for_party.Models.SpotifyModels.DTO;
@@ -15,17 +16,21 @@ namespace Playlist_for_party.Services
     public class SpotifyService : ISpotifyService
     {
         private readonly HttpClient _httpClient;
+        private readonly ISpotifyAccountService _spotifyAccountService;
+        private const int Limit = 6;
 
         private const string DefImageUrl =
             @"https://media.wired.com/photos/5f9ca518227dbb78ec30dacf/master/w_2560%2Cc_limit/Gear-RIP-Google-Music-1194411695.jpg";
 
-        public SpotifyService(HttpClient httpClient)
+        public SpotifyService(HttpClient httpClient, ISpotifyAccountService spotifyAccountService)
         {
             _httpClient = httpClient;
+            _spotifyAccountService = spotifyAccountService;
         }
 
-        public async Task<Track> GetTrack(string accessToken, string trackId)
+        public async Task<Track> GetTrack(string trackId)
         {
+            var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
             var response = await GetResponse($"tracks/{trackId}");
             var responseObj = await DeserializationAsync<Item>(response);
@@ -42,15 +47,31 @@ namespace Playlist_for_party.Services
             return track;
         }
 
-        public async Task<IEnumerable<ItemDto>> GetItems(int limit, string accessToken, string query)
+        public async Task<ItemsDto> GetItems(string query)
         {
+            var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
-            var response = await GetResponse($"search?q={query}&type=track%2Cartist&limit={limit}");
+            var response = await GetResponse(CreateRequest(query, true, true));
             var responseObject = await DeserializationAsync<Search>(response);
             return GetItemDtosLIst(responseObject);
         }
 
-        private IEnumerable<ItemDto> GetItemDtosLIst(Search responseObj)
+        private string CreateRequest(string query, bool needArtists, bool needTracks)
+        {
+            var request = $"search?q={query}&type=";
+            if (needTracks && needArtists)
+            {
+                request += "track%2Cartist";
+            }
+            else
+            {
+                request += needArtists ? "artist" : "track";
+            }
+            request += $"&limit={Limit}";
+            return request;
+        }
+        
+        private static ItemsDto GetItemDtosLIst(Search responseObj)
         {
             var artistDtos = responseObj?.Artists.Items.Select(i => new ArtistDto()
             {
@@ -66,37 +87,26 @@ namespace Playlist_for_party.Services
                 Id = i.Id,
                 ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))
             });
-            var itemDtos = new List<ItemDto>();
-
+            var itemsDtos = new ItemsDto();
             if (artistDtos != null)
             {
-                itemDtos.AddRange(artistDtos);
+                itemsDtos.ArtistDtos.AddRange(artistDtos);
             }
 
             if (trackDtos != null)
             {
-                itemDtos.AddRange(trackDtos);
+                itemsDtos.TrackDtos.AddRange(trackDtos);
             }
 
-            return itemDtos;
+            return itemsDtos;
         }
 
-        public async Task<IEnumerable<ReleaseDto>> GetNewReleases(string countryCode, int limit, string accessToken)
+        private static void CheckResponse(HttpResponseMessage response)
         {
-            Authorization(accessToken);
-
-            var response = await GetResponse($"browse/new-releases?country={countryCode}&limit={limit}");
-
-            var responseObject = await DeserializationAsync<NewRelease>(response);
-
-            return responseObject?.Albums?.Items.Select(i => new ReleaseDto
+            if (response.StatusCode == HttpStatusCode.BadRequest)
             {
-                Name = i.Name,
-                Date = i.ReleaseDate,
-                ImageUrl = i.Images.FirstOrDefault()?.Url,
-                Link = i.ExternalUrls.Spotify,
-                Artists = string.Join(",", i.Artists.Select(a => a.Name))
-            });
+                throw new BadRequestToSpotifyApiException();
+            }
         }
 
         private void Authorization(string accessToken)
@@ -107,14 +117,23 @@ namespace Playlist_for_party.Services
         private async Task<HttpResponseMessage> GetResponse(string requestUri)
         {
             var response = await _httpClient.GetAsync(requestUri);
-
-            response.EnsureSuccessStatusCode();
+            CheckResponse(response);
             return response;
         }
 
         private static async Task<T> DeserializationAsync<T>(HttpResponseMessage response)
         {
-            return await response.Content.ReadFromJsonAsync<T>();
+            T responseObj;
+            try
+            {
+                responseObj = await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                throw new DeserializationException();
+            }
+
+            return responseObj;
         }
     }
 }

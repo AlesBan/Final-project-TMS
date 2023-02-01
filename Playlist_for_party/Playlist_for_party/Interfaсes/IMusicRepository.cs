@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Playlist_for_party.Models.Music;
 
-namespace Playlist_for_party.Data
+namespace Playlist_for_party.Interfaсes
 {
     public interface IMusicRepository
     {

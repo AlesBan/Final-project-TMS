@@ -22,6 +22,11 @@ namespace Playlist_for_party.Services
             _configuration = configuration;
         }
 
+        public async Task<string> GetAccessToken()
+        {
+            return await GetToken(_configuration["Spotify:ClientId"], _configuration["Spotify:ClientSecret"]);
+        }
+        
         private static HttpRequestMessage CreateRequest(string clientId, string clientSecret)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "token");
@@ -41,10 +46,7 @@ namespace Playlist_for_party.Services
             return response;
         }
 
-        public async Task<string> GetAccessToken()
-        {
-            return await GetToken(_configuration["Spotify:ClientId"], _configuration["Spotify:ClientSecret"]);
-        }
+
 
         private async Task<string> GetToken(string clientId, string clientSecret)
         {

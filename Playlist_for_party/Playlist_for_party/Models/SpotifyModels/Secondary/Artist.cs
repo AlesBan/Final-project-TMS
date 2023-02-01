@@ -5,7 +5,7 @@ namespace Playlist_for_party.Models.SpotifyModels.Secondary
 {
     public class Artist
     {
-        [JsonPropertyName("external_urls")] public External_Urls ExternalUrls { get; set; }
+        [JsonPropertyName("external_urls")] public ExternalUrls ExternalUrls { get; set; }
         [JsonPropertyName("href")] public string Href { get; set; }
         [JsonPropertyName("id")] public string Id { get; set; }
         [JsonPropertyName("name")] public string Name { get; set; }
