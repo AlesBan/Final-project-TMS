@@ -46,12 +46,16 @@ namespace Playlist_for_party.Services
             return response;
         }
 
-
-
         private async Task<string> GetToken(string clientId, string clientSecret)
         {
             var authResult = await GetResponse(clientId, clientSecret).Result.Content.ReadFromJsonAsync<AuthResult>();
             return authResult?.access_token;
+        }
+        
+        public async void Authorization()
+        {
+            var accessToken = await GetAccessToken();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
     }
 }

@@ -5,12 +5,14 @@
     <projectFile profileName="Playlist_for_party">Playlist_for_party/Playlist_for_party.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="create exceptions and exc filters&#10;BadRequestToSpotifyApiException and DeserializationException&#10;ExceptionFilter">
-      <change beforePath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" afterDir="false" />
+    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="create IMusicService">
+      <change beforePath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Attributes/ExceptionFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Attributes/ExceptionFilterAttribute.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IMusicService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyAccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +79,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e172353254e0bfe3be1ba5c23169c077538a61a827da59499f4a6ee971cb4642/ParamsArray.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eaf48d290b118e4b123edeca9152a696d26d4e2f25b8287c37d64b15a5c17b/ViewResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1ccf7738c74ce1b77ed3f844a1c673f3ee387e03737f71726ae92da6773b/Uri.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Репозитории/Финальный_проект/Final-project-TMS/Playlist_for_party/Playlist_for_party/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Репозитории/Финальный_проект/Final-project-TMS/Playlist_for_party/Playlist_for_party/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -166,7 +169,7 @@
       <workItem from="1675255664260" duration="5072000" />
       <workItem from="1675263906562" duration="1579000" />
       <workItem from="1675265636797" duration="407000" />
-      <workItem from="1675266088097" duration="6829000" />
+      <workItem from="1675266088097" duration="10898000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -214,11 +217,21 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="4b82d2f5-2877-4e32-8eda-a5b2992b5c1f">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
           </value>
         </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="4b82d2f5-2877-4e32-8eda-a5b2992b5c1f" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>
@@ -231,7 +244,8 @@
     <MESSAGE value="add track to Playlist" />
     <MESSAGE value="make some style" />
     <MESSAGE value="create exceptions and exc filters&#10;BadRequestToSpotifyApiException and DeserializationException&#10;ExceptionFilter" />
-    <option name="LAST_COMMIT_MESSAGE" value="create exceptions and exc filters&#10;BadRequestToSpotifyApiException and DeserializationException&#10;ExceptionFilter" />
+    <MESSAGE value="create IMusicService" />
+    <option name="LAST_COMMIT_MESSAGE" value="create IMusicService" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

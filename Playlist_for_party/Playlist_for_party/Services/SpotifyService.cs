@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Playlist_for_party.Exceptions;
@@ -30,8 +29,7 @@ namespace Playlist_for_party.Services
 
         public async Task<Track> GetTrack(string trackId)
         {
-            var accessToken = await _spotifyAccountService.GetAccessToken();
-            Authorization(accessToken);
+            _spotifyAccountService.Authorization();
             var response = await GetResponse($"tracks/{trackId}");
             var responseObj = await DeserializationAsync<Item>(response);
             var track = new Track()
@@ -49,8 +47,7 @@ namespace Playlist_for_party.Services
 
         public async Task<ItemsDto> GetItems(string query)
         {
-            var accessToken = await _spotifyAccountService.GetAccessToken();
-            Authorization(accessToken);
+            _spotifyAccountService.Authorization();
             var response = await GetResponse(CreateRequest(query, true, true));
             var responseObject = await DeserializationAsync<Search>(response);
             return GetItemDtosLIst(responseObject);
@@ -107,11 +104,6 @@ namespace Playlist_for_party.Services
             {
                 throw new BadRequestToSpotifyApiException();
             }
-        }
-
-        private void Authorization(string accessToken)
-        {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
         private async Task<HttpResponseMessage> GetResponse(string requestUri)

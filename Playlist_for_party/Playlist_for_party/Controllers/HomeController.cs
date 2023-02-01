@@ -10,13 +10,13 @@ namespace Playlist_for_party.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IMusicService IMusicService;
+        private readonly IMusicService _musicService;
         private IMusicRepository MusicRepository { get; }
 
 
         public HomeController(IMusicService spotifyService, IMusicRepository musicRepository)
         {
-            IMusicService = spotifyService;
+            _musicService = spotifyService;
             MusicRepository = musicRepository;
         }
 
@@ -36,7 +36,7 @@ namespace Playlist_for_party.Controllers
                 return View();
             }
 
-            var searchItems = IMusicService.GetItems(query).Result;
+            var searchItems = _musicService.GetItems(query).Result;
             ViewBag.query = query;
             ViewBag.Playlists = MusicRepository.Playlists;
             ViewBag.Artists = searchItems.ArtistDtos;
@@ -60,7 +60,7 @@ namespace Playlist_for_party.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTrackToPlaylist(string trackId, string playlistId)
         {
-            var track = await IMusicService.GetTrack(trackId);
+            var track = await _musicService.GetTrack(trackId);
             var playlistIdGuid = Guid.Parse(playlistId);
             var playlists = MusicRepository.Playlists;
             MusicRepository.Playlists[playlists.IndexOf(playlists.First(p => p.PlaylistId.Equals(playlistIdGuid)))]

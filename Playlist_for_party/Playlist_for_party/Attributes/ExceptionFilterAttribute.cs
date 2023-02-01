@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 using Playlist_for_party.Exceptions;
 using ExceptionContext = Microsoft.AspNetCore.Mvc.Filters.ExceptionContext;
@@ -38,11 +39,13 @@ namespace Playlist_for_party.Attributes
                 {
                     _logger.LogError("Unknown exception");
                 }
-                context.Result = new ViewResult()
+                var res = new ViewResult()
                 {
                     StatusCode = 500,
                     ViewName = "Error",
                 };
+                res.ViewData["dede"] = "efed";
+                context.Result = res;
                 context.ExceptionHandled = true;
                 return Task.CompletedTask;
             }
