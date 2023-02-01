@@ -1,7 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 using Playlist_for_party.Exceptions;
 using ExceptionContext = Microsoft.AspNetCore.Mvc.Filters.ExceptionContext;
@@ -19,6 +20,14 @@ namespace Playlist_for_party.Attributes
         {
             private readonly ILogger<ExceptionFilterImplementation> _logger;
 
+            private readonly List<Type> _exceptions = new List<Type>()
+            {
+                typeof(DeserializationOfSpotifyModelException),
+                typeof(BadRequestToSpotifyApiException),
+                typeof(UnauthorizedException),
+                typeof(InvalidTokensProvided)
+            };
+
             public ExceptionFilterImplementation(ILogger<ExceptionFilterImplementation> logger)
             {
                 _logger = logger;
@@ -28,28 +37,30 @@ namespace Playlist_for_party.Attributes
             {
                 var controllerName = context.RouteData.Values["controller"];
                 var actionName = context.RouteData.Values["action"];
-                if (context.Exception.InnerException is DeserializationException or BadRequestToSpotifyApiException)
+                var contextType = context.Exception.InnerException?.GetType();
+
+                if (_exceptions.Contains(contextType))
                 {
-                    _logger.LogError("Controller: {}\n" +
+                    _logger.LogError("\tController: {}\n" +
                                      "\tAction: {}\n" +
-                                     "\tMessage: {}", 
-                        controllerName, actionName, context.Exception.Message);
+                                     "\tExceptionName: {}\n" +
+                                     "\tMessage: {}",
+                        controllerName, actionName, contextType?.Name, context.Exception.Message);
                 }
                 else
                 {
                     _logger.LogError("Unknown exception");
                 }
+
                 var res = new ViewResult()
                 {
                     StatusCode = 500,
                     ViewName = "Error",
                 };
-                res.ViewData["dede"] = "efed";
                 context.Result = res;
                 context.ExceptionHandled = true;
                 return Task.CompletedTask;
             }
         }
     }
-
 }

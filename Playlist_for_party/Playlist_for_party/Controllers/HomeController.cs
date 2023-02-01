@@ -44,6 +44,7 @@ namespace Playlist_for_party.Controllers
             return View();
         }
 
+        [ExceptionFilter]
         [HttpGet("playlist/{id:guid?}")]
         public IActionResult Playlist(Guid id)
         {
@@ -66,6 +67,11 @@ namespace Playlist_for_party.Controllers
             MusicRepository.Playlists[playlists.IndexOf(playlists.First(p => p.PlaylistId.Equals(playlistIdGuid)))]
                 .AddTrack(track);
             return NoContent();
+        }
+        
+        public IActionResult Error()
+        {
+            return View();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Playlist_for_party.Exceptions;
@@ -29,7 +30,8 @@ namespace Playlist_for_party.Services
 
         public async Task<Track> GetTrack(string trackId)
         {
-            _spotifyAccountService.Authorization();
+            var accessToken = await _spotifyAccountService.GetAccessToken();
+            Authorization(accessToken);
             var response = await GetResponse($"tracks/{trackId}");
             var responseObj = await DeserializationAsync<Item>(response);
             var track = new Track()
@@ -47,7 +49,8 @@ namespace Playlist_for_party.Services
 
         public async Task<ItemsDto> GetItems(string query)
         {
-            _spotifyAccountService.Authorization();
+            var accessToken = await _spotifyAccountService.GetAccessToken();
+            Authorization(accessToken);
             var response = await GetResponse(CreateRequest(query, true, true));
             var responseObject = await DeserializationAsync<Search>(response);
             return GetItemDtosLIst(responseObject);
@@ -104,6 +107,11 @@ namespace Playlist_for_party.Services
             {
                 throw new BadRequestToSpotifyApiException();
             }
+
+            if (response.ReasonPhrase == "Unauthorized")
+            {
+                throw new UnauthorizedException();
+            }
         }
 
         private async Task<HttpResponseMessage> GetResponse(string requestUri)
@@ -122,10 +130,15 @@ namespace Playlist_for_party.Services
             }
             catch
             {
-                throw new DeserializationException();
+                throw new DeserializationOfSpotifyModelException();
             }
 
             return responseObj;
+        }
+        
+        private void Authorization(string accessToken)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
     }
 }

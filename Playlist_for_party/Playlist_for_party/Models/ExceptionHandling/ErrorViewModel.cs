@@ -1,7 +1,10 @@
-namespace Playlist_for_party.Models.SpotifyApiConnection
+namespace Playlist_for_party.Models.ExceptionHandling
 {
     public class ErrorViewModel
     {
+        public int StatusCode { get; set; }
+
+        public string Message { get; set; }
         public string RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);

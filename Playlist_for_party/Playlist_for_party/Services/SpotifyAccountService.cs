@@ -6,6 +6,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Playlist_for_party.Exceptions;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.SpotifyApiConnection;
 
@@ -24,7 +25,14 @@ namespace Playlist_for_party.Services
 
         public async Task<string> GetAccessToken()
         {
-            return await GetToken(_configuration["Spotify:ClientId"], _configuration["Spotify:ClientSecret"]);
+            try
+            {
+                return await GetToken(_configuration["Spotify:ClientId"], _configuration["Spotify:ClientSecret"]);
+            }
+            catch
+            {
+                throw new InvalidTokensProvided();
+            }
         }
         
         private static HttpRequestMessage CreateRequest(string clientId, string clientSecret)

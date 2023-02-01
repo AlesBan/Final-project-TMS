@@ -19,7 +19,7 @@ namespace Playlist_for_party.Models.SpotifyModels.Secondary
         [JsonPropertyName("duration_ms")] public int DurationMs { get; set; }
         [JsonPropertyName("explicit")] public bool Explicity { get; set; }
         [JsonPropertyName("external_ids")] public External_Ids ExternalIds { get; set; }
-        [JsonPropertyName("external_urls")] public ExternalUrls ExternalUrls { get; set; }
+        [JsonPropertyName("external_urls")] public External_Urls ExternalUrls { get; set; }
         [JsonPropertyName("href")] public string Href { get; set; }
         [JsonPropertyName("id")] public string Id { get; set; }
         [JsonPropertyName("is_local")] public bool IsLocal { get; set; }

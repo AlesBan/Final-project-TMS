@@ -2,13 +2,13 @@ using System;
 
 namespace Playlist_for_party.Exceptions
 {
-    public class DeserializationException : Exception
+    public class DeserializationOfSpotifyModelException : Exception
     {
-        public DeserializationException()
+        public DeserializationOfSpotifyModelException()
         {
         }
 
-        public DeserializationException(string message) : base(message)
+        public DeserializationOfSpotifyModelException(string message) : base(message)
         {
         }
     }
