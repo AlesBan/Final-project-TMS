@@ -13,7 +13,7 @@ using Playlist_for_party.Models.SpotifyModels.Secondary;
 
 namespace Playlist_for_party.Services
 {
-    public class SpotifyService : ISpotifyService
+    public class SpotifyService : IMusicService
     {
         private readonly HttpClient _httpClient;
         private readonly ISpotifyAccountService _spotifyAccountService;

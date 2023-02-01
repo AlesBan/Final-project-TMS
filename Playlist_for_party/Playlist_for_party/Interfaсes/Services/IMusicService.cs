@@ -5,7 +5,7 @@ using Playlist_for_party.Models.SpotifyModels.DTO;
 
 namespace Playlist_for_party.Interfaсes.Services
 {
-    public interface ISpotifyService
+    public interface IMusicService
     {
         Task<ItemsDto> GetItems(string query);
         Task<Track> GetTrack (string trackId);

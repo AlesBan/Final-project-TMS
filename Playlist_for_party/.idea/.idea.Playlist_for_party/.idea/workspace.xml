@@ -5,40 +5,12 @@
     <projectFile profileName="Playlist_for_party">Playlist_for_party/Playlist_for_party.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Attributes/ExceptionFilterAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/BadRequestToSpotifyApiException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/DeserializationException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/ExceptionHandling/ErrorDetails.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ItemsDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/Error.cshtml" afterDir="false" />
+    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="create exceptions and exc filters&#10;BadRequestToSpotifyApiException and DeserializationException&#10;ExceptionFilter">
       <change beforePath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Базы данных/seed-app-sql-practice" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Финальный проект/Диаграммы/Общая диаграмма.drawio" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Data/IMusicRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/IMusicRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Data/MusicRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Data/MusicRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ArtistDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ArtistDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/ItemDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/TrackDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/DTO/TrackDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Album.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Album.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Artist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Artist.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/External_Urls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/External_Urls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Models/SpotifyModels/Secondary/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/ISpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IMusicService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +77,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e172353254e0bfe3be1ba5c23169c077538a61a827da59499f4a6ee971cb4642/ParamsArray.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eaf48d290b118e4b123edeca9152a696d26d4e2f25b8287c37d64b15a5c17b/ViewResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1ccf7738c74ce1b77ed3f844a1c673f3ee387e03737f71726ae92da6773b/Uri.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Репозитории/Финальный_проект/Final-project-TMS/Playlist_for_party/Playlist_for_party/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -193,7 +166,7 @@
       <workItem from="1675255664260" duration="5072000" />
       <workItem from="1675263906562" duration="1579000" />
       <workItem from="1675265636797" duration="407000" />
-      <workItem from="1675266088097" duration="6157000" />
+      <workItem from="1675266088097" duration="6829000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -223,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675021908009</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="create exceptions and exc filters&#10;BadRequestToSpotifyApiException and DeserializationException&#10;ExceptionFilter">
+      <created>1675273442993</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675273442993</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +230,8 @@
     <MESSAGE value="try to get post response" />
     <MESSAGE value="add track to Playlist" />
     <MESSAGE value="make some style" />
-    <option name="LAST_COMMIT_MESSAGE" value="make some style" />
+    <MESSAGE value="create exceptions and exc filters&#10;BadRequestToSpotifyApiException and DeserializationException&#10;ExceptionFilter" />
+    <option name="LAST_COMMIT_MESSAGE" value="create exceptions and exc filters&#10;BadRequestToSpotifyApiException and DeserializationException&#10;ExceptionFilter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -286,12 +267,6 @@
           <line>26</line>
           <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Data\MusicRepository.cs" initialLine="26" containingFunctionPresentation="method 'GetPlaylist'" />
           <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs</url>
-          <line>55</line>
-          <properties documentPath="D:\Репозитории\Финальный проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\SpotifyService.cs" initialLine="57" containingFunctionPresentation="method 'GetItems'" />
-          <option name="timeStamp" value="101" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

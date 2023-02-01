@@ -1,14 +1,10 @@
 using System;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes;
 using Playlist_for_party.Interfaсes.Services;
@@ -31,7 +27,7 @@ namespace Playlist_for_party
                 c.BaseAddress = new Uri("https://accounts.spotify.com/api/");
             });
 
-            services.AddHttpClient<ISpotifyService, SpotifyService>(c => 
+            services.AddHttpClient<IMusicService, SpotifyService>(c => 
             {
                 c.BaseAddress = new Uri("https://api.spotify.com/v1/");
                 c.DefaultRequestHeaders.Add("Accept", "application/.json");
@@ -51,7 +47,6 @@ namespace Playlist_for_party
             }
             else
             {
-
                 app.UseHsts();
             }
 
