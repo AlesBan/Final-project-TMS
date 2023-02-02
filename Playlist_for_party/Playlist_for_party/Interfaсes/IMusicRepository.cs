@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Playlist_for_party.Models;
 using Playlist_for_party.Models.Music;
 
 namespace Playlist_for_party.Interfaсes
@@ -11,5 +12,6 @@ namespace Playlist_for_party.Interfaсes
         Playlist CreatePlaylist();
 
         Playlist GetPlaylist(Guid id);
+        public List<User> Users { get; set; }
     }
 }

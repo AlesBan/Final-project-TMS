@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
-using Playlist_for_party.Exceptions;
+using Playlist_for_party.Exceptions.AppExceptions;
 using ExceptionContext = Microsoft.AspNetCore.Mvc.Filters.ExceptionContext;
 using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
 
-namespace Playlist_for_party.Attributes
+namespace Playlist_for_party.Filters.ExceptionFilters
 {
     public class ExceptionFilterAttribute : TypeFilterAttribute
     {

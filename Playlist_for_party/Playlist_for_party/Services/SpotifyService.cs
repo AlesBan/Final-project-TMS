@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Playlist_for_party.Exceptions;
+using Playlist_for_party.Exceptions.AppExceptions;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.Music;
 using Playlist_for_party.Models.SpotifyModels.DTO;

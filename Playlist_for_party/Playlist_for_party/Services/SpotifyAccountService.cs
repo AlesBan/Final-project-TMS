@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Playlist_for_party.Exceptions;
+using Playlist_for_party.Exceptions.AppExceptions;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.SpotifyApiConnection;
 

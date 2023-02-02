@@ -1,6 +1,6 @@
 using System;
 
-namespace Playlist_for_party.Exceptions
+namespace Playlist_for_party.Exceptions.AppExceptions
 {
     public class UnauthorizedException : Exception
     {

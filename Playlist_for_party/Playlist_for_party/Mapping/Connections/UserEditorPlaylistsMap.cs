@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Playlist_for_party.Models.Connections;
+using Playlist_for_party.Models.DbConnections;
 using Playlist_for_party.Models.Music;
 
 namespace Playlist_for_party.Mapping.Connections

@@ -2,8 +2,8 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Playlist_for_party.Attributes;
-using Playlist_for_party.Interfaсes;
+using Microsoft.AspNetCore.Authorization;
+using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
 
 namespace Playlist_for_party.Controllers
@@ -11,21 +11,19 @@ namespace Playlist_for_party.Controllers
     public class HomeController : Controller
     {
         private readonly IMusicService _musicService;
-        private IMusicRepository MusicRepository { get; }
 
-
-        public HomeController(IMusicService spotifyService, IMusicRepository musicRepository)
+        public HomeController(IMusicService spotifyService)
         {
             _musicService = spotifyService;
-            MusicRepository = musicRepository;
         }
 
+        [Authorize]
         [HttpGet("home")]
-        public ViewResult Home()
+        public IActionResult Home()
         {
-            
-            return View(MusicRepository);
+            return View(Startup.MusicRepository);
         }
+
 
         [ExceptionFilter]
         [HttpGet("search/{query?}")]
@@ -38,7 +36,7 @@ namespace Playlist_for_party.Controllers
 
             var searchItems = _musicService.GetItems(query).Result;
             ViewBag.query = query;
-            ViewBag.Playlists = MusicRepository.Playlists;
+            ViewBag.Playlists = Startup.MusicRepository.Playlists;
             ViewBag.Artists = searchItems.ArtistDtos;
             ViewBag.Tracks = searchItems.TrackDtos;
             return View();
@@ -50,10 +48,10 @@ namespace Playlist_for_party.Controllers
         {
             if (id != Guid.Empty)
             {
-                return View(MusicRepository.GetPlaylist(id));
+                return View(Startup.MusicRepository.GetPlaylist(id));
             }
 
-            var playlist = MusicRepository.CreatePlaylist();
+            var playlist = Startup.MusicRepository.CreatePlaylist();
             return Redirect($"playlist/{playlist.PlaylistId}");
         }
 
@@ -63,12 +61,14 @@ namespace Playlist_for_party.Controllers
         {
             var track = await _musicService.GetTrack(trackId);
             var playlistIdGuid = Guid.Parse(playlistId);
-            var playlists = MusicRepository.Playlists;
-            MusicRepository.Playlists[playlists.IndexOf(playlists.First(p => p.PlaylistId.Equals(playlistIdGuid)))]
+            var playlists = Startup.MusicRepository.Playlists;
+            Startup.MusicRepository
+                .Playlists[playlists.IndexOf(playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid)))]
                 .AddTrack(track);
             return NoContent();
         }
-        
+
+        [Route("forbidden")]
         public IActionResult Error()
         {
             return View();

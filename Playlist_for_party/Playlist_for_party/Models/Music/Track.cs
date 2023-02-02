@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Playlist_for_party.Models.Connections;
+using Playlist_for_party.Models.DbConnections;
 
 namespace Playlist_for_party.Models.Music
 {
