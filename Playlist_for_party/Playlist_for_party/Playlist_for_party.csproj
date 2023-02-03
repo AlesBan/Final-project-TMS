@@ -64,4 +64,11 @@
     <ProjectReference Include="..\WebApp_Authentication\WebApp_Authentication.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="CssFiles\Home.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

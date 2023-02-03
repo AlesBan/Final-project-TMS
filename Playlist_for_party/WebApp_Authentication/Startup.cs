@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -7,46 +6,28 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Playlist_for_party.Data;
-using Playlist_for_party.Interfaсes.Services;
-using Playlist_for_party.Services;
 using WebApp_Authentication.Policies;
 using WebApp_Data.Interfaces;
 using WebApp_Data.Models.Data;
 
-namespace Playlist_for_party
+namespace WebApp_Authentication
 {
     public class Startup
     {
-        private IConfiguration Configuration { get; }
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        private IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient<ISpotifyAccountService, SpotifyAccountService>(c =>
-            {
-                c.BaseAddress = new Uri("https://accounts.spotify.com/api/");
-            });
-
-            services.AddHttpClient<IMusicService, SpotifyService>(c =>
-            {
-                c.BaseAddress = new Uri("https://api.spotify.com/v1/");
-                c.DefaultRequestHeaders.Add("Accept", "application/.json");
-            });
-
-            var connection = Configuration.GetConnectionString("DefaultConnection");
-
-
             services.AddControllersWithViews();
-            services.AddDbContext<MusicContext>(options => options.UseSqlServer(connection));
-            services.AddSingleton<IMusicRepository, MusicRepository>();
             
+            services.AddSingleton<IMusicRepository, MusicRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -69,6 +50,7 @@ namespace Playlist_for_party
                             return Task.CompletedTask;
                         },
                     };
+                    
                 });
             services.AddAuthorization(op => { op.AddPolicy(NamePolicy.Name, NamePolicy.Requirements); });
         }
@@ -86,15 +68,16 @@ namespace Playlist_for_party
 
             app.UseHttpsRedirection();
 
-            app.UseAuthentication();
             app.UseRouting();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "home",
-                    pattern: "{controller=Home}/{action=Home}");
+                    pattern: "{controller=Home}/{action=Home}",
+                    defaults: new { controller = "Home" });
                 endpoints.MapControllerRoute(
                     name: "search/{query?}",
                     pattern: "{controller=Home}/{action=Search}");

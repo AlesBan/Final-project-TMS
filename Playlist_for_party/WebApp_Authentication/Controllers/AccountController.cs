@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using WebApp_Authentication.Configuration;
+using Microsoft.Extensions.Configuration;
 using WebApp_Data.Interfaces;
 using WebApp_Data.Models;
 using WebApp_Authentication.Models.Authentication;
@@ -13,13 +12,23 @@ namespace WebApp_Authentication.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly JwtSettings _jwtSettings;
+        private readonly IConfiguration _configuration;
 
-        public static IMusicRepository MusicRepository { get; set; } = new MusicRepository();
-
-        public AccountController(IOptions<JwtSettings> options)
+        public static IMusicRepository MusicRepository { get; set; } = new MusicRepository()
         {
-            _jwtSettings = options.Value;
+            Users = new List<User>()
+            {
+                new ()
+                {
+                    UserName = "ales",
+                    Password = "ales"
+                }
+            }
+        };
+
+        public AccountController(IConfiguration configuration)
+        {
+            _configuration = configuration;
         }
 
         [HttpGet("registration")]
@@ -69,7 +78,7 @@ namespace WebApp_Authentication.Controllers
                 }
 
                 var roles = new List<string>() { "user" };
-                var token = Authentication.GenerateToken(_jwtSettings, user.UserName, roles);
+                var token = Authentication.GenerateToken(_configuration, user.UserName, roles);
                 HttpContext.Response.Cookies.Append("JWToken", token);
                 return RedirectToAction("Home", "Home");
             }

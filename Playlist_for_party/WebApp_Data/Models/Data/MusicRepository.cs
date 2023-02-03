@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Playlist_for_party.Interfaсes;
-using Playlist_for_party.Models;
-using Playlist_for_party.Models.Music;
+using WebApp_Data.Interfaces;
+using WebApp_Data.Models.Music;
 
-namespace Playlist_for_party.Data
+namespace WebApp_Data.Models.Data
 {
     public class MusicRepository : IMusicRepository
     {

@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Playlist_for_party.Data;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
-using Playlist_for_party.Models;
 using WebApp_Authentication.Controllers;
 
 namespace Playlist_for_party.Controllers
@@ -21,6 +18,7 @@ namespace Playlist_for_party.Controllers
         {
             _musicService = spotifyService;
         }
+        
         [Authorize]
         [HttpGet("home")]
         public IActionResult Home()
