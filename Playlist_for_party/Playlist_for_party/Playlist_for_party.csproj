@@ -44,16 +44,24 @@
     <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\LICENSE" />
     <_ContentIncludedByDefault Remove="Views\User\Login.cshtml" />
     <_ContentIncludedByDefault Remove="Views\User\Registration.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Login.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Registration.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Attributes" />
     <Folder Include="Exceptions\UserExceptions" />
+    <Folder Include="Filters\ActionFilters" />
     <Folder Include="Helpers" />
+    <Folder Include="Middleware" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="System.Text.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApp_Authentication\WebApp_Authentication.csproj" />
   </ItemGroup>
 
 </Project>

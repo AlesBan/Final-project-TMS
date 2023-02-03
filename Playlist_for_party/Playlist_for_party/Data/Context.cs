@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Playlist_for_party.Mapping;
-using Playlist_for_party.Mapping.Connections;
-using Playlist_for_party.Mapping.Music;
-using Playlist_for_party.Models;
-using Playlist_for_party.Models.DbConnections;
-using Playlist_for_party.Models.Music;
+using WebApp_Data.Mapping;
+using WebApp_Data.Mapping.Connections;
+using WebApp_Data.Mapping.Music;
+using WebApp_Data.Models;
+using WebApp_Data.Models.DbConnections;
+using WebApp_Data.Models.Music;
 
 namespace Playlist_for_party.Data
 {

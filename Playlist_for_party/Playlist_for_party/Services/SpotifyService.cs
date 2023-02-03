@@ -4,13 +4,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Playlist_for_party.Exceptions;
 using Playlist_for_party.Exceptions.AppExceptions;
 using Playlist_for_party.Interfaсes.Services;
-using Playlist_for_party.Models.Music;
-using Playlist_for_party.Models.SpotifyModels.DTO;
-using Playlist_for_party.Models.SpotifyModels.Main;
-using Playlist_for_party.Models.SpotifyModels.Secondary;
+using WebApp_Data.Models.Music;
+using WebApp_Data.Models.SpotifyModels.DTO;
+using WebApp_Data.Models.SpotifyModels.Main;
+using WebApp_Data.Models.SpotifyModels.Secondary;
 
 namespace Playlist_for_party.Services
 {

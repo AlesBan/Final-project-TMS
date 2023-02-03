@@ -1,29 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Playlist_for_party.Data;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
+using Playlist_for_party.Models;
+using WebApp_Authentication.Controllers;
 
 namespace Playlist_for_party.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IMusicService _musicService;
-
+         
         public HomeController(IMusicService spotifyService)
         {
             _musicService = spotifyService;
         }
-
         [Authorize]
         [HttpGet("home")]
         public IActionResult Home()
         {
-            return View(Startup.MusicRepository);
+            return View(AccountController.MusicRepository);
         }
-
 
         [ExceptionFilter]
         [HttpGet("search/{query?}")]
@@ -36,7 +39,7 @@ namespace Playlist_for_party.Controllers
 
             var searchItems = _musicService.GetItems(query).Result;
             ViewBag.query = query;
-            ViewBag.Playlists = Startup.MusicRepository.Playlists;
+            ViewBag.Playlists = AccountController.MusicRepository.Playlists;
             ViewBag.Artists = searchItems.ArtistDtos;
             ViewBag.Tracks = searchItems.TrackDtos;
             return View();
@@ -48,10 +51,10 @@ namespace Playlist_for_party.Controllers
         {
             if (id != Guid.Empty)
             {
-                return View(Startup.MusicRepository.GetPlaylist(id));
+                return View(AccountController.MusicRepository.GetPlaylist(id));
             }
 
-            var playlist = Startup.MusicRepository.CreatePlaylist();
+            var playlist = AccountController.MusicRepository.CreatePlaylist();
             return Redirect($"playlist/{playlist.PlaylistId}");
         }
 
@@ -61,8 +64,8 @@ namespace Playlist_for_party.Controllers
         {
             var track = await _musicService.GetTrack(trackId);
             var playlistIdGuid = Guid.Parse(playlistId);
-            var playlists = Startup.MusicRepository.Playlists;
-            Startup.MusicRepository
+            var playlists = AccountController.MusicRepository.Playlists;
+            AccountController.MusicRepository
                 .Playlists[playlists.IndexOf(playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid)))]
                 .AddTrack(track);
             return NoContent();
