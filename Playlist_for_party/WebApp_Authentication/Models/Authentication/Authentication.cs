@@ -14,7 +14,7 @@ namespace WebApp_Authentication.Models.Authentication
         {
             var jwtClaims = new List<Claim>
             {
-                new (ClaimTypes.Name, userName),
+                new Claim(ClaimTypes.Name, userName),
             };
 
             roles.ForEach(role => jwtClaims.Add(new Claim(ClaimTypes.Role, role)));

@@ -20,7 +20,7 @@ namespace Playlist_for_party.Filters.ExceptionFilters
         {
             private readonly ILogger<ExceptionFilterImplementation> _logger;
 
-            private readonly List<Type> _exceptions = new ()
+            private readonly List<Type> _exceptions = new List<Type>()
             {
                 typeof(DeserializationOfSpotifyModelException),
                 typeof(BadRequestToSpotifyApiException),

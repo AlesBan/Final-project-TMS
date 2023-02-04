@@ -9,7 +9,7 @@ namespace WebApp_Authentication.Policies
     {
         public static string Name = "ales-policy";
 
-        public static AuthorizationPolicy Requirements => new(
+        public static AuthorizationPolicy Requirements => new AuthorizationPolicy(
             new[]
             {
                 new ClaimsAuthorizationRequirement(ClaimTypes.Name, new[] { "ales" })

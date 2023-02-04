@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <LangVersion>9</LangVersion>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -62,13 +62,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebApp_Authentication\WebApp_Authentication.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="CssFiles\Home.css">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

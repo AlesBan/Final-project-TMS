@@ -24,8 +24,6 @@ namespace WebApp_Data.Mapping
             builder.Property(b => b.ImageRef)
                 .HasMaxLength(50);
             
-            builder.HasMany(b => b.CreatedPlaylists)
-                .WithOne(cp => cp.Owner);
         }
     }
 }

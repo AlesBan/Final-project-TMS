@@ -3,9 +3,13 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
 using WebApp_Authentication.Controllers;
+using WebApp_Data.Models;
+using WebApp_Data.Models.Music;
 
 namespace Playlist_for_party.Controllers
 {
@@ -13,17 +17,20 @@ namespace Playlist_for_party.Controllers
     public class HomeController : Controller
     {
         private readonly IMusicService _musicService;
-         
+
         public HomeController(IMusicService spotifyService)
         {
             _musicService = spotifyService;
         }
-        
+
         [Authorize]
         [HttpGet("home")]
         public IActionResult Home()
         {
-            return View(AccountController.MusicRepository);
+            var user = GetCurrentUser();
+            ViewBag.PlaylistsAsOwner = user.PlaylistsAsOwner;
+            ViewBag.PlaylistsAsRedactor = user.PlaylistsAsRedactor;
+            return View();
         }
 
         [ExceptionFilter]
@@ -47,26 +54,75 @@ namespace Playlist_for_party.Controllers
         [HttpGet("playlist/{id:guid?}")]
         public IActionResult Playlist(Guid id)
         {
-            if (id != Guid.Empty)
+            Playlist playlist;
+            var userId = Guid.Parse(HttpContext.Request.Cookies[$"UserId"]);
+            var user = AccountController.MusicRepository.GetUser(userId);
+
+            if (user is null)
             {
-                return View(AccountController.MusicRepository.GetPlaylist(id));
+                return Unauthorized();
             }
 
-            var playlist = AccountController.MusicRepository.CreatePlaylist();
-            return Redirect($"playlist/{playlist.PlaylistId}");
+            if (id == Guid.Empty)
+            {
+                playlist = AccountController.MusicRepository.CreatePlaylist();
+                playlist.SetOwner(user);
+                user.AddPlaylistAsOwner(playlist);
+                return Redirect($"playlist/{playlist.PlaylistId}");
+            }
+
+            playlist = AccountController.MusicRepository.GetPlaylist(id);
+
+            if (user.IsOwner(playlist) || user.IsRedactor(playlist))
+            {
+                return View(playlist);
+            }
+
+            playlist.AddRedactor(user);
+            user.AddPlaylistAsRedactor(playlist);
+
+            return View(playlist);
         }
 
-        [ExceptionFilter]
         [HttpPost]
         public async Task<IActionResult> AddTrackToPlaylist(string trackId, string playlistId)
         {
+            var user = GetCurrentUser();
             var track = await _musicService.GetTrack(trackId);
             var playlistIdGuid = Guid.Parse(playlistId);
             var playlists = AccountController.MusicRepository.Playlists;
+            var playlist = playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid));
+
             AccountController.MusicRepository
-                .Playlists[playlists.IndexOf(playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid)))]
-                .AddTrack(track);
+                .Playlists[playlists.IndexOf(playlist)]
+                .AddTrack(user, track);
             return NoContent();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CheckTrackPresenceInPlaylist(string trackId, string playlistId)
+        {
+            var user = GetCurrentUser();
+            var track = await _musicService.GetTrack(trackId);
+            var playlistIdGuid = Guid.Parse(playlistId);
+            var playlists = AccountController.MusicRepository.Playlists;
+            var playlist = playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid));
+
+            var key = Guid.Parse($"{user.UserId}");
+            if (playlist is { UserTracks: { } } && playlist.UserTracks.ContainsKey(key) && track != null)
+            {
+                return playlist.UserTracks[key].Any(ut => ut.TrackId == track.TrackId)
+                    ? Json(true)
+                    : Json(false);
+            }
+
+            return Json(false);
+        }
+
+        private User GetCurrentUser()
+        {
+            var userId = Guid.Parse(HttpContext.Request.Cookies["UserId"]);
+            return AccountController.MusicRepository.GetUser(userId);
         }
 
         [Route("forbidden")]

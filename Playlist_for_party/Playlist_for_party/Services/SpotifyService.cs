@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using System.Web;
 using Playlist_for_party.Exceptions.AppExceptions;
 using Playlist_for_party.Interfaсes.Services;
 using WebApp_Data.Models.Music;
@@ -38,7 +39,9 @@ namespace Playlist_for_party.Services
             {
                 TrackId = responseObj.Id,
                 Name = responseObj.Name,
-                Artist = string.Join(", ", responseObj.Artists.ToList()),
+                Artist = string.Join(", ", (responseObj.Artists)
+                    .Select(a => a.Name)
+                    .ToList()),
                 Album = responseObj.Album.Name,
                 Duration = responseObj.DurationMs,
                 ImageUrl = responseObj.Album.Images != null ? responseObj.Album.Images[0].Url : DefImageUrl,
@@ -56,9 +59,10 @@ namespace Playlist_for_party.Services
             return GetItemDtosLIst(responseObject);
         }
 
-        private string CreateRequest(string query, bool needArtists, bool needTracks)
+        private static string CreateRequest(string query, bool needArtists, bool needTracks)
         {
-            var request = $"search?q={query}&type=";
+            var decodedQuery = HttpUtility.UrlEncode(query);
+            var request = $"search?q={decodedQuery}&type=";
             if (needTracks && needArtists)
             {
                 request += "track%2Cartist";
@@ -67,26 +71,29 @@ namespace Playlist_for_party.Services
             {
                 request += needArtists ? "artist" : "track";
             }
-            request += $"&limit={Limit}";
+
+            request += $"&market=BY&limit={Limit}";
             return request;
         }
-        
+
         private static ItemsDto GetItemDtosLIst(Search responseObj)
         {
-            var artistDtos = responseObj?.Artists.Items.Select(i => new ArtistDto()
-            {
-                Name = i.Name,
-                ImageRef = i.Images != null ? i.Images[0].Url : DefImageUrl,
-                Href = i.Href
-            });
-            var trackDtos = responseObj?.Tracks.Items.Select(i => new TrackDto()
-            {
-                Name = i.Name,
-                ImageRef = i.Album.Images != null ? i.Album.Images[0].Url : DefImageUrl,
-                Href = i.Href,
-                Id = i.Id,
-                ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))
-            });
+            var artistDtos = responseObj?.Artists.Items.Where(i => i.Images != null && i.Images?.Length != 0)
+                .Select(i => new ArtistDto()
+                {
+                    Name = i.Name,
+                    ImageRef = i.Images?[0].Url,
+                    Href = i.Href
+                });
+            var trackDtos = responseObj?.Tracks.Items.Where(i => i.Album.Images != null)
+                .Select(i => new TrackDto()
+                {
+                    Name = i.Name,
+                    ImageRef = i.Album.Images[0].Url,
+                    Href = i.Href,
+                    Id = i.Id,
+                    ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))
+                });
             var itemsDtos = new ItemsDto();
             if (artistDtos != null)
             {
@@ -135,7 +142,7 @@ namespace Playlist_for_party.Services
 
             return responseObj;
         }
-        
+
         private void Authorization(string accessToken)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);

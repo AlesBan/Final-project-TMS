@@ -13,5 +13,7 @@ namespace WebApp_Data.Interfaces
 
         Playlist GetPlaylist(Guid id);
         public List<User> Users { get; set; }
+        User GetUser(Guid id);
+        User GetUser(UserDto userDto);
     }
 }

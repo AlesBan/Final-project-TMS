@@ -1,44 +1,78 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Playlist_for_party.Models;
-using WebApp_Data.Models.DbConnections;
 
 namespace WebApp_Data.Models.Music
 {
     public class Playlist
     {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-        private static Random random = new Random();
-             
+        private static readonly Random Random = new Random();
+
         public Guid PlaylistId { get; set; }
         public string Name { get; set; }
         public User Owner { get; set; }
         public string Href { get; set; }
 
-
-        // public int RedactorsCount
-        // {
-        //     set => UserEditorPlaylists.Count();
-        // }
+        public int RedactorsCount => Redactors.Count();
 
         public string ImageUrl { get; set; }
 
-        public double Duration { get; set; }
-        public List<Track> Tracks { get; set; }
-        
+        public double Duration
+        {
+            get
+            {
+                return Tracks.Sum(track => track.Duration);
+            } 
+        }
 
+        public Dictionary<Guid, IEnumerable<Track>> UserTracks;
+        public List<Track> Tracks { get; set; }
+        public List<User> Redactors { get; set; }
 
         public Playlist()
         {
             Tracks = new List<Track>();
             PlaylistId = Guid.NewGuid();
-            Name = new string(Enumerable.Repeat(chars, 8).Select(s => s[random.Next(s.Length)]).ToArray());
+            Redactors = new List<User>();
+            Name = new string(Enumerable.Repeat(Chars, 8).Select(s => s[Random.Next(s.Length)]).ToArray());
+            UserTracks = new Dictionary<Guid, IEnumerable<Track>>();
         }
-        public void AddTrack(Track track)
+
+        public void AddTrack(User user, Track track)
         {
+            AddTrackToUserTracks(user, track);
             Tracks.Add(track);
+        }
+
+        private void AddTrackToUserTracks(User user, Track track)
+        {
+            var userTracksList = GetUserTracks(user);
+            userTracksList.Add(track);
+            UserTracks[user.UserId] =  userTracksList;
+        }
+        private List<Track> GetUserTracks(User user)
+        {
+            var userTracks = new List<Track>();
+            if (UserTracks.ContainsKey(user.UserId))
+            {
+                userTracks = UserTracks[user.UserId].ToList();
+                return userTracks;
+            }
+
+            UserTracks.Add(user.UserId, new List<Track>());
+            return userTracks;
+        }
+        
+        public void SetOwner(User user)
+        {
+            Owner = user;
+        }
+        
+        public void AddRedactor(User user)
+        {
+            Redactors.Add(user);
         }
     }
 }
