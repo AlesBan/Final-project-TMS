@@ -21,10 +21,7 @@ namespace WebApp_Data.Models.Music
 
         public double Duration
         {
-            get
-            {
-                return Tracks.Sum(track => track.Duration);
-            } 
+            get { return Tracks.Sum(track => track.Duration); }
         }
 
         public Dictionary<Guid, IEnumerable<Track>> UserTracks;
@@ -43,15 +40,30 @@ namespace WebApp_Data.Models.Music
         public void AddTrack(User user, Track track)
         {
             AddTrackToUserTracks(user, track);
-            Tracks.Add(track);
+            try
+            {
+                var trackItem = Tracks.Single(t => t.TrackId == track.TrackId);
+                Tracks[Tracks.IndexOf(trackItem)].Popularity += 1;
+            }
+            catch
+            {
+                track.Popularity = 1;
+                Tracks.Add(track);
+            }
         }
 
         private void AddTrackToUserTracks(User user, Track track)
         {
             var userTracksList = GetUserTracks(user);
+            
+            if (userTracksList.Count >= 10)
+            {
+                return;
+            }
             userTracksList.Add(track);
-            UserTracks[user.UserId] =  userTracksList;
+            UserTracks[user.UserId] = userTracksList;
         }
+
         private List<Track> GetUserTracks(User user)
         {
             var userTracks = new List<Track>();
@@ -64,12 +76,12 @@ namespace WebApp_Data.Models.Music
             UserTracks.Add(user.UserId, new List<Track>());
             return userTracks;
         }
-        
+
         public void SetOwner(User user)
         {
             Owner = user;
         }
-        
+
         public void AddRedactor(User user)
         {
             Redactors.Add(user);

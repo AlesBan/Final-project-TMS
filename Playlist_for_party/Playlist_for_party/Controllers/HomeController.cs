@@ -3,8 +3,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
 using WebApp_Authentication.Controllers;
@@ -23,7 +21,6 @@ namespace Playlist_for_party.Controllers
             _musicService = spotifyService;
         }
 
-        [Authorize]
         [HttpGet("home")]
         public IActionResult Home()
         {
@@ -99,8 +96,8 @@ namespace Playlist_for_party.Controllers
             return NoContent();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CheckTrackPresenceInPlaylist(string trackId, string playlistId)
+        [HttpGet]
+        public async Task<IActionResult> CheckTrackAbilityToBeAdded(string trackId, string playlistId)
         {
             var user = GetCurrentUser();
             var track = await _musicService.GetTrack(trackId);
@@ -111,12 +108,17 @@ namespace Playlist_for_party.Controllers
             var key = Guid.Parse($"{user.UserId}");
             if (playlist is { UserTracks: { } } && playlist.UserTracks.ContainsKey(key) && track != null)
             {
+                if (playlist.UserTracks[key].Count() == 10)
+                {
+                    return Json(new CheckTrackAbility(true, false));
+                }
+
                 return playlist.UserTracks[key].Any(ut => ut.TrackId == track.TrackId)
-                    ? Json(true)
-                    : Json(false);
+                    ? Json(new CheckTrackAbility(false, true))
+                    : Json(new CheckTrackAbility(false, false));
             }
 
-            return Json(false);
+            return Json(new CheckTrackAbility(false, false));
         }
 
         private User GetCurrentUser()

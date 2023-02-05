@@ -9,27 +9,26 @@
     <projectFile profileName="WebApplication1">WebApplication1/WebApplication1.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="cleaning">
+    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/WebApp_Data/Models/CheckTrackAbility.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/CssFiles/Home.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Filters/ExceptionFilters/ExceptionFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Filters/ExceptionFilters/ExceptionFilterAttribute.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Authentication/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Authentication/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Authentication/Models/Authentication/Authentication.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Authentication/Models/Authentication/Authentication.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Authentication/Policies/NamePolicy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Authentication/Policies/NamePolicy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Authentication/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Authentication/Views/Account/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Authentication/WebApp_Authentication.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Authentication/WebApp_Authentication.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Data/Interfaces/IMusicRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Interfaces/IMusicRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Data/Mapping/UserMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Mapping/UserMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/Data/MusicRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/Data/MusicRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_ValidationScriptsPartial.cshtml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Controllers/WeatherForecastController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/appsettings.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,23 +47,6 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/531e8ea0c56349fd83fd13d1c9709bb8b5990/5a/0d7742a1/IHtmlHelper.cs" root0="SKIP_HIGHLIGHTING" />
@@ -143,18 +125,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.47722772&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.47722772",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Playlist_for_party">
     <configuration name="Playlist_for_party" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" />
@@ -286,7 +268,8 @@
       <workItem from="1675362152663" duration="2739000" />
       <workItem from="1675365388914" duration="11455000" />
       <workItem from="1675409870842" duration="14888000" />
-      <workItem from="1675432174031" duration="32297000" />
+      <workItem from="1675432174031" duration="33366000" />
+      <workItem from="1675592661841" duration="7142000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -351,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675438741744</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="separation of owner and editors">
+      <created>1675549898094</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675549898094</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +384,8 @@
     <MESSAGE value="Authentication jwt" />
     <MESSAGE value="create webapp_auth and webapp_data projects" />
     <MESSAGE value="cleaning" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning" />
+    <MESSAGE value="separation of owner and editors" />
+    <option name="LAST_COMMIT_MESSAGE" value="separation of owner and editors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -501,99 +492,45 @@
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>32</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="30" containingFunctionPresentation="method 'Home'">
+          <url>file://$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs</url>
+          <line>45</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\WebApp_Data\Models\Music\Playlist.cs" initialLine="45" containingFunctionPresentation="method 'AddTrack'">
             <startOffsets>
-              <option value="975" />
+              <option value="1411" />
             </startOffsets>
             <endOffsets>
-              <option value="989" />
+              <option value="1461" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="164" />
+          <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Filters/ExceptionFilters/ExceptionFilterAttribute.cs</url>
-          <line>51</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Filters\ExceptionFilters\ExceptionFilterAttribute.cs" initialLine="51" containingFunctionPresentation="method 'OnExceptionAsync'">
+          <url>file://$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs</url>
+          <line>44</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\WebApp_Data\Models\Music\Playlist.cs" initialLine="44" containingFunctionPresentation="method 'AddTrack'">
             <startOffsets>
-              <option value="2032" />
+              <option value="1331" />
+              <option value="1366" />
             </startOffsets>
             <endOffsets>
-              <option value="2070" />
+              <option value="1394" />
+              <option value="1392" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="176" />
+          <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs</url>
-          <line>80</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\SpotifyService.cs" initialLine="80" containingFunctionPresentation="method 'GetItemDtosLIst'">
+          <url>file://$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs</url>
+          <line>50</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\WebApp_Data\Models\Music\Playlist.cs" initialLine="50" containingFunctionPresentation="method 'AddTrack'">
             <startOffsets>
-              <option value="3017" />
-              <option value="3144" />
+              <option value="1562" />
             </startOffsets>
             <endOffsets>
-              <option value="3315" />
-              <option value="3313" />
+              <option value="1580" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="181" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs</url>
-          <line>87</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\SpotifyService.cs" initialLine="86" containingFunctionPresentation="method 'GetItemDtosLIst'">
-            <startOffsets>
-              <option value="3328" />
-              <option value="3434" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3723" />
-              <option value="3721" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="182" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs</url>
-          <line>99</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\SpotifyService.cs" initialLine="97" containingFunctionPresentation="method 'GetItemDtosLIst'">
-            <startOffsets>
-              <option value="3834" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3876" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="185" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs</url>
-          <line>104</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\SpotifyService.cs" initialLine="102" containingFunctionPresentation="method 'GetItemDtosLIst'">
-            <startOffsets>
-              <option value="3957" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3997" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs</url>
-          <line>107</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\SpotifyService.cs" initialLine="105" containingFunctionPresentation="method 'GetItemDtosLIst'">
-            <startOffsets>
-              <option value="4025" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4042" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="188" />
+          <option name="timeStamp" value="198" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -603,6 +540,9 @@
         <watch expression="i.Images != null" language="C#" />
         <watch expression="i.Album.Images != null" language="C#" />
         <watch expression="i.Images != null ? i.Images[0].Url : i.Album.Images[0].Url" language="C#" />
+        <watch expression="item.Id" language="Razor" />
+        <watch expression="playlist.Name" language="Razor" />
+        <watch expression="item.Id" language="Razor" />
       </configuration>
     </watches-manager>
   </component>

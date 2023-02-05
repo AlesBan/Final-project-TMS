@@ -39,18 +39,16 @@ namespace Playlist_for_party.Filters.ExceptionFilters
                 var actionName = context.RouteData.Values["action"];
                 var contextType = context.Exception.InnerException?.GetType();
 
-                if (_exceptions.Contains(contextType))
+                if (!_exceptions.Contains(contextType))
                 {
-                    _logger.LogError("\tController: {}\n" +
-                                     "\tAction: {}\n" +
-                                     "\tExceptionName: {}\n" +
-                                     "\tMessage: {}",
-                        controllerName, actionName, contextType?.Name, context.Exception.Message);
+                    _logger.LogError("Unknown exception\n");
                 }
-                else
-                {
-                    _logger.LogError("Unknown exception");
-                }
+
+                _logger.LogError("\tController: {}\n" +
+                                 "\tAction: {}\n" +
+                                 "\tExceptionName: {}\n" +
+                                 "\tMessage: {}",
+                    controllerName, actionName, contextType?.Name, context.Exception.Message);
 
                 var res = new ViewResult()
                 {

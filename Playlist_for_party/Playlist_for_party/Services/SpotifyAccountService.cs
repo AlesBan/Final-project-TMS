@@ -6,7 +6,6 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using Playlist_for_party.Exceptions;
 using Playlist_for_party.Exceptions.AppExceptions;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Models.SpotifyApiConnection;
@@ -59,12 +58,6 @@ namespace Playlist_for_party.Services
         {
             var authResult = await GetResponse(clientId, clientSecret).Result.Content.ReadFromJsonAsync<AuthResult>();
             return authResult?.access_token;
-        }
-        
-        public async void Authorization()
-        {
-            var accessToken = await GetAccessToken();
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
     }
 }

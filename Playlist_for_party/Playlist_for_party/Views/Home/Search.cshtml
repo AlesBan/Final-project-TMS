@@ -3,8 +3,6 @@
 @inject IEnumerable<ArtistDto> Artists;
 @inject IEnumerable<TrackDto> Tracks;
 
-
-
 @{
     ViewData["Title"] = "Search";
     Artists = ViewBag.Artists != null ? ((IEnumerable<ArtistDto>)ViewBag.Artists).ToList() : new List<ArtistDto>();
@@ -140,12 +138,16 @@
      
     function SendData(event) {
         let playlistId = event.target.id;
-        let parent = document.getElementById(playlistId).parentNode
+        let parent = event.target.parentNode
         let trackId = parent.id;
-        $.post("@Url.Action("CheckTrackPresenceInPlaylist", "Home")", {trackId: trackId, playlistId: playlistId}, function (presence) {   
-            if (JSON.parse(presence) === true){
-                alert("Данный трек уже добавлен в плейлист")
+        $.get("@Url.Action("CheckTrackAbilityToBeAdded", "Home")", {trackId: trackId, playlistId: playlistId}, function (CheckTrackAbility) {
+            let obj = JSON.parse(CheckTrackAbility);
+            if (obj.exceeding_the_limit === true){
+                alert("Лимит на добавление исчерпан (10)")
             }
+            else if (obj.track_duplication === true){
+                alert("Этот трек вы уже добавили в плейлист")
+                }
             else {
                 $.post("@Url.Action("AddTrackToPlaylist", "Home")", {trackId: trackId, playlistId: playlistId})
             }
