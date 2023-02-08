@@ -31,8 +31,7 @@ namespace Playlist_for_party.Services
 
         public async Task<Track> GetTrack(string trackId)
         {
-            var accessToken = await _spotifyAccountService.GetAccessToken();
-            Authorization(accessToken);
+            await Authorization();
             var response = await GetResponse($"tracks/{trackId}");
             var responseObj = await DeserializationAsync<Item>(response);
             var track = new Track()
@@ -52,8 +51,7 @@ namespace Playlist_for_party.Services
 
         public async Task<ItemsDto> GetItems(string query)
         {
-            var accessToken = await _spotifyAccountService.GetAccessToken();
-            Authorization(accessToken);
+            await Authorization();
             var response = await GetResponse(CreateRequest(query, true, true));
             var responseObject = await DeserializationAsync<Search>(response);
             return GetItemDtosLIst(responseObject);
@@ -63,6 +61,7 @@ namespace Playlist_for_party.Services
         {
             var decodedQuery = HttpUtility.UrlEncode(query);
             var request = $"search?q={decodedQuery}&type=";
+            
             if (needTracks && needArtists)
             {
                 request += "track%2Cartist";
@@ -85,6 +84,7 @@ namespace Playlist_for_party.Services
                     ImageRef = i.Images?[0].Url,
                     Href = i.Href
                 });
+            
             var trackDtos = responseObj?.Tracks.Items.Where(i => i.Album.Images != null)
                 .Select(i => new TrackDto()
                 {
@@ -94,7 +94,9 @@ namespace Playlist_for_party.Services
                     Id = i.Id,
                     ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))
                 });
+            
             var itemsDtos = new ItemsDto();
+            
             if (artistDtos != null)
             {
                 itemsDtos.ArtistDtos.AddRange(artistDtos);
@@ -143,8 +145,9 @@ namespace Playlist_for_party.Services
             return responseObj;
         }
 
-        private void Authorization(string accessToken)
+        private async Task Authorization()
         {
+            var accessToken = await _spotifyAccountService.GetAccessToken();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
     }

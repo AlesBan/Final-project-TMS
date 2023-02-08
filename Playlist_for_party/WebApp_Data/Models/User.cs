@@ -31,8 +31,6 @@ namespace WebApp_Data.Models
         {
             PlaylistsAsRedactor.Add(playlist);
         }
-
-
         
         public bool IsOwner(Playlist playlist)
         {

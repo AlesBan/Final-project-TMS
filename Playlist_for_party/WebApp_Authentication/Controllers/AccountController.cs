@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WebApp_Data.Interfaces;
@@ -93,10 +94,11 @@ namespace WebApp_Authentication.Controllers
                 var user = MusicRepository.GetUser(userDto);
                 var roles = new List<string>() { "user" };
                 var token = Authentication.GenerateToken(_configuration, user.UserName, roles);
-                HttpContext.Response.Cookies.Append("JWToken", token);
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
                 HttpContext.Response.Cookies.Append("UserId", user.UserId.ToString());
 
-                return RedirectToAction("Home", "Home");
+                return RedirectToAction("Home", "User");
             }
             catch (Exception e)
             {

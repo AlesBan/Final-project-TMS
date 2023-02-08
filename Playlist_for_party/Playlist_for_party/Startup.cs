@@ -60,15 +60,6 @@ namespace Playlist_for_party
                         ValidateIssuer = true,
                         ValidateIssuerSigningKey = true
                     };
-                    
-                    options.Events = new JwtBearerEvents
-                    {
-                        OnMessageReceived = context =>
-                        {
-                            context.Token = context.Request.Cookies["JWToken"];
-                            return Task.CompletedTask;
-                        },
-                    };
                 });
             services.AddAuthorization(op => { op.AddPolicy(NamePolicy.Name, NamePolicy.Requirements); });
         }
@@ -94,13 +85,13 @@ namespace Playlist_for_party
             {
                 endpoints.MapControllerRoute(
                     name: "home",
-                    pattern: "{controller=Home}/{action=Home}");
+                    pattern: "{controller=User}/{action=Home}");
                 endpoints.MapControllerRoute(
                     name: "search/{query?}",
-                    pattern: "{controller=Home}/{action=Search}");
+                    pattern: "{controller=User}/{action=Search}");
                 endpoints.MapControllerRoute(
                     name: "playlist/{id?}",
-                    pattern: "{controller=Home}/{action=Playlist}");
+                    pattern: "{controller=User}/{action=Playlist}");
                 endpoints.MapControllerRoute(
                     name: "login",
                     pattern: "{controller=Account}/{action=Login}");
