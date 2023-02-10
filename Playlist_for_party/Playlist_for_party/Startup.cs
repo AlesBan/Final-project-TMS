@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -48,6 +47,8 @@ namespace Playlist_for_party
             services.AddControllersWithViews();
             
             services.AddSingleton<IMusicRepository, MusicRepository>();
+            services.AddSingleton<IMusicDataManagerService, MusicDataManagerService>();
+            services.AddSingleton<IUserManagerService, UserManagerService>();
             
             services.AddScoped<SetTokenMiddleware>();
             

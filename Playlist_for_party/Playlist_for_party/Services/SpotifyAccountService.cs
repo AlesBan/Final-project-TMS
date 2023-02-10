@@ -57,7 +57,7 @@ namespace Playlist_for_party.Services
         private async Task<string> GetToken(string clientId, string clientSecret)
         {
             var authResult = await GetResponse(clientId, clientSecret).Result.Content.ReadFromJsonAsync<AuthResult>();
-            return authResult?.access_token;
+            return authResult?.AccessToken;
         }
     }
 }

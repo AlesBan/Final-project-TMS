@@ -16,10 +16,12 @@ namespace Playlist_for_party.Controllers
     public class HomeController : Controller
     {
         private readonly IMusicService _musicService;
+        private readonly IMusicDataManagerService _dataManager;
 
-        public HomeController(IMusicService spotifyService)
+        public HomeController(IMusicService spotifyService, IMusicDataManagerService dataManager)
         {
             _musicService = spotifyService;
+            _dataManager = dataManager;
         }
         
         [Route("home")]
@@ -55,15 +57,15 @@ namespace Playlist_for_party.Controllers
 
             var searchItems = _musicService.GetItems(query).Result;
             ViewBag.query = query;
-            ViewBag.Playlists = AccountController.MusicRepository.Playlists;
+            ViewBag.Playlists =_dataManager.GetPlaylists();
             ViewBag.Artists = searchItems.ArtistDtos;
             ViewBag.Tracks = searchItems.TrackDtos;
             return View();
         }
 
         [ExceptionFilter]
-        [HttpGet("playlist/{id:guid?}")]
-        public IActionResult Playlist(Guid id)
+        [HttpGet("playlist/{playlistId:guid?}")]
+        public IActionResult Playlist(Guid playlistId)
         {
             Playlist playlist;
             var user = GetCurrentUser();
@@ -73,15 +75,15 @@ namespace Playlist_for_party.Controllers
                 return Unauthorized();
             }
 
-            if (id == Guid.Empty)
+            if (playlistId == Guid.Empty)
             {
-                playlist = AccountController.MusicRepository.CreatePlaylist();
+                playlist = _dataManager.CreatePlaylist();
                 playlist.SetOwner(user);
                 user.AddPlaylistAsOwner(playlist);
                 return Redirect($"playlist/{playlist.PlaylistId}");
             }
 
-            playlist = AccountController.MusicRepository.GetPlaylist(id);
+            playlist =_dataManager.GetPlaylist(playlistId);
 
             if (user.IsOwner(playlist) || user.IsRedactor(playlist))
             {
@@ -100,12 +102,10 @@ namespace Playlist_for_party.Controllers
             var user = GetCurrentUser();
             var track = await _musicService.GetTrack(trackId);
             var playlistIdGuid = Guid.Parse(playlistId);
-            var playlists = AccountController.MusicRepository.Playlists;
+            var playlists = _dataManager.GetPlaylists();
             var playlist = playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid));
-
-            AccountController.MusicRepository
-                .Playlists[playlists.IndexOf(playlist)]
-                .AddTrack(user, track);
+            _dataManager.AddTrack(user, playlist, track);
+            
             return NoContent();
         }
 
@@ -115,7 +115,7 @@ namespace Playlist_for_party.Controllers
             var user = GetCurrentUser();
             var track = await _musicService.GetTrack(trackId);
             var playlistIdGuid = Guid.Parse(playlistId);
-            var playlists = AccountController.MusicRepository.Playlists;
+            var playlists = _dataManager.GetPlaylists();
             var playlist = playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid));
 
             var key = Guid.Parse($"{user.UserId}");
@@ -144,7 +144,7 @@ namespace Playlist_for_party.Controllers
             {
                 throw new InvalidClaimedUserIdException();
             }
-            return AccountController.MusicRepository.GetUser(Guid.Parse(userId));
+            return _dataManager.GetUser(Guid.Parse(userId));
         }
 
         [Route("forbidden")]

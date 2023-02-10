@@ -4,40 +4,15 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using WebApp_Data.Interfaces;
+using Playlist_for_party.Services;
 using WebApp_Data.Models;
-using WebApp_Data.Models.Data;
 
 namespace Playlist_for_party.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IConfiguration _configuration;
-
-        public static IMusicRepository MusicRepository { get; set; } = new MusicRepository()
-        {
-            Users = new List<User>()
-            {
-                new User()
-                {
-                    UserId = Guid.Parse("596fcae8-7491-4940-b39c-8e86c2561dea"),
-                    UserName = "ales",
-                    Password = "ales"
-                },
-                new User()
-                {
-                    UserId = Guid.Parse("e24f63bc-a8eb-4fe3-a7d6-5844c1b30ab4"),
-                    UserName = "pavel",
-                    Password = "pavel"
-                },
-                new User()
-                {
-                    UserId = Guid.Parse("1afeeb58-2f69-422e-842d-0759a7b6825d"),
-                    UserName = "dima",
-                    Password = "dima"
-                }
-            }
-        };
+        private readonly MusicDataManagerService _dataManager = new MusicDataManagerService();
 
         public AccountController(IConfiguration configuration)
         {
@@ -58,13 +33,13 @@ namespace Playlist_for_party.Controllers
                 return View(user);
             }
 
-            if (MusicRepository.Users.Any(u => u.UserName == user.UserName))
+            if (_dataManager.MusicRepository.Users.Any(u => u.UserName == user.UserName))
             {
                 return BadRequest();
             }
 
             user.Roles.Add("user");
-            MusicRepository.Users.Add(user);
+            _dataManager.MusicRepository.Users.Add(user);
 
             return Redirect("login");
         }
@@ -85,12 +60,12 @@ namespace Playlist_for_party.Controllers
                     return (View(userDto));
                 }
 
-                if (!MusicRepository.Users.Any(u => u.UserName == userDto.UserName && u.Password == userDto.Password))
+                if (!_dataManager.MusicRepository.Users.Any(u => u.UserName == userDto.UserName && u.Password == userDto.Password))
                 {
                     return BadRequest();
                 }
 
-                var user = MusicRepository.GetUser(userDto);
+                var user = _dataManager.GetUser(userDto);
                 var roles = new List<string>() { "user" };
                 var token = Authentication.Authentication.GenerateToken(_configuration, user, roles);
                 
