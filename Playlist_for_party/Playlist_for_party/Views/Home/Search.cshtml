@@ -140,7 +140,7 @@
         let playlistId = event.target.id;
         let parent = event.target.parentNode
         let trackId = parent.id;
-        $.get("@Url.Action("CheckTrackAbilityToBeAdded", "Home")", {trackId: trackId, playlistId: playlistId}, function (CheckTrackAbility) {
+        $.get("@Url.Action("CheckTrackAbilityToBeAdded", "Track")", {trackId: trackId, playlistId: playlistId}, function (CheckTrackAbility) {
             let obj = JSON.parse(CheckTrackAbility);
             if (obj.exceeding_the_limit === true){
                 alert("Лимит на добавление исчерпан (10)")
@@ -149,7 +149,7 @@
                 alert("Этот трек вы уже добавили в плейлист")
                 }
             else {
-                $.post("@Url.Action("AddTrackToPlaylist", "Home")", {trackId: trackId, playlistId: playlistId})
+                $.post("@Url.Action("AddTrackToPlaylist", "Track")", {trackId: trackId, playlistId: playlistId})
             }
         });   
     }
