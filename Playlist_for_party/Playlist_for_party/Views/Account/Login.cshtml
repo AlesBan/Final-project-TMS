@@ -4,16 +4,20 @@
     Layout = "_Layout";
 }
 
+@section Styles{
+    <link href="~/css/Authentication/Login.css" rel="stylesheet" type="text/css"/>
+}
+
 <div class="wrapper">
     <h1>Login</h1>
     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
     {
         <form action="#">
-            @Html.TextBoxFor(m => m.UserName, new { @type = "text", @placeholder="Username" })
-            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder="Password" })
+            @Html.TextBoxFor(m => m.UserName, new { @type = "text", @placeholder = "Username" })
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
         </form>
         <div class="terms">
-            <button class="wrapper-SignUp">Login</button>
+            <button class="wrapper-SignUp" type="submit">Login</button>
             <div class="member">
                 Not a member? <a href="@Url.Action("SingUp", "Account")">Register Now</a>
             </div>
