@@ -1,0 +1,151 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 244px; /* sidebar width */
+    right: 0;
+    height: 60px;
+    background-color: rgb(18, 18, 18);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-btn {
+    background: rgb(7, 7, 7);
+    color: #fff;
+    border: 0;
+    border-radius: 50%;
+    height: 34px;
+    width: 34px;
+    cursor: pointer;
+    outline: 0;
+}
+
+.header-btn.previous {
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-button {
+    border: 0;
+    color: #fff;
+    border-radius: 20px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(45, 45, 45);
+    padding: 6px 14px 6px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 1px 1px 1px 3px;
+    width: 70px;
+    background-color: rgb(45, 45, 45);
+    border-radius: 5px;
+    font-size: 12px;
+    color: #fff;
+    overflow: auto;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    display: block;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.dropdown-content-show {
+    display: block;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+
+}
+
+.wrapper {
+    position: absolute;
+    width: 280px;
+    padding: 00px 0 0 00px;
+    margin: 100px 0 0 500px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+form input {
+    width: 180px;
+    outline: none;
+    border: 1px solid white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4 ;
+}
+
+.wrapper-SignUp {
+    font-size: 20px;
+    margin-top: 10px;
+    padding: 10px 0;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    width: 220px;
+    color: white;
+    cursor: pointer;
+    background: rgba(17, 107, 143);
+}
+
+.terms {
+    margin-top: 10px;
+}
+
+.terms input {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.terms label {
+    font-size: 12px;
+}
+
+.terms a {
+    color: rgb(17, 107, 143);
+    text-decoration: none;
+
+}
+
+.member {
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+}
+
+.member a {
+    color: rgb(17, 107, 143);
+}

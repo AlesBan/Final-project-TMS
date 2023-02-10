@@ -40,18 +40,20 @@ namespace Playlist_for_party
                 c.BaseAddress = new Uri("https://api.spotify.com/v1/");
                 c.DefaultRequestHeaders.Add("Accept", "application/.json");
             });
-            
+
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<MusicContext>(options => options.UseSqlServer(connection));
-            
+
             services.AddControllersWithViews();
-            
+
             services.AddSingleton<IMusicRepository, MusicRepository>();
             services.AddSingleton<IMusicDataManagerService, MusicDataManagerService>();
             services.AddSingleton<IUserManagerService, UserManagerService>();
-            
+            services.AddSingleton<IAuthManager, AuthManager>();
+
+
             services.AddScoped<SetTokenMiddleware>();
-            
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -93,10 +95,10 @@ namespace Playlist_for_party
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
-            
+
             app.UseMiddleware<SetTokenMiddleware>();
             app.UseAuthentication();
-            
+
             app.UseRouting();
 
             app.UseAuthorization();

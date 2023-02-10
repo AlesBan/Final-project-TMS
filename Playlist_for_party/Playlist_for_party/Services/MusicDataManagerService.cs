@@ -73,7 +73,7 @@ namespace Playlist_for_party.Services
             return user;
         }
 
-        public User GetUser(UserDto userDto)
+        public User GetUser(UserDtoLogin userDto)
         {
             var user = MusicRepository.Users.FirstOrDefault(p =>
                 p.UserName.Equals(userDto.UserName) && p.Password.Equals(userDto.Password));

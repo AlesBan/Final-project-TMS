@@ -47,25 +47,36 @@
     font-size: 12px;
     cursor: pointer;
     user-select: none;
-    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.5);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    margin-top: 10px;
-    margin-left: 3px;
     padding: 1px 1px 1px 3px;
     width: 70px;
     background-color: rgb(45, 45, 45);
     border-radius: 5px;
     font-size: 12px;
     color: #fff;
+    overflow: auto;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    display: block;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
 }
 
 .dropdown-content-show {
-    display: flex;
-    position: absolute;
+    display: block;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
 
 }
 

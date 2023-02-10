@@ -5,10 +5,10 @@ namespace WebApp_Data.Models
     public class CheckTrackAbility
     {
         [JsonPropertyName("exceeding_the_limit")]
-        public bool ExceedingTheLimit { get; set; }
+        private bool ExceedingTheLimit { get;}
 
         [JsonPropertyName("track_duplication")]
-        public bool TrackDuplication { get; set; }
+        private bool TrackDuplication { get;}
 
         public CheckTrackAbility(bool exceedingTheLimit, bool trackDuplication)
         {

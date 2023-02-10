@@ -9,11 +9,29 @@
     <projectFile profileName="WebApplication1">WebApplication1/WebApplication1.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
+    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="add in UserManagerService + create TrackController">
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IAuthManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Services/AuthManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Authentication/Login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Authentication/SingUp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp_Data/Models/UserDtoSingUp.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Authentication/Authentication.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Authentication/Authentication.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IMusicDataManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IMusicDataManagerService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IUserManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IUserManagerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/MusicDataManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/MusicDataManagerService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/Registration.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/CheckTrackAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/CheckTrackAbility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/UserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/UserDtoLogin.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +120,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eaf48d290b118e4b123edeca9152a696d26d4e2f25b8287c37d64b15a5c17b/ViewResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1ccf7738c74ce1b77ed3f844a1c673f3ee387e03737f71726ae92da6773b/Uri.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f884c46a73e1ad3e9875316636e346755a1d258ad84d2590d92de3bc6cfcd9cb/TokenValidationParameters.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Репозитории/Финальный_проект/Final-project-TMS/Playlist_for_party/Playlist_for_party/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.map" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -267,7 +286,7 @@
       <workItem from="1675967581404" duration="2913000" />
       <workItem from="1676018281805" duration="5198000" />
       <workItem from="1676024821089" duration="1477000" />
-      <workItem from="1676057112453" duration="3579000" />
+      <workItem from="1676057112453" duration="9601000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -353,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676026222745</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add in UserManagerService + create TrackController">
+      <created>1676060942916</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1676060942916</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,29 +424,12 @@
     <MESSAGE value="separation of owner and editors" />
     <MESSAGE value="cleaning" />
     <MESSAGE value="create MusicDataManagerService and UserManagerService (bag)" />
-    <option name="LAST_COMMIT_MESSAGE" value="create MusicDataManagerService and UserManagerService (bag)" />
+    <MESSAGE value="add in UserManagerService + create TrackController" />
+    <option name="LAST_COMMIT_MESSAGE" value="add in UserManagerService + create TrackController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>24</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\WebApp_Authentication\Controllers\AccountController.cs" initialLine="27" containingFunctionPresentation="method 'Registration'" />
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>32</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\WebApp_Authentication\Controllers\AccountController.cs" initialLine="35" containingFunctionPresentation="method 'Registration'" />
-          <option name="timeStamp" value="131" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>43</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\WebApp_Authentication\Controllers\AccountController.cs" initialLine="46" containingFunctionPresentation="method 'Registration'" />
-          <option name="timeStamp" value="132" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs</url>
           <line>45</line>
