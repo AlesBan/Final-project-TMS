@@ -58,7 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebApp_Authentication\WebApp_Authentication.csproj" />
+    <ProjectReference Include="..\WebApp_Data\WebApp_Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -25,7 +25,8 @@ namespace Playlist_for_party.Filters.ExceptionFilters
                 typeof(DeserializationOfSpotifyModelException),
                 typeof(BadRequestToSpotifyApiException),
                 typeof(UnauthorizedException),
-                typeof(InvalidTokensProvided)
+                typeof(InvalidTokensProvided),
+                typeof(InvalidClaimedUserIdException)
             };
 
             public ExceptionFilterImplementation(ILogger<ExceptionFilterImplementation> logger)

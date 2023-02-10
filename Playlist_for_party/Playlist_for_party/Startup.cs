@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,8 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes.Services;
+using Playlist_for_party.Middleware;
 using Playlist_for_party.Services;
-using WebApp_Authentication.Policies;
+using Playlist_for_party.Policies;
 using WebApp_Data.Interfaces;
 using WebApp_Data.Models.Data;
 
@@ -39,13 +41,15 @@ namespace Playlist_for_party
                 c.BaseAddress = new Uri("https://api.spotify.com/v1/");
                 c.DefaultRequestHeaders.Add("Accept", "application/.json");
             });
-
+            
             var connection = Configuration.GetConnectionString("DefaultConnection");
-
-
-            services.AddControllersWithViews();
             services.AddDbContext<MusicContext>(options => options.UseSqlServer(connection));
+            
+            services.AddControllersWithViews();
+            
             services.AddSingleton<IMusicRepository, MusicRepository>();
+            
+            services.AddScoped<SetTokenMiddleware>();
             
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -60,17 +64,18 @@ namespace Playlist_for_party
                         ValidateIssuer = true,
                         ValidateIssuerSigningKey = true
                     };
-                    
+
                     options.Events = new JwtBearerEvents
                     {
                         OnMessageReceived = context =>
                         {
-                            context.Token = context.Request.Cookies["JWToken"];
+                            context.Token = context.Request.Headers["Authorization"];
                             return Task.CompletedTask;
                         },
                     };
                 });
             services.AddAuthorization(op => { op.AddPolicy(NamePolicy.Name, NamePolicy.Requirements); });
+            services.AddSession();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -85,28 +90,21 @@ namespace Playlist_for_party
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
+            app.UseSession();
+            
+            app.UseMiddleware<SetTokenMiddleware>();
             app.UseAuthentication();
+            
             app.UseRouting();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "home",
-                    pattern: "{controller=Home}/{action=Home}");
-                endpoints.MapControllerRoute(
-                    name: "search/{query?}",
-                    pattern: "{controller=Home}/{action=Search}");
-                endpoints.MapControllerRoute(
-                    name: "playlist/{id?}",
-                    pattern: "{controller=Home}/{action=Playlist}");
-                endpoints.MapControllerRoute(
-                    name: "login",
-                    pattern: "{controller=Account}/{action=Login}");
-                endpoints.MapControllerRoute(
-                    name: "registration",
-                    pattern: "{controller=Account}/{action=Registration}");
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Home}/{Id?}");
             });
         }
     }

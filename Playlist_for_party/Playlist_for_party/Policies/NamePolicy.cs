@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 
-namespace WebApp_Authentication.Policies
+namespace Playlist_for_party.Policies
 {
     public static class NamePolicy
     {

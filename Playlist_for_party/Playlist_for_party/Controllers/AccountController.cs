@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WebApp_Data.Interfaces;
 using WebApp_Data.Models;
-using WebApp_Authentication.Models.Authentication;
 using WebApp_Data.Models.Data;
 
-namespace WebApp_Authentication.Controllers
+namespace Playlist_for_party.Controllers
 {
     public class AccountController : Controller
     {
@@ -44,7 +44,7 @@ namespace WebApp_Authentication.Controllers
             _configuration = configuration;
         }
 
-        [HttpGet("registration")]
+        [Route("registration")]
         public IActionResult Registration()
         {
             return View();
@@ -69,7 +69,7 @@ namespace WebApp_Authentication.Controllers
             return Redirect("login");
         }
 
-        [HttpGet("login")]
+        [Route("login")]
         public ActionResult<string> Login()
         {
             return View("Login");
@@ -92,9 +92,9 @@ namespace WebApp_Authentication.Controllers
 
                 var user = MusicRepository.GetUser(userDto);
                 var roles = new List<string>() { "user" };
-                var token = Authentication.GenerateToken(_configuration, user.UserName, roles);
-                HttpContext.Response.Cookies.Append("JWToken", token);
-                HttpContext.Response.Cookies.Append("UserId", user.UserId.ToString());
+                var token = Authentication.Authentication.GenerateToken(_configuration, user, roles);
+                
+                HttpContext.Session.SetString("Authorization", token);
 
                 return RedirectToAction("Home", "Home");
             }

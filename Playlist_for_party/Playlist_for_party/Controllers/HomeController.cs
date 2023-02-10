@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Playlist_for_party.Exceptions.AppExceptions;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
-using WebApp_Authentication.Controllers;
 using WebApp_Data.Models;
 using WebApp_Data.Models.Music;
 
@@ -20,11 +21,17 @@ namespace Playlist_for_party.Controllers
         {
             _musicService = spotifyService;
         }
-
-        [HttpGet("home")]
+        
+        [Route("home")]
         public IActionResult Home()
         {
             var user = GetCurrentUser();
+
+            if (user is null)
+            {
+                return Unauthorized();
+            }
+
             ViewBag.PlaylistsAsOwner = user.PlaylistsAsOwner;
             ViewBag.PlaylistsAsRedactor = user.PlaylistsAsRedactor;
             return View();
@@ -34,6 +41,13 @@ namespace Playlist_for_party.Controllers
         [HttpGet("search/{query?}")]
         public IActionResult Search(string query)
         {
+            var user = GetCurrentUser();
+
+            if (user is null)
+            {
+                return Unauthorized();
+            }
+            
             if (string.IsNullOrEmpty(query))
             {
                 return View();
@@ -52,8 +66,7 @@ namespace Playlist_for_party.Controllers
         public IActionResult Playlist(Guid id)
         {
             Playlist playlist;
-            var userId = Guid.Parse(HttpContext.Request.Cookies[$"UserId"]);
-            var user = AccountController.MusicRepository.GetUser(userId);
+            var user = GetCurrentUser();
 
             if (user is null)
             {
@@ -106,25 +119,32 @@ namespace Playlist_for_party.Controllers
             var playlist = playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid));
 
             var key = Guid.Parse($"{user.UserId}");
-            if (playlist is { UserTracks: { } } && playlist.UserTracks.ContainsKey(key) && track != null)
+            
+            if (!(playlist is { UserTracks: { } }) || !playlist.UserTracks.ContainsKey(key) || track == null)
             {
-                if (playlist.UserTracks[key].Count() == 10)
-                {
-                    return Json(new CheckTrackAbility(true, false));
-                }
+                return Json(new CheckTrackAbility(false, false));
 
-                return playlist.UserTracks[key].Any(ut => ut.TrackId == track.TrackId)
-                    ? Json(new CheckTrackAbility(false, true))
-                    : Json(new CheckTrackAbility(false, false));
+            }
+            
+            if (playlist.UserTracks[key].Count() == 10)
+            {
+                return Json(new CheckTrackAbility(true, false));
             }
 
-            return Json(new CheckTrackAbility(false, false));
+            return playlist.UserTracks[key].Any(ut => ut.TrackId == track.TrackId)
+                ? Json(new CheckTrackAbility(false, true))
+                : Json(new CheckTrackAbility(false, false));
+
         }
 
         private User GetCurrentUser()
         {
-            var userId = Guid.Parse(HttpContext.Request.Cookies["UserId"]);
-            return AccountController.MusicRepository.GetUser(userId);
+            var userId = HttpContext.User.Claims.FirstOrDefault(i => i.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new InvalidClaimedUserIdException();
+            }
+            return AccountController.MusicRepository.GetUser(Guid.Parse(userId));
         }
 
         [Route("forbidden")]
