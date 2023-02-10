@@ -6,7 +6,7 @@ namespace WebApp_Data.Models.Music
     {
         public string TrackId { get; set; }
         public string Name { get; set; }
-        public string Artist { get; set; }
+        public string ArtistName { get; set; }
         public string Album { get; set; }
         public int Popularity { get; set; }
         public double Duration { get; set; }

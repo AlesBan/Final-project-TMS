@@ -25,7 +25,7 @@ namespace WebApp_Data.Mapping.Music
             builder.Property(b => b.Album)
                 .HasMaxLength(50)
                 .IsRequired();            
-            builder.Property(b => b.Artist)
+            builder.Property(b => b.ArtistName)
                 .HasMaxLength(50)
                 .IsRequired();
         }

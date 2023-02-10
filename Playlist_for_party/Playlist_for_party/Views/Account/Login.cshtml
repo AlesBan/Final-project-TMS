@@ -12,10 +12,8 @@
     <h1>Login</h1>
     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
     {
-        <form action="#">
-            @Html.TextBoxFor(m => m.UserName, new { @type = "text", @placeholder = "Username" })
-            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-        </form>
+        @Html.TextBoxFor(m => m.UserName, new { @type = "text", @placeholder = "Username" })
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
         <div class="terms">
             <button class="wrapper-SignUp" type="submit">Login</button>
             <div class="member">

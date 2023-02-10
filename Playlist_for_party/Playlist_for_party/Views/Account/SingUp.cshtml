@@ -11,11 +11,9 @@
     <h1>Sign Up</h1>
     @using (Html.BeginForm("SingUp", "Account", FormMethod.Post))
     {
-        <form action="#">
-            @Html.TextBoxFor(m => m.UserName, new { @type = "text", @placeholder = "Username" })
-            @Html.TextBoxFor(m => m.Password, new { @type = "password", @placeholder = "Password"  })
-            @Html.TextBoxFor(m => m.ReEnterPassword, new { @type = "password", @placeholder = "Re-Enter Password"  })
-        </form>
+        @Html.TextBoxFor(m => m.UserName, new { @type = "text", @placeholder = "Username" })
+        @Html.TextBoxFor(m => m.Password, new { @type = "password", @placeholder = "Password"  })
+        @Html.TextBoxFor(m => m.ReEnterPassword, new { @type = "password", @placeholder = "Re-Enter Password"  })
         <div class="terms">
             <button class="wrapper-SignUp" type="submit">Sign up</button>
             <div class="member">

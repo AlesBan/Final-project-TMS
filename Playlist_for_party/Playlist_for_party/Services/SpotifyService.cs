@@ -39,7 +39,7 @@ namespace Playlist_for_party.Services
             {
                 TrackId = responseObj.Id,
                 Name = responseObj.Name,
-                Artist = string.Join(", ", (responseObj.Artists)
+                ArtistName = string.Join(", ", (responseObj.Artists)
                     .Select(a => a.Name)
                     .ToList()),
                 Album = responseObj.Album.Name,

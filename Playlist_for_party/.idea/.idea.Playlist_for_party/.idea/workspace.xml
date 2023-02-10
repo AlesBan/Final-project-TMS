@@ -10,8 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="cleaning + create login and singUp pages">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/Login.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp_Data/Mapping/Music/TrackMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Mapping/Music/TrackMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/Music/Track.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/Music/Track.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

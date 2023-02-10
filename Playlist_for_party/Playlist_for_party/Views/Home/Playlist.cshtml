@@ -1,33 +1,57 @@
-@using WebApp_Data.Models.Music
 @model WebApp_Data.Models.Music.Playlist
 @{
     ViewData["Title"] = "Playlist";
+    var index = 0;
 }
 
 @section Styles{
     <link href="~/css/Playlist.css" rel="stylesheet" type="text/css"/>
 }
 
-<section class="section">
-    <h2 class="section-title">Все треки</h2>
-    <div class="section-body">
+
+<div class="playlist-songs">
+
+    <table>
         @if (Model.Tracks.Any())
         {
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Исполнитель</th>
+                <th>Популярность</th>
+                <th>
+                    <div class="time-image">
+                        <img src="https://icones.pro/wp-content/uploads/2021/03/icone-d-horloge-gris.png" alt="">
+                    </div>
+                </th>
+                <th>Редакторы</th>
+            </tr>
+
             @foreach (var item in Model.Tracks)
             {
-                <div class="card m-1" style="width:200px;">
-                    <div class="card-body">
-                        <img style="color: #a2ded8" src="@Html.DisplayFor(modelItem => item.ImageUrl)" width="150" height="150" alt="Release picture"/>
-                        <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Name)</h6>
-                        <a href="@Html.DisplayFor(modelItem => item.Href)" target="_blank">Listen</a>
-                        <span>Популярность: @Html.DisplayFor(modelItem => item.Popularity)</span>
-                    </div>
-                </div>
+                index++;
+
+                <tr style="height: 20px">
+                    <td>@index</td>
+                    <td class="song-title">
+                        <div class="song-image">
+                            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt=""/>
+                        </div>
+                        <div class="song-name-artist">
+                            <div class="song-name">
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </div>
+                        </div>
+                    </td>
+                    <td class="song-album">@Html.DisplayFor(modelItem => item.ArtistName)</td>
+                    <td class="song-popularity">@Html.DisplayFor(modelItem => item.Popularity)</td>
+                    <td class="song-duration">@Html.DisplayFor(modelItem => item.Duration)</td>
+                </tr>
             }
         }
         else
         {
-            <p style="color: white">No data available</p>
+            <p style="color: white">No data yet</p>
         }
-    </div>
-</section>
+    </table>
+</div>
