@@ -7,7 +7,7 @@ namespace Playlist_for_party.Policies
 {
     public static class NamePolicy
     {
-        public static string Name = "ales-policy";
+        public const string Name = "ales-policy";
 
         public static AuthorizationPolicy Requirements => new AuthorizationPolicy(
             new[]

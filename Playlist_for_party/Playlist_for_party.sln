@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist_for_party", "Playl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp_Data", "WebApp_Data\WebApp_Data.csproj", "{645F2C77-DFEC-4BFF-9F2F-AC799F9002CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist_for_party.Tests", "Playlist_for_party.Tests\Playlist_for_party.Tests.csproj", "{3AB7B4AB-24CD-47E2-8F82-A334C0A374DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{645F2C77-DFEC-4BFF-9F2F-AC799F9002CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{645F2C77-DFEC-4BFF-9F2F-AC799F9002CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{645F2C77-DFEC-4BFF-9F2F-AC799F9002CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AB7B4AB-24CD-47E2-8F82-A334C0A374DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB7B4AB-24CD-47E2-8F82-A334C0A374DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AB7B4AB-24CD-47E2-8F82-A334C0A374DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AB7B4AB-24CD-47E2-8F82-A334C0A374DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

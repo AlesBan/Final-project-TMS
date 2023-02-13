@@ -1,9 +1,12 @@
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Playlist_for_party.Exceptions.UserExceptions;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Services;
+using SpotifyAPI.Web.Models;
 using WebApp_Data.Models;
 
 namespace Playlist_for_party.Controllers
@@ -16,7 +19,7 @@ namespace Playlist_for_party.Controllers
         private readonly IUserManagerService _userManager;
         private readonly IAuthManager _authManager;
         private readonly MusicDataManagerService _dataManager = new MusicDataManagerService();
-
+        private readonly string FieldsMustBeEnteredMessage = "All fields must be entered "; 
         public AccountController(
             IConfiguration configuration,
             IUserManagerService userManager,
@@ -34,9 +37,9 @@ namespace Playlist_for_party.Controllers
         }
 
         [HttpPost("singup")]
-        public IActionResult SingUp(UserDtoLogin userDto)
+        public IActionResult SingUp(UserDtoSingUp userDto)
         {
-            return RegistrationValidation(userDto);
+            return SingUpValidation(userDto);
         }
 
         [Route("login")]
@@ -59,10 +62,45 @@ namespace Playlist_for_party.Controllers
             }
         }
 
-        private IActionResult RegistrationValidation(UserDtoLogin userDto)
+        private IActionResult SingUpValidation(UserDtoSingUp userDto)
         {
             if (!ModelState.IsValid)
             {
+                return View(userDto);
+            }
+
+            if (string.IsNullOrEmpty(userDto.UserName) || string.IsNullOrEmpty(userDto.Password))
+            {
+                ViewBag.ExceptionMessage = FieldsMustBeEnteredMessage ;
+                return View(userDto);
+            }
+            
+            try
+            {
+                _authManager.ValidateSingUpData(userDto);
+            }
+            catch (Exception e)
+            {
+                switch (e)
+                {
+                    case InvalidUserNameLengthException _:
+                        ModelState.AddModelError("UserName", e.Message);
+                        break;
+                    
+                    case InvalidSingUpUserNameException _:
+                        ModelState.AddModelError("UserName", e.Message);
+                        break;
+                    
+                    case InvalidPasswordLengthException _:
+                        ModelState.AddModelError("UserName", e.Message);
+                        break;
+                    
+                    default: 
+                        ModelState.AddModelError("UserName", e.Message);
+                        break;
+                }
+
+                ViewBag.ExceptionMessage = e.Message;
                 return View(userDto);
             }
 

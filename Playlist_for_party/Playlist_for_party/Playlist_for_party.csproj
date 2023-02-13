@@ -49,11 +49,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\UserExceptions" />
-    <Folder Include="Filters\ActionFilters" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="System.Text.Json" />
   </ItemGroup>
 

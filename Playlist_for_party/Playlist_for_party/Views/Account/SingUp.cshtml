@@ -2,10 +2,17 @@
 
 @{
     Layout = "_Layout";
+
 }
 @section Styles{
     <link href="~/css/Authentication/SingUp.css" rel="stylesheet" type="text/css"/>
 }
+    @if (ViewBag.ExceptionMessage != null)
+    {
+        <script>
+            alert("@ViewBag.ExceptionMessage")
+        </script>
+    }
 
 <div class="wrapper">
     <h1>Sign Up</h1>
@@ -22,3 +29,5 @@
         </div>
     }
 </div>
+
+
