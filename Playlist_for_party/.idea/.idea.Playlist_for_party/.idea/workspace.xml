@@ -10,19 +10,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/AuthManagerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/UserExceptions/InvalidSingUpUserNameException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/UserExceptions/InvalidePasswordLengthException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/UserExceptions/InvalideUserNameLengthException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/AuthManagerServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/MusicDataManagerServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/SpotifyAccountServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicPartsExceptions/InvalidPlaylistIdProvidedException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicPartsExceptions/InvalidTrackIdProvidedException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicPartsExceptions/NotFoundExceptions/PlaylistNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicPartsExceptions/NotFoundExceptions/TrackNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicPartsExceptions/NotFoundExceptions/UserNotFoundException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/AuthManagerTests.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/TrackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/TrackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/BadRequestToSpotifyApiException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicApiConnectionExceptions/BadRequestToSpotifyApiException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/DeserializationException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicApiConnectionExceptions/DeserializationException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/InvalidTokensProvided.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/MusicApiConnectionExceptions/InvalidTokensProvided.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Exceptions/AppExceptions/UnauthorizedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/UserExceptions/UnauthorizedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Filters/ExceptionFilters/ExceptionFilterAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Filters/ExceptionFilters/ExceptionFilterAttribute.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IAuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IAuthManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Playlist_for_party.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Policies/NamePolicy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Policies/NamePolicy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IUserManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IUserManagerService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/AuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/AuthManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/MusicDataManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/MusicDataManagerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,11 +53,12 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/40c1dff99d704acdaed4a52a2533ad2a13388/a7/fdf9efee/02000006pdb5.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/ad010a730b8e4d9b85224bcde58a60a991e180/1d/9247b1bc/020007CEpdb1015.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/293bebabbbd243c7bc4146dce165458d98790/94/aa57d75f/EndpointMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/531e8ea0c56349fd83fd13d1c9709bb8b5990/5a/0d7742a1/IHtmlHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60da6fc3a33742959a5c168b54b0c4d21aed88/2d/c3bee42f/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8517f607c12a4b508364c3f896f0fe6f11da8/50/a8a96f81/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad010a730b8e4d9b85224bcde58a60a991e180/89/c0fddbf2/IEnumerable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad010a730b8e4d9b85224bcde58a60a991e180/b5/6458e5f3/Guid.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/11df216dfddb5acebd87b54e64ac744f8a9b231b28aa9f66c4b8d1ea722a89d/TypeFilterAttribute.cs" root0="SKIP_HIGHLIGHTING" />
@@ -56,12 +69,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27eb1e53c33f2e16ba4fd6114faaf6118a2f30d7bb3d8d1d95c22e3ef3ca3156/HttpRuleParser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33ce9818a9d64ef295864723b14cb15abc6a92eefb61a1ccc294c51c2328a/EqualityComparer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/34fd92264bbf14c1ee41bb6d626cb823475b82065a07a35951651affe4d38/ExceptionHandlerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3788a8b649a0858c2f8bb8c57fb5b434decfdaef5d9742cb16ef831574b5bef4/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3c47bb336c326e5ee17c16f73883559f7eb05679032d9581f3456368994f4/AuthenticationHeaderValue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3d01f114455568af59359da57dd47792bc75178c3d8c14b79b7536f79efbc2d/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4379b25d9c271430aa90fd5f1bc2c4af4b7651972e9f796513b93a44a943/ITempDataDictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4716f69b3843e9dade7ac4108af9cd44312187deb38188cf623cc75a565b/AsyncValueTaskMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/47cb1bfc29fe6f51c0eb1510cdc23b246b62e0606fd09abd26c6251e246c1e/ActionResultOfT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a4bf4aa6ea39357dd57894a6e70dd71191a5dea93ac7a6e2b865f19b75d3845/DataProtectionCommonExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/53662f4e35419db733369bd73cb1c37f8825ee93577377558102653ec73d026/ISession.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6652aabbac8c579825cc3a5985a1c071d9c38e158b52117786fcdaefb766443c/JsonSerializer.Read.Stream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/692b9e70ebaa191c484b819c1b049383c4bf3a2915e896ba24dcb1ccaf2eac/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6959bd89af8aaca4bba91ffc6d3f079166142c44649554e678ee69376e14591/SecurityTokenDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -74,6 +89,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b52e52e9461eef74d96cb18431b65da59ec6af4cab028e3adf87fdae211c8e/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b5a1af99f5ea07164de5aa95892ff79955c0ccf3bcc4bc1973b4c06d3e766/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7c92466961aa8cdea7514acac7987159e5466dcd06dfc6f1dc1f5e9bf2b7cce/First.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/83c19ad3acd28b4b09c4d9e889ee66e119b0013fccd6542425d45713691d/Mock.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85205d343f2b81cde14cc45fc7fe9bbd4a4f2a96f2691fc52bdb336baacea0/HttpContent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/882f3ad15673d0f7709dd2af6fb10eeca924a50d24672ae52698820234d6eff/Environment.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/89944b5f48d1781dad0a6ed3630525f6080b1fdb6f0cbf9e9b3f0f348843a/DiagnosticListener.cs" root0="SKIP_HIGHLIGHTING" />
@@ -99,6 +115,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b866fbe48e2f40f5b3adab50a5af5402d51cc806f9afac894af2af68e405/HttpResponseMessage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bfb56d107d19f991f45fdb5df9ed42625d2b96a62658bcac2a548cff9965af/ExceptionHandlerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c640601d9bf7327d784747471ad25afa36ff162c148ec9bcea55cedc64835ae0/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6a6fadca71b70bdb47ebb11f4faa66c1fa56fe80109f3544271788f52f93e7/DefaultHttpContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c8b72390685142cfe63f1b8576d55b9137c308bbbaa1f373eb959b420385bf/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c9f6235cc881609f329c23732f9eca4274db173283b965d5782adb6fd5d4b8/AsyncMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cce60274c3c3f69f6fcac859b75e928437187947112bd98c52ac78124fb7/HtmlHelperDisplayExtensions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -128,18 +145,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.47722772&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.idesettings.quicklists&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.47722772",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RiderProblemsViewState">
     <option name="autoscrollToSource" value="true" />
   </component>
@@ -282,7 +299,8 @@
       <workItem from="1676024821089" duration="1477000" />
       <workItem from="1676057112453" duration="9954000" />
       <workItem from="1676069943726" duration="596000" />
-      <workItem from="1676279169421" duration="4505000" />
+      <workItem from="1676279169421" duration="4640000" />
+      <workItem from="1676315981555" duration="14708000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -389,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676069757898</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="validation login and singup + crate tests">
+      <created>1676284253587</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1676284253588</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +462,8 @@
     <MESSAGE value="add in UserManagerService + create TrackController" />
     <MESSAGE value="cleaning + create login and singUp pages" />
     <MESSAGE value="update login sing up and playlist pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="update login sing up and playlist pages" />
+    <MESSAGE value="validation login and singup + crate tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="validation login and singup + crate tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -491,26 +517,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Filters/ExceptionFilters/ExceptionFilterAttribute.cs</url>
-          <line>47</line>
+          <line>55</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Filters\ExceptionFilters\ExceptionFilterAttribute.cs" initialLine="47" containingFunctionPresentation="method 'OnExceptionAsync'">
             <startOffsets>
-              <option value="1775" />
+              <option value="2254" />
             </startOffsets>
             <endOffsets>
-              <option value="2070" />
+              <option value="2549" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="223" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>79</line>
+          <line>72</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="74" containingFunctionPresentation="method 'SingUpValidation'">
             <startOffsets>
-              <option value="2296" />
+              <option value="1988" />
             </startOffsets>
             <endOffsets>
-              <option value="2337" />
+              <option value="2029" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="225" />
@@ -531,29 +557,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>73</line>
+          <line>66</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="73" containingFunctionPresentation="method 'SingUpValidation'">
             <startOffsets>
-              <option value="2129" />
+              <option value="1821" />
             </startOffsets>
             <endOffsets>
-              <option value="2184" />
+              <option value="1876" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>68</line>
+          <line>61</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="68" containingFunctionPresentation="method 'SingUpValidation'">
             <startOffsets>
-              <option value="1964" />
+              <option value="1656" />
             </startOffsets>
             <endOffsets>
-              <option value="1985" />
+              <option value="1677" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/AuthManager.cs</url>
+          <line>29</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\AuthManager.cs" initialLine="28" containingFunctionPresentation="method 'SetToken'">
+            <startOffsets>
+              <option value="982" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1050" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="233" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

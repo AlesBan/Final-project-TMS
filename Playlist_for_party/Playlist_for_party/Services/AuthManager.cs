@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Playlist_for_party.Exceptions.UserExceptions;
@@ -16,12 +17,17 @@ namespace Playlist_for_party.Services
             '&','*'
         };
 
-        public void SetToken(UserDtoLogin userDto, HttpContext context, IUserManagerService userManager,
-            IConfiguration configuration)
-        {
-            var token = userManager.CreateToken(userDto, configuration);
+        private readonly IUserManagerService _userManager;
 
-            context.Session.SetString("Authorization", token);
+        public AuthManager(IUserManagerService userManager)
+        {
+            _userManager = userManager;
+        }
+        public void SetToken(UserDtoLogin userDto, HttpContext context, IConfiguration configuration)
+        {
+            var token = _userManager.CreateToken(userDto, configuration);
+
+            context.Session.Set("Authorization", Encoding.UTF8.GetBytes(token));
         }
 
         public void ValidateSingUpData(UserDtoSingUp userDtoLogin)

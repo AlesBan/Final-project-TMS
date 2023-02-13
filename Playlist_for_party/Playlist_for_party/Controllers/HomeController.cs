@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions.NotFoundExceptions;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
 using WebApp_Data.Models.Music;
@@ -80,6 +81,11 @@ namespace Playlist_for_party.Controllers
             }
 
             playlist = _dataManager.GetPlaylist(id);
+
+            if (playlist is null)
+            {
+                throw new PlaylistNotFoundException();
+            }
 
             if (user.IsOwner(playlist) || user.IsRedactor(playlist))
             {

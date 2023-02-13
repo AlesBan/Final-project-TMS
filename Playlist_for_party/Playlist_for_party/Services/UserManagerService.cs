@@ -16,11 +16,13 @@ namespace Playlist_for_party.Services
     {
         private readonly IMusicDataManagerService _dataManager;
         private readonly IMusicService _musicService;
+        private readonly IConfiguration _configuration;
 
-        public UserManagerService(IMusicDataManagerService dataManager, IMusicService musicService)
+        public UserManagerService(IMusicDataManagerService dataManager, IMusicService musicService, IConfiguration configuration)
         {
             _dataManager = dataManager;
             _musicService = musicService;
+            _configuration = configuration;
         }
 
         public string CreateToken(UserDtoLogin userDto, IConfiguration configuration)
@@ -49,9 +51,10 @@ namespace Playlist_for_party.Services
         {
             user = GetCurrentUser(context);
             track = _musicService.GetTrack(trackId).Result;
+
             var playlistIdGuid = Guid.Parse(playlistId);
-            var playlists = _dataManager.GetPlaylists();
-            playlist = playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistIdGuid));
+
+            playlist = _dataManager.GetPlaylists().FirstOrDefault(p => p.PlaylistId == playlistIdGuid);
         }
 
         public string GetResultOfAddingAbility(Guid key, User user, Playlist playlist, Track track)

@@ -1,12 +1,10 @@
 using System;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Playlist_for_party.Exceptions.UserExceptions;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Services;
-using SpotifyAPI.Web.Models;
 using WebApp_Data.Models;
 
 namespace Playlist_for_party.Controllers
@@ -15,18 +13,13 @@ namespace Playlist_for_party.Controllers
 
     public class AccountController : Controller
     {
-        private readonly IConfiguration _configuration;
-        private readonly IUserManagerService _userManager;
         private readonly IAuthManager _authManager;
+        private readonly IConfiguration _configuration;
         private readonly MusicDataManagerService _dataManager = new MusicDataManagerService();
-        private readonly string FieldsMustBeEnteredMessage = "All fields must be entered "; 
-        public AccountController(
-            IConfiguration configuration,
-            IUserManagerService userManager,
-            IAuthManager authManager)
+        private const string FieldsMustBeEnteredMessage = "All fields must be entered ";
+
+        public AccountController(IAuthManager authManager)
         {
-            _configuration = configuration;
-            _userManager = userManager;
             _authManager = authManager;
         }
 
@@ -135,7 +128,7 @@ namespace Playlist_for_party.Controllers
                 return BadRequest();
             }
 
-            _authManager.SetToken(userDto, HttpContext, _userManager, _configuration);
+            _authManager.SetToken(userDto, HttpContext, _configuration);
 
             return RedirectToAction("Home", "Home");
         }

@@ -38,8 +38,8 @@ namespace Playlist_for_party.Services
         private static HttpRequestMessage CreateRequest(string clientId, string clientSecret)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "token");
-            request.Headers.Authorization = new AuthenticationHeaderValue(
-                "Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}")));
+            var authValue = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
+            request.Headers.Authorization = new AuthenticationHeaderValue("Basic", authValue);
             request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
             {
                 { "grant_type", "client_credentials" }

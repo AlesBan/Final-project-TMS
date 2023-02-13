@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Playlist_for_party.Exceptions.AppExceptions;
+using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions;
+using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions.NotFoundExceptions;
+using Playlist_for_party.Exceptions.UserExceptions;
 using ExceptionContext = Microsoft.AspNetCore.Mvc.Filters.ExceptionContext;
 using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
 
@@ -26,7 +29,12 @@ namespace Playlist_for_party.Filters.ExceptionFilters
                 typeof(BadRequestToSpotifyApiException),
                 typeof(UnauthorizedException),
                 typeof(InvalidTokensProvided),
-                typeof(InvalidClaimedUserIdException)
+                typeof(InvalidClaimedUserIdException),
+                typeof(InvalidTrackIdProvidedException),
+                typeof(InvalidPlaylistIdProvidedException),
+                typeof(PlaylistNotFoundException),
+                typeof(TrackNotFoundException),
+                typeof(UserNotFoundException),
             };
 
             public ExceptionFilterImplementation(ILogger<ExceptionFilterImplementation> logger)

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Playlist_for_party.Controllers;
 using Playlist_for_party.Interfaсes.Services;
 using WebApp_Data.Interfaces;
 using WebApp_Data.Models;
@@ -42,6 +41,10 @@ namespace Playlist_for_party.Services
             };
         }
 
+        public MusicDataManagerService(IMusicRepository musicRepository)
+        {
+            MusicRepository = musicRepository;
+        }
         public Playlist GetPlaylist(Guid playlistId)
         {
             var playlist = MusicRepository.Playlists.FirstOrDefault(p => p.PlaylistId.Equals(playlistId));
