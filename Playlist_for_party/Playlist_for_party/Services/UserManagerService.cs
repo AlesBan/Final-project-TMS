@@ -16,16 +16,14 @@ namespace Playlist_for_party.Services
     {
         private readonly IMusicDataManagerService _dataManager;
         private readonly IMusicService _musicService;
-        private readonly IConfiguration _configuration;
 
-        public UserManagerService(IMusicDataManagerService dataManager, IMusicService musicService, IConfiguration configuration)
+        public UserManagerService(IMusicDataManagerService dataManager, IMusicService musicService)
         {
             _dataManager = dataManager;
             _musicService = musicService;
-            _configuration = configuration;
         }
 
-        public string CreateToken(UserDtoLogin userDto, IConfiguration configuration)
+        public string CreateToken(UserDto userDto, IConfiguration configuration)
         {
             var user = _dataManager.GetUser(userDto);
             var roles = new List<string>() { "user" };

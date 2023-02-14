@@ -20,7 +20,7 @@ namespace Playlist_for_party.Tests.Services
             var expectedPlaylist = new Playlist { PlaylistId = playlistId };
             var musicRepository = new Mock<IMusicRepository>();
             musicRepository.Setup(x => x.Playlists).Returns(new List<Playlist> { expectedPlaylist });
-            var musicService = new MusicDataManagerService(musicRepository.Object);
+            var musicService = new MusicDataManagerService();
 
             // Act
             var result = musicService.GetPlaylist(playlistId);
@@ -36,7 +36,7 @@ namespace Playlist_for_party.Tests.Services
             var musicRepository = new Mock<IMusicRepository>();
             musicRepository.Setup(repo => repo.Playlists)
                 .Returns(new List<Playlist>());
-            var sut = new MusicDataManagerService(musicRepository.Object);
+            var sut = new MusicDataManagerService();
 
             // Act
             var actualPlaylist = sut.GetPlaylist(Guid.NewGuid());
@@ -52,7 +52,7 @@ namespace Playlist_for_party.Tests.Services
             var expectedPlaylists = new List<Playlist> { new Playlist(), new Playlist() };
             var musicRepository = new Mock<IMusicRepository>();
             musicRepository.Setup(x => x.Playlists).Returns(expectedPlaylists);
-            var musicService = new MusicDataManagerService(musicRepository.Object);
+            var musicService = new MusicDataManagerService();
 
             // Act
             var result = musicService.GetPlaylists();
@@ -70,7 +70,7 @@ namespace Playlist_for_party.Tests.Services
             var playlist = new Playlist();
             var musicRepository = new Mock<IMusicRepository>();
             musicRepository.Setup(x => x.Playlists).Returns(new List<Playlist> { playlist });
-            var musicService = new MusicDataManagerService(musicRepository.Object);
+            var musicService = new MusicDataManagerService();
 
             // Act
             musicService.AddTrack(user, playlist, track);
@@ -85,7 +85,7 @@ namespace Playlist_for_party.Tests.Services
             // Arrange
             var musicRepository = new Mock<IMusicRepository>();
             musicRepository.Setup(x => x.Playlists).Returns(new List<Playlist>());
-            var musicService = new MusicDataManagerService(musicRepository.Object);
+            var musicService = new MusicDataManagerService();
 
             // Act
             var result = musicService.CreatePlaylist();

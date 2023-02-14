@@ -37,7 +37,7 @@ namespace Playlist_for_party.Authentication
             return jwt;
         }
 
-        private static IEnumerable<Claim> GetClaims( User user, List<string> roles)
+        private static IEnumerable<Claim> GetClaims(User user, List<string> roles)
         {
             var jwtClaims = new List<Claim>
             {

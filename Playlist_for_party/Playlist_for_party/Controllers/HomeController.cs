@@ -57,8 +57,8 @@ namespace Playlist_for_party.Controllers
             var searchItems = _musicService.GetItems(query).Result;
             ViewBag.query = query;
             ViewBag.Playlists = _dataManager.GetPlaylists();
-            ViewBag.Artists = searchItems.ArtistDtos;
-            ViewBag.Tracks = searchItems.TrackDtos;
+            ViewBag.Artists = searchItems.ArtistsDto;
+            ViewBag.Tracks = searchItems.TracksDto;
             return View();
         }
 

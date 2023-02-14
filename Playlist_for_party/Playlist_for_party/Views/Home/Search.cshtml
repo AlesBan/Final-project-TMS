@@ -73,57 +73,6 @@
     </table>
 </section>
 
-
-@* <div class="section-content"> *@
-@* *@
-@*                 <div class="track"> *@
-@*                     <div class="trackInfo"> *@
-@*                         <a href=@Html.DisplayFor(modelItem => item.Href)> *@
-@*                             <img src="@Html.DisplayFor(modelItem => item.ImageRef)" alt=""> *@
-@*                         </a> *@
-@*                     </div> *@
-@*                     <div class="track-content"> *@
-@*                         <div class="trackName">@Html.DisplayFor(modelItem => item.Name)</div> *@
-@*                         <div class="artist">@Html.DisplayFor(modelItem => item.ArtistName)</div> *@
-@*                     </div> *@
-@*                 </div> *@
-@*                 <div class="trackPopularity">12</div> *@
-@*                 <div class="trackTime">4:11</div> *@
-@*                 <div class="add-btn"> *@
-@*                     <div class="dropdown"> *@
-@*                         <button class="floating-button btn-primary">Add</button> *@
-@*                         <div class="dropdown-content" id="@item.Id"> *@
-@*                             @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists) *@
-@*                             { *@
-@*                                 <button style="color: white; font-size: 13px" class="add-dropdown-button" id="@playlist.PlaylistId">@playlist.Name</button> *@
-@*                             } *@
-@*                         </div> *@
-@*                     </div> *@
-@*                 </div> *@
-@*             </div> *@
-@* <section class="section"> *@
-@*     <h2 class="section-title">Свежие релизы</h2> *@
-@*     <div class="section-body"> *@
-@*         @if (Model.Any()) *@
-@*         { *@
-@*             @foreach (var item in Model.Where(i => i.GetType() == typeof(ArtistDto))) *@
-@*             { *@
-@*                 <div class="card m-1" style="width:200px;"> *@
-@*                     <div class="card-body"> *@
-@*                         <img style="color: #a2ded8" src="@Html.DisplayFor(modelItem => item.ImageRef)" width="150" height="150" alt="Release picture"/> *@
-@*                         <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8">@Html.DisplayFor(modelItem => item.Name)</h6> *@
-@*                         <a href="@Html.DisplayFor(modelItem => item.Href)" target="_blank">Listen</a> *@
-@*                     </div> *@
-@*                 </div> *@
-@*             } *@
-@*         } *@
-@*         else *@
-@*         { *@
-@*             <p style="color: white">No data available</p> *@
-@*         } *@
-@*     </div> *@
-@* </section> *@
-
 @section Scripts
 {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>

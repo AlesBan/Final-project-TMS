@@ -23,14 +23,14 @@ namespace Playlist_for_party.Services
         {
             _userManager = userManager;
         }
-        public void SetToken(UserDtoLogin userDto, HttpContext context, IConfiguration configuration)
+        public void SetToken(UserDto userDto, HttpContext context, IConfiguration configuration)
         {
             var token = _userManager.CreateToken(userDto, configuration);
 
             context.Session.Set("Authorization", Encoding.UTF8.GetBytes(token));
         }
 
-        public void ValidateSingUpData(UserDtoSingUp userDtoLogin)
+        public void ValidateSingUpData(UserDto userDtoLogin)
         {
             if (userDtoLogin.UserName.Length < 4)
             {

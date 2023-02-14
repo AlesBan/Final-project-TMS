@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -36,7 +37,8 @@ namespace Playlist_for_party.Services
         {
             var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
-            var response = await GetResponse($"tracks/{trackId}");
+            var requestMessage = CreateRequest($"tracks/{trackId}");
+            var response = await GetResponse(requestMessage);
             var responseObj = await DeserializationAsync<Item>(response);
             var firstImage = responseObj.Album.Images?[0];
             var track = new Track
@@ -51,26 +53,28 @@ namespace Playlist_for_party.Services
             };
             return track;
         }
+
         public async Task<ItemsDto> GetItems(string query)
         {
             var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
-            var response = await GetResponse(CreateRequest(query, true, true));
+            var requestMessage = CreateRequest(query, true, true);
+            var response = await GetResponse(requestMessage);
             var responseObject = await DeserializationAsync<Search>(response);
-            return GetItemDtosList(responseObject);
+            return GetItemsDtoList(responseObject);
         }
 
-        private static ItemsDto GetItemDtosList(Search responseObj)
+        private static ItemsDto GetItemsDtoList(Search responseObj)
         {
-            var artistDtos = responseObj?.Artists.Items.Where(i => i.Images?.Length > 0)
+            var artistsDto = responseObj?.Artists.Items.Where(i => i.Images?.Length > 0)
                 .Select(i => new ArtistDto()
                 {
                     Name = i.Name,
                     ImageRef = i.Images[0].Url,
                     Href = i.Href
                 });
-            
-            var trackDtos = responseObj?.Tracks.Items.Where(i => i.Album.Images != null)
+
+            var tracksDto = responseObj?.Tracks.Items.Where(i => i.Album.Images != null)
                 .Select(i => new TrackDto()
                 {
                     Name = i.Name,
@@ -79,14 +83,45 @@ namespace Playlist_for_party.Services
                     Id = i.Id,
                     ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))
                 });
-            
-            var itemsDtos = new ItemsDto()
+
+            var itemsDto = new ItemsDto()
             {
-                ArtistDtos = artistDtos?.ToList() ?? new List<ArtistDto>(),
-                TrackDtos = trackDtos?.ToList() ?? new List<TrackDto>()
+                ArtistsDto = artistsDto?.ToList() ?? new List<ArtistDto>(),
+                TracksDto = tracksDto?.ToList() ?? new List<TrackDto>()
             };
-            
-            return itemsDtos;
+
+            return itemsDto;
+        }
+
+        private void Authorization(string accessToken)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        }
+
+        private async Task<HttpResponseMessage> GetResponse(HttpRequestMessage requestMessage)
+        {
+            var response = await _httpClient.GetAsync(requestMessage.RequestUri);
+            CheckResponse(response);
+            return response;
+        }
+
+        private static HttpRequestMessage CreateRequest(string query)
+        {
+            return new HttpRequestMessage()
+            {
+                RequestUri = new Uri(query)
+            };
+        }
+
+        private static HttpRequestMessage CreateRequest(string query, bool needArtists, bool needTracks)
+        {
+            var decodedQuery = HttpUtility.UrlEncode(query);
+            var requestType = needTracks && needArtists ? "track" + "%2C" + "artist" : needArtists ? "artist" : "track";
+            var requestUri = $"search?q={decodedQuery}&type={requestType}&market=BY&limit={Limit}";
+            return new HttpRequestMessage()
+            {
+                RequestUri = new Uri(requestUri)
+            };
         }
 
         private static void CheckResponse(HttpResponseMessage response)
@@ -98,13 +133,6 @@ namespace Playlist_for_party.Services
                 case HttpStatusCode.Unauthorized:
                     throw new UnauthorizedException();
             }
-        }
-
-        private async Task<HttpResponseMessage> GetResponse(string requestUri)
-        {
-            var response = await _httpClient.GetAsync(requestUri);
-            CheckResponse(response);
-            return response;
         }
 
         private static async Task<T> DeserializationAsync<T>(HttpResponseMessage response)
@@ -121,18 +149,5 @@ namespace Playlist_for_party.Services
 
             return responseObj;
         }
-        private void Authorization(string accessToken)
-        {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        }
-        
-        private static string CreateRequest(string query, bool needArtists, bool needTracks)
-        {
-            var decodedQuery = HttpUtility.UrlEncode(query);
-            var requestType = needTracks && needArtists ? "track%2Cartist" : needArtists ? "artist" : "track";
-            var request = $"search?q={decodedQuery}&type={requestType}&market=BY&limit={Limit}";
-            return request;
-        }
-
     }
 }

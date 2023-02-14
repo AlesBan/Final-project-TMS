@@ -1,46 +1,57 @@
+using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Moq;
 using Newtonsoft.Json;
-using Playlist_for_party.Interfaсes.Services;
+using Playlist_for_party.Exceptions.AppExceptions;
+using Playlist_for_party.Models.SpotifyApiConnection;
 using Playlist_for_party.Services;
-using WebApp_Data.Models.SpotifyModels.DTO;
-using WebApp_Data.Models.SpotifyModels.Main;
 using Xunit;
+using Microsoft.Extensions.Configuration;
+using Moq.Protected;
+using Playlist_for_party.Interfaсes.Services;
 
 namespace Playlist_for_party.Tests.Services
 {
     public class SpotifyAccountServiceTests
     {
         // [Fact]
-        // public async Task GetItems_Ok_ReturnsItemsDto()
+        // public async Task GetAccessToken_ShouldReturnAccessToken()
         // {
         //     // Arrange
-        //     var query = "query";
-        //     var accessToken = "accessToken";
-        //     var responseObject = new Search();
-        //     var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+        //     const string clientId = "test-clientSecret";
+        //     const string clientSecret = "test-clientSecret";
+        //     const string expectedAccessToken = "test-expectedAccessToken";
+        //
+        //     var configurationMock = new Mock<IConfiguration>();
+        //     configurationMock
+        //         .SetupGet(c => c["Spotify:ClientId"])
+        //         .Returns(clientId);
+        //     configurationMock
+        //         .SetupGet(c => c["Spotify:ClientSecret"])
+        //         .Returns(clientSecret);
+        //
+        //     var httpResponse = new HttpResponseMessage
         //     {
-        //         Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(responseObject))
+        //         StatusCode = HttpStatusCode.OK,
+        //         Content = new StringContent(expectedAccessToken)
         //     };
-        //
-        //     var mockSpotifyAccountService = new Mock<ISpotifyAccountService>();
-        //     mockSpotifyAccountService
-        //         .Setup(x => x.GetAccessToken())
-        //         .ReturnsAsync(accessToken);
-        //
-        //     var mockHttpClient = new Mock<HttpClient>();
-        //     mockHttpClient
-        //         .Setup(x => x.GetAsync(It.IsAny<string>()))
-        //         .ReturnsAsync(response);
-        //
-        //     var service = new SpotifyService(mockHttpClient.Object, mockSpotifyAccountService.Object);
+        //     
+        //     var httpClientMock = new Mock<HttpClient>();
+        //     
+        //     httpClientMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>()))
+        //         .ReturnsAsync(httpResponse);
+        //     
+        //     var spotifyAccountService =
+        //         new SpotifyAccountService(httpClientMock.Object, configurationMock.Object);
         //
         //     // Act
-        //     var result = await service.GetItems(query);
+        //     var resultAccessToken = await spotifyAccountService.GetAccessToken();
         //
         //     // Assert
-        //     Assert.NotNull(result);
+        //     Assert.NotNull(resultAccessToken);
+        //     Assert.NotEmpty(resultAccessToken);
         // }
     }
 }

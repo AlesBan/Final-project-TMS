@@ -16,7 +16,7 @@ namespace Playlist_for_party.Services
     {
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
-
+        
         public SpotifyAccountService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
@@ -35,10 +35,10 @@ namespace Playlist_for_party.Services
             }
         }
         
-        private static HttpRequestMessage CreateRequest(string clientId, string clientSecret)
+        private static HttpRequestMessage CreateRequest(IReadOnlyList<object> parameters)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "token");
-            var authValue = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
+            var authValue = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{parameters[0]}:{parameters[1]}"));
             request.Headers.Authorization = new AuthenticationHeaderValue("Basic", authValue);
             request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
             {
@@ -47,16 +47,17 @@ namespace Playlist_for_party.Services
             return request;
         }
 
-        private async Task<HttpResponseMessage> GetResponse(string clientId, string clientSecret)
+        public new async Task<HttpResponseMessage> GetResponse(HttpRequestMessage requestMessage)
         {
-            var response = await _httpClient.SendAsync(CreateRequest(clientId, clientSecret));
+            var response = await _httpClient.SendAsync(requestMessage);
             response.EnsureSuccessStatusCode();
             return response;
         }
-
+        
         private async Task<string> GetToken(string clientId, string clientSecret)
         {
-            var authResult = await GetResponse(clientId, clientSecret).Result.Content.ReadFromJsonAsync<AuthResult>();
+            var responseMessage = CreateRequest(new List<object>(){clientId, clientSecret});
+            var authResult = await GetResponse(responseMessage).Result.Content.ReadFromJsonAsync<AuthResult>();
             return authResult?.AccessToken;
         }
     }

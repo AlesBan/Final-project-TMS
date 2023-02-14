@@ -18,7 +18,7 @@ namespace Playlist_for_party.Tests.Services
         public void SetToken_Should_Set_Authorization_In_Session_OK()
         {
             //Arrange
-            var userDto = new UserDtoLogin { UserName = "test@example.com", Password = "testPassword" };
+            var userDto = new UserDto { UserName = "test@example.com", Password = "testPassword" };
             const string token = "testToken";
             var decodedToken = Encoding.UTF8.GetBytes(token);
             var configuration = new ConfigurationBuilder().Build();
@@ -39,7 +39,7 @@ namespace Playlist_for_party.Tests.Services
 
         [Theory]
         [MemberData(nameof(UsersDtoSingUpFail))]
-        public void ValidateSingUpData_Fail(int num, UserDtoSingUp userDtoSingUp, Exception exception)
+        public void ValidateSingUpData_Fail(int num, UserDto userDtoSingUp, Exception exception)
         {
             //Arrange
             var manager = new Mock<IUserManagerService>();
@@ -54,7 +54,7 @@ namespace Playlist_for_party.Tests.Services
             {
                 new object[]
                 {
-                    new UserDtoLogin()
+                    new UserDto()
                     {
                         UserName = "23423",
                         Password = "qw323r"
@@ -71,7 +71,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     1,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "2",
                         Password = "qw323r"
@@ -81,7 +81,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     2,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "qee3e3er",
                         Password = "2"
@@ -91,7 +91,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     3,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "qw!er",
                         Password = "qwerqwe"
@@ -101,7 +101,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     4,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "qw#er",
                         Password = "qwerqwe"
@@ -111,7 +111,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     5,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "q%er",
                         Password = "qwerqwe"
@@ -121,7 +121,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     6,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "q&swr",
                         Password = "qwerqwe"
@@ -131,7 +131,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     7,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "qw*er",
                         Password = "qwerqwe"
@@ -141,7 +141,7 @@ namespace Playlist_for_party.Tests.Services
                 new object[]
                 {
                     8,
-                    new UserDtoSingUp()
+                    new UserDto()
                     {
                         UserName = "qw+er",
                         Password = "qwerqwe"
