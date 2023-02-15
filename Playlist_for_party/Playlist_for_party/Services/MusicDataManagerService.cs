@@ -34,8 +34,6 @@ namespace Playlist_for_party.Services
                 .AddTrack(user, track);
         }
 
-
-
         public Playlist CreatePlaylist()
         {
             var playlist = new Playlist();
@@ -49,10 +47,10 @@ namespace Playlist_for_party.Services
             return user;
         }
 
-        public User GetUser(UserDto userDto)
+        public User GetUser(string userName)
         {
             var user = AccountController.MusicRepository.Users.FirstOrDefault(p =>
-                p.UserName.Equals(userDto.UserName) && p.Password.Equals(userDto.Password));
+                p.UserName.Equals(userName));
             return user;
         }
     }

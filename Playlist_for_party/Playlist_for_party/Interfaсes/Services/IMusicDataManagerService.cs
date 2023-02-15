@@ -13,7 +13,7 @@ namespace Playlist_for_party.Interfaсes.Services
         IEnumerable<Playlist> GetPlaylists();
         void AddTrack(User user, Playlist playlist, Track track);
         User GetUser(Guid userId);
-        User GetUser(UserDto userDto);
+        User GetUser(string userName);
 
     }
 }

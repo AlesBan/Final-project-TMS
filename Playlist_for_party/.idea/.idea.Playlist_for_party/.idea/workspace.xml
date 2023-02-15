@@ -10,29 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/SpotifyServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/Exceptions/UserExceptions/PasswordConfirmationException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApp_Data/Models/RegistrationUserDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/AuthManagerServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/AuthManagerServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/MusicDataManagerServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/MusicDataManagerServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/SpotifyAccountServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/SpotifyAccountServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Authentication/Authentication.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Authentication/Authentication.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Controllers/TrackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Controllers/TrackController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IAuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IAuthManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IMusicDataManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IMusicDataManagerService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IUserManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/IUserManagerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/AuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/AuthManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/MusicDataManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/MusicDataManagerService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyAccountService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/SpotifyService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/Login.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/SpotifyModels/DTO/ItemsDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/SpotifyModels/DTO/ItemsDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/UserDtoLogin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/UserDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/UserDtoSingUp.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +49,6 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/40c1dff99d704acdaed4a52a2533ad2a13388/a7/fdf9efee/02000006pdb5.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/ad010a730b8e4d9b85224bcde58a60a991e180/1d/9247b1bc/020007CEpdb1015.il" root0="SKIP_HIGHLIGHTING" />
@@ -305,7 +301,9 @@
       <workItem from="1676279169421" duration="4640000" />
       <workItem from="1676315981555" duration="14923000" />
       <workItem from="1676356320777" duration="4243000" />
-      <workItem from="1676384772277" duration="15104000" />
+      <workItem from="1676384772277" duration="23364000" />
+      <workItem from="1676415775771" duration="596000" />
+      <workItem from="1676485457168" duration="10001000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -433,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676332696732</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="singUp validation">
+      <created>1676404347143</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1676404347143</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +489,8 @@
     <MESSAGE value="validation login and singup + crate tests" />
     <MESSAGE value="create some exceptions and tests" />
     <MESSAGE value="smth" />
-    <option name="LAST_COMMIT_MESSAGE" value="smth" />
+    <MESSAGE value="singUp validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="singUp validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -565,59 +571,46 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>103</line>
+          <line>98</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="73" containingFunctionPresentation="method 'SingUpValidation'">
             <startOffsets>
-              <option value="3134" />
+              <option value="2956" />
             </startOffsets>
             <endOffsets>
-              <option value="3189" />
+              <option value="3011" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>172</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="132" containingFunctionPresentation="method 'LoginValidation'">
-            <startOffsets>
-              <option value="5287" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5327" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="236" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>167</line>
+          <line>138</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="127" containingFunctionPresentation="method 'LoginValidation'">
             <startOffsets>
-              <option value="5165" />
+              <option value="4104" />
             </startOffsets>
             <endOffsets>
-              <option value="5185" />
+              <option value="4124" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="237" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>161</line>
+          <line>132</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="121" containingFunctionPresentation="method 'LoginValidation'">
             <startOffsets>
-              <option value="4961" />
+              <option value="3900" />
             </startOffsets>
             <endOffsets>
-              <option value="4984" />
+              <option value="3923" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml</url>
-          <line>56</line>
+          <line>67</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Account\SingUp.cshtml" initialLine="49" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
@@ -631,134 +624,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>154</line>
+          <line>125</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="140" containingFunctionPresentation="method 'SingUpValidation'">
             <startOffsets>
-              <option value="4769" />
+              <option value="3717" />
             </startOffsets>
             <endOffsets>
-              <option value="4809" />
+              <option value="3748" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="246" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>82</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="69" containingFunctionPresentation="method 'Login'">
-            <startOffsets>
-              <option value="2584" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2605" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="251" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>83</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="70" containingFunctionPresentation="method 'Login'">
-            <startOffsets>
-              <option value="2614" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2615" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="252" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>28</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="28" containingFunctionPresentation="method 'Home'">
-            <startOffsets>
-              <option value="967" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1019" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="254" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>63</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="63" containingFunctionPresentation="method 'SingUp'">
-            <startOffsets>
-              <option value="2137" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2266" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="255" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>90</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="82" containingFunctionPresentation="method 'Login'">
-            <startOffsets>
-              <option value="2753" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2785" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="256" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>74</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="74" containingFunctionPresentation="method 'SingUp'">
-            <startOffsets>
-              <option value="2423" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2444" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="258" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>37</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="37" containingFunctionPresentation="method 'Home'">
-            <startOffsets>
-              <option value="1261" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1275" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="259" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
-          <line>32</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="32" containingFunctionPresentation="method 'Home'">
-            <startOffsets>
-              <option value="1081" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1103" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="260" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml</url>
-          <line>8</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Home\Home.cshtml" initialLine="8" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="261" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml</url>
@@ -774,6 +649,110 @@
           </properties>
           <option name="timeStamp" value="262" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/TrackController.cs</url>
+          <line>44</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\TrackController.cs" initialLine="44" containingFunctionPresentation="method 'CheckTrackAbilityToBeAdded'">
+            <startOffsets>
+              <option value="1584" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1657" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="278" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs</url>
+          <line>61</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\UserManagerService.cs" initialLine="61" containingFunctionPresentation="method 'GetResultOfAddingAbility'">
+            <startOffsets>
+              <option value="2252" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2311" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="281" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs</url>
+          <line>68</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\UserManagerService.cs" initialLine="67" containingFunctionPresentation="method 'GetResultOfAddingAbility'">
+            <startOffsets>
+              <option value="2528" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2586" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="282" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs</url>
+          <line>72</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\UserManagerService.cs" initialLine="71" containingFunctionPresentation="method 'GetResultOfAddingAbility'">
+            <startOffsets>
+              <option value="2785" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2847" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="283" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
+          <line>63</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="71" containingFunctionPresentation="method 'SingUp'">
+            <startOffsets>
+              <option value="2016" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2055" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
+          <line>109</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="134" containingFunctionPresentation="method 'SingUpValidation'">
+            <startOffsets>
+              <option value="3307" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3334" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="287" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
+          <line>104</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="110" containingFunctionPresentation="method 'SingUpValidation'">
+            <startOffsets>
+              <option value="3129" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3176" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="288" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Services/UserManagerService.cs</url>
+          <line>62</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Services\UserManagerService.cs" initialLine="61" containingFunctionPresentation="method 'GetResultOfAddingAbility'">
+            <startOffsets>
+              <option value="2324" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2325" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="290" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints">
           <properties exception="System.NotSupportedException" isInternal="false" displayValue="NotSupportedException" namespaceName="System">
             <option name="internal" value="false" />
@@ -784,8 +763,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="LaunchSettings">
-        <watch expression="ModelState.IsValid" language="C#" />
-        <watch expression="MusicRepository.Users" language="C#" />
+        <watch expression="Json.Serialize(new CheckTrackAbility(false, false))" language="C#" />
       </configuration>
     </watches-manager>
   </component>

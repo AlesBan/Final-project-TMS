@@ -7,7 +7,7 @@ namespace Playlist_for_party.Interfaсes.Services
 {
     public interface IAuthManager
     {
-        void SetToken(UserDto userDto, HttpContext context, IConfiguration configuration);
-        void ValidateSingUpData(UserDto userDtoLogin);
+        void SetToken(User user, HttpContext context, IConfiguration configuration);
+        void ValidateSingUpData(SingUpUserDto singUpUserDto);
     }
 }

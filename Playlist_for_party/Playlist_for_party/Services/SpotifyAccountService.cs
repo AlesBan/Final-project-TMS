@@ -47,7 +47,7 @@ namespace Playlist_for_party.Services
             return request;
         }
 
-        public new async Task<HttpResponseMessage> GetResponse(HttpRequestMessage requestMessage)
+        private async Task<HttpResponseMessage> GetResponse(HttpRequestMessage requestMessage)
         {
             var response = await _httpClient.SendAsync(requestMessage);
             response.EnsureSuccessStatusCode();

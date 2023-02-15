@@ -23,28 +23,33 @@ namespace Playlist_for_party.Services
         {
             _userManager = userManager;
         }
-        public void SetToken(UserDto userDto, HttpContext context, IConfiguration configuration)
+        public void SetToken(User user, HttpContext context, IConfiguration configuration)
         {
-            var token = _userManager.CreateToken(userDto, configuration);
+            var token = _userManager.CreateToken(user, configuration);
 
             context.Session.Set("Authorization", Encoding.UTF8.GetBytes(token));
         }
 
-        public void ValidateSingUpData(UserDto userDtoLogin)
+        public void ValidateSingUpData(SingUpUserDto singUpUserDto)
         {
-            if (userDtoLogin.UserName.Length < 4)
+            if (singUpUserDto.UserName.Length < 4)
             {
                 throw new InvalidUserNameLengthException("UserName lenght is invalid. Must be greater than 3");
             }
 
-            if (_unacceptableChars.Any(unacceptableChar => userDtoLogin.UserName.Contains(unacceptableChar)))
+            if (_unacceptableChars.Any(unacceptableChar => singUpUserDto.UserName.Contains(unacceptableChar)))
             {
                 throw new InvalidSingUpUserNameException("UserName contains invalid symbols");
             }
 
-            if (userDtoLogin.Password.Length < 7)
+            if (singUpUserDto.Password.Length < 7)
             {
                 throw new InvalidPasswordLengthException("Password lenght is invalid. Must be greater than 6");
+            }
+            
+            if (singUpUserDto.Password != singUpUserDto.ReEnterPassword)
+            {
+                throw new PasswordConfirmationException("Please confirm your password");
             }
         }
     }

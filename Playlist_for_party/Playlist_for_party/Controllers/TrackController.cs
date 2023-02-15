@@ -75,11 +75,6 @@ namespace Playlist_for_party.Controllers
                 throw new InvalidPlaylistIdProvidedException("Playlist id not found");
             }
 
-            if (!Guid.TryParse(trackId, out _))
-            {
-                throw new InvalidTrackIdProvidedException("Track id is invalid");
-            }
-
             if (!Guid.TryParse(playlistId, out _))
             {
                 throw new InvalidPlaylistIdProvidedException("Playlist id not invalid");

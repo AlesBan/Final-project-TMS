@@ -10,7 +10,7 @@ namespace Playlist_for_party
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine(typeof (Controller).Assembly.GetName().Version);
+            Console.WriteLine(typeof(Controller).Assembly.GetName().Version);
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -18,5 +18,12 @@ namespace Playlist_for_party
             Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(logging => logging.AddDebug())
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+        
+        
+        
+        
     }
+
+
+    
 }

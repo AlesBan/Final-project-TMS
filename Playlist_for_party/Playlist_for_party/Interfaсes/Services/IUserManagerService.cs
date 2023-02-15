@@ -10,7 +10,7 @@ namespace Playlist_for_party.Interfaсes.Services
 {
     public interface IUserManagerService
     {
-        string CreateToken(UserDto userDto, IConfiguration configuration);
+        string CreateToken(User user, IConfiguration configuration);
         User GetCurrentUser(HttpContext context);
         void SetRedactor(User user, Playlist playlist);
         void CreatePlaylist(User user, out Playlist playlist);

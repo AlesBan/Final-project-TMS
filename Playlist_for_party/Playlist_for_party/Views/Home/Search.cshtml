@@ -17,9 +17,10 @@
     <div class="header-actions">
         <div class="header-search input-group has-left-icon has-right-icon can-delete">
             <span class="left-icon-search"></span>
-            <input type="text" id="search" class="input" placeholder="Найти трек">
+            <input type="text" id="search-field" class="input" placeholder="Найти трек">
             <span class="right-icon-search"></span>
         </div>
+        <button onclick="Search()">Поиск</button>
     </div>
 }
 
@@ -77,11 +78,15 @@
 {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
+    function Search(){
+        let serchQuery = document.getElementById("search-field").value;
+        window.open("/search/"+serchQuery, "_self");
+    }
+    
      $(function (){
         let buttons = document.querySelectorAll("a.dropdown-a"); 
             buttons.forEach((butt)=>{
                 butt.addEventListener("click", (e) => SendData(e), false)
-                
             })
      })
      

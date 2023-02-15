@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Playlist_for_party.Exceptions.UserExceptions;
 using Playlist_for_party.Interfaсes.Services;
 using WebApp_Data.Models;
 using WebApp_Data.Models.Data;
@@ -11,7 +10,7 @@ using WebApp_Data.Models.Data;
 namespace Playlist_for_party.Controllers
 {
     [Route("auth")]
-
+ 
     public class AccountController : Controller
     {
         private readonly IAuthManager _authManager;
@@ -58,18 +57,11 @@ namespace Playlist_for_party.Controllers
         }
 
         [HttpPost("singup")]
-        public IActionResult SingUp(string userName, string password)
+        public IActionResult SingUp(SingUpUserDto singUpUserDto)
         {
-            // var userDto = Unosquare.Swan.Formatters.Json.Deserialize<UserDto>(receivedUserDto);
-            var userDto = new UserDto()
-            {
-                UserName = userName,
-                Password = password
-            };
-            
             try
             {
-                return SingUpValidation(userDto);
+                return SingUpValidation(singUpUserDto);
             }
             catch (Exception e)
             {
@@ -98,62 +90,40 @@ namespace Playlist_for_party.Controllers
             }
         }
 
-        private IActionResult SingUpValidation(UserDto userDto)
+        private IActionResult SingUpValidation(SingUpUserDto singUpUserDto)
         {
-            if (string.IsNullOrEmpty(userDto.UserName) || string.IsNullOrEmpty(userDto.Password))
+            if (string.IsNullOrEmpty(singUpUserDto.UserName) 
+                || string.IsNullOrEmpty(singUpUserDto.Password) 
+                || string.IsNullOrEmpty(singUpUserDto.ReEnterPassword))
             {
                 ViewBag.ExceptionMessage = FieldsMustBeEnteredMessage ;
-                return View(userDto);
+                return View(singUpUserDto);
             }
             
             try
             {
-                _authManager.ValidateSingUpData(userDto);
+                _authManager.ValidateSingUpData(singUpUserDto);
             }
             catch (Exception e)
             {
-                switch (e)
-                {
-                    case InvalidUserNameLengthException _:
-                        ModelState.AddModelError("UserName", e.Message);
-                        break;
-                    
-                    case InvalidSingUpUserNameException _:
-                        ModelState.AddModelError("UserName", e.Message);
-                        break;
-                    
-                    case InvalidPasswordLengthException _:
-                        ModelState.AddModelError("UserName", e.Message);
-                        break;
-                    
-                    default: 
-                        ModelState.AddModelError("UserName", e.Message);
-                        break;
-                }
-
                 ViewBag.ExceptionMessage = e.Message;
-                return View(userDto);
-            }
-
-            if (MusicRepository.Users.Any(u => u.UserName == userDto.UserName))
-            {
-                return BadRequest();
+                return View(singUpUserDto);
             }
 
             var user = new User()
             {
                 UserId = Guid.NewGuid(),
-                UserName = userDto.UserName,
-                Password = userDto.Password
+                UserName = singUpUserDto.UserName,
+                Password = singUpUserDto.Password
             };
 
             user.Roles.Add("user");
 
             _dataManager.AddUser(user);
 
-            _authManager.SetToken(userDto, HttpContext, _configuration);
+            _authManager.SetToken(user, HttpContext, _configuration);
 
-            return RedirectToAction("Home", "Home");
+            return RedirectToRoute("home");
         }
 
         private IActionResult LoginValidation(UserDto userDto)
@@ -169,9 +139,17 @@ namespace Playlist_for_party.Controllers
                 return BadRequest();
             }
 
-            _authManager.SetToken(userDto, HttpContext, _configuration);
+            var user = new User()
+            {
+                UserId = Guid.NewGuid(),
+                UserName = userDto.UserName,
+                Password = userDto.Password
+            };
+            
+            _authManager.SetToken(user, HttpContext, _configuration);
 
-            return RedirectToAction("Home", "Home");
+            return RedirectToRoute("home");
+
         }
     }
 }

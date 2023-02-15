@@ -37,8 +37,7 @@ namespace Playlist_for_party.Services
         {
             var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
-            var requestMessage = CreateRequest($"tracks/{trackId}");
-            var response = await GetResponse(requestMessage);
+            var response = await GetResponse($"tracks/{trackId}");
             var responseObj = await DeserializationAsync<Item>(response);
             var firstImage = responseObj.Album.Images?[0];
             var track = new Track
@@ -98,30 +97,19 @@ namespace Playlist_for_party.Services
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
-        private async Task<HttpResponseMessage> GetResponse(HttpRequestMessage requestMessage)
+        private async Task<HttpResponseMessage> GetResponse(string requestMessage)
         {
-            var response = await _httpClient.GetAsync(requestMessage.RequestUri);
+            var response = await _httpClient.GetAsync(requestMessage);
             CheckResponse(response);
             return response;
         }
 
-        private static HttpRequestMessage CreateRequest(string query)
-        {
-            return new HttpRequestMessage()
-            {
-                RequestUri = new Uri(query)
-            };
-        }
-
-        private static HttpRequestMessage CreateRequest(string query, bool needArtists, bool needTracks)
+        private static string CreateRequest(string query, bool needArtists, bool needTracks)
         {
             var decodedQuery = HttpUtility.UrlEncode(query);
             var requestType = needTracks && needArtists ? "track" + "%2C" + "artist" : needArtists ? "artist" : "track";
             var requestUri = $"search?q={decodedQuery}&type={requestType}&market=BY&limit={Limit}";
-            return new HttpRequestMessage()
-            {
-                RequestUri = new Uri(requestUri)
-            };
+            return requestUri;
         }
 
         private static void CheckResponse(HttpResponseMessage response)

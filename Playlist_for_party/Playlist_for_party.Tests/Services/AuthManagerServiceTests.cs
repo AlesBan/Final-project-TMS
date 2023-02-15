@@ -18,20 +18,20 @@ namespace Playlist_for_party.Tests.Services
         public void SetToken_Should_Set_Authorization_In_Session_OK()
         {
             //Arrange
-            var userDto = new UserDto { UserName = "test@example.com", Password = "testPassword" };
+            var user = new User { UserName = "test@example.com", Password = "testPassword" };
             const string token = "testToken";
             var decodedToken = Encoding.UTF8.GetBytes(token);
             var configuration = new ConfigurationBuilder().Build();
             var mockContext = new Mock<HttpContext>();
             var mockSession = new Mock<ISession>();
             var mockUserManager = new Mock<IUserManagerService>();
-            mockUserManager.Setup(x => x.CreateToken(userDto, configuration))
+            mockUserManager.Setup(x => x.CreateToken(user, configuration))
                 .Returns(token);
             mockContext.SetupGet(x => x.Session).Returns(mockSession.Object);
             var service = new AuthManager(mockUserManager.Object);
 
             // Act
-            service.SetToken(userDto, mockContext.Object, configuration);
+            service.SetToken(user, mockContext.Object, configuration);
 
             // Assert
             mockSession.Verify(x => x.Set("Authorization", decodedToken), Times.Once);
@@ -39,7 +39,7 @@ namespace Playlist_for_party.Tests.Services
 
         [Theory]
         [MemberData(nameof(UsersDtoSingUpFail))]
-        public void ValidateSingUpData_Fail(int num, UserDto userDtoSingUp, Exception exception)
+        public void ValidateSingUpData_Fail(int num, SingUpUserDto userDtoSingUp, Exception exception)
         {
             //Arrange
             var manager = new Mock<IUserManagerService>();

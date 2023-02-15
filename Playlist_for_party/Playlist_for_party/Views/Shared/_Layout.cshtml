@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,9 +45,20 @@
             <span class="user-icon">
                 <i class="user"></i>
             </span>
-            <span class="text-bold">
-                username
-            </span>
+            @{
+                try
+                {
+                    <span class="text-bold">
+                        @Context.User.Claims.Single(i => i.Type == ClaimTypes.Name)?.Value
+                    </span>
+                }
+                catch
+                {
+                    <span class="text-bold">
+                        username
+                    </span>
+                }
+            }
             <span>
                 <i class="chevron-down"></i>
             </span>

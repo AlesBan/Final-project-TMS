@@ -23,9 +23,8 @@ namespace Playlist_for_party.Services
             _musicService = musicService;
         }
 
-        public string CreateToken(UserDto userDto, IConfiguration configuration)
+        public string CreateToken(User user, IConfiguration configuration)
         {
-            var user = _dataManager.GetUser(userDto);
             var roles = new List<string>() { "user" };
             var token = Authentication.Authentication.GenerateToken(configuration, user, roles);
             return token;
@@ -59,17 +58,19 @@ namespace Playlist_for_party.Services
         {
             if (!(playlist is { UserTracks: { } }) || !playlist.UserTracks.ContainsKey(key) || track == null)
             {
+                return "{\"ExceedingTheLimit\": false,\"TrackDuplication\": false}";
                 return Json.Serialize(new CheckTrackAbility(false, false));
             }
 
-            if (playlist.UserTracks[key].Count() == 10)
+            var count = playlist.UserTracks[key].Count();
+            if (count == 10)
             {
+                return "{\"ExceedingTheLimit\": true,\"TrackDuplication\": false}";
                 return Json.Serialize(new CheckTrackAbility(true, false));
             }
 
-            return playlist.UserTracks[key].Any(ut => ut.TrackId == track.TrackId)
-                ? Json.Serialize(new CheckTrackAbility(false, true))
-                : Json.Serialize(new CheckTrackAbility(false, false));
+            var hasTrack = playlist.UserTracks[key].Any(ut => ut.TrackId == track.TrackId);
+            return hasTrack ? "{\"ExceedingTheLimit\": false,\"TrackDuplication\": true}" : "{\"ExceedingTheLimit\": false,\"TrackDuplication\": false}";
         }
 
         public User GetCurrentUser(HttpContext context)
