@@ -8,7 +8,7 @@ using Playlist_for_party.Exceptions.AppExceptions;
 using Playlist_for_party.Models.SpotifyApiConnection;
 using Playlist_for_party.Services;
 using Xunit;
-using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Configuration;
 using Moq.Protected;
 using Playlist_for_party.Interfaсes.Services;
 

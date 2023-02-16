@@ -56,10 +56,6 @@ namespace WebApp_Data.Models.Music
         {
             var userTracksList = GetUserTracks(user);
             
-            if (userTracksList.Count >= 10)
-            {
-                return;
-            }
             userTracksList.Add(track);
             UserTracks[user.UserId] = userTracksList;
         }

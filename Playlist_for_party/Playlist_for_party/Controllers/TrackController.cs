@@ -24,8 +24,8 @@ namespace Playlist_for_party.Controllers
         {
             ValidateIncomeData_AddTrackToPlaylist(trackId, playlistId);
 
-            _userManager.GetUserPlaylistAndTrack(HttpContext, trackId, playlistId,
-                out var user, out var playlist, out var track);
+            var user = _userManager.GetCurrentUser(HttpContext);
+            _userManager.GetPlaylistAndTrack(HttpContext, trackId, playlistId, out var playlist, out var track);
 
             ValidateMusicData_AddTrackToPlaylist(user, playlist, track);
 
@@ -37,12 +37,11 @@ namespace Playlist_for_party.Controllers
         [HttpGet]
         public ActionResult<string> CheckTrackAbilityToBeAdded(string trackId, string playlistId)
         {
-            _userManager.GetUserPlaylistAndTrack(HttpContext, trackId, playlistId,
-                out var user, out var playlist, out var track);
+            var user = _userManager.GetCurrentUser(HttpContext);
 
-            var key = Guid.Parse($"{user.UserId}");
+            _userManager.GetPlaylistAndTrack(HttpContext, trackId, playlistId, out var playlist, out var track);
 
-            return _userManager.GetResultOfAddingAbility(key, user, playlist, track);
+            return _userManager.GetResultOfAddingAbility(user, playlist, track);
         }
         
         private static void ValidateMusicData_AddTrackToPlaylist(User user, Playlist playlist, Track track)

@@ -14,27 +14,45 @@ namespace Playlist_for_party.Tests.Services
 {
     public class AuthManagerServiceTests
     {
+        private readonly User _user;
+        public AuthManagerServiceTests()
+        {
+            _user = new User()
+            {
+                UserId = Guid.NewGuid(),
+                UserName = "test-name",
+                Password = "test-password"
+            };
+        }
+
         [Fact]
         public void SetToken_Should_Set_Authorization_In_Session_OK()
         {
             //Arrange
-            var user = new User { UserName = "test@example.com", Password = "testPassword" };
             const string token = "testToken";
             var decodedToken = Encoding.UTF8.GetBytes(token);
-            var configuration = new ConfigurationBuilder().Build();
-            var mockContext = new Mock<HttpContext>();
-            var mockSession = new Mock<ISession>();
-            var mockUserManager = new Mock<IUserManagerService>();
-            mockUserManager.Setup(x => x.CreateToken(user, configuration))
-                .Returns(token);
-            mockContext.SetupGet(x => x.Session).Returns(mockSession.Object);
-            var service = new AuthManager(mockUserManager.Object);
+            
+            var configurationMock = new Mock<IConfiguration>();
+            configurationMock.Setup(x => x["JWTSettings:SecretKey"])
+                .Returns("test-value");            
+            configurationMock.Setup(x => x["JWTSettings:Issuer"])
+                .Returns("test-value");            
+            configurationMock.Setup(x => x["JWTSettings:Audience"])
+                .Returns("test-value");
+            
+            var mockContextMock = new Mock<HttpContext>();
+            var mockSessionMock = new Mock<ISession>();
+            mockContextMock.SetupGet(x => x.Session)
+                .Returns(mockSessionMock.Object);
+            var service = new AuthManager();
 
             // Act
-            service.SetToken(user, mockContext.Object, configuration);
+            service.SetToken(_user, mockContextMock.Object, 
+                configurationMock.Object);
 
             // Assert
-            mockSession.Verify(x => x.Set("Authorization", decodedToken), Times.Once);
+            mockSessionMock.Verify(x => x
+                .Set("Authorization", decodedToken), Times.Once);
         }
 
         [Theory]
@@ -43,7 +61,7 @@ namespace Playlist_for_party.Tests.Services
         {
             //Arrange
             var manager = new Mock<IUserManagerService>();
-            var service = new AuthManager(manager.Object);
+            var service = new AuthManager();
             //Act, Assert
             Assert.Throws(exception.GetType(), () => service.ValidateSingUpData(userDtoSingUp));
         }

@@ -76,7 +76,7 @@ namespace Playlist_for_party.Controllers
             Playlist playlist;
             if (id == Guid.Empty)
             {
-                _userManager.CreatePlaylist(user, out playlist);
+                playlist = _userManager.CreatePlaylist(user);
                 return Redirect($"playlist/{playlist.PlaylistId}");
             }
 
