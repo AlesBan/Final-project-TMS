@@ -20,14 +20,14 @@ namespace WebApp_Data.Mapping.UserMapping
                 .HasMaxLength(50)
                 .IsRequired();
             builder.Property(u => u.Email)
-                .HasMaxLength(50)
-                .IsRequired();
+                .HasMaxLength(50);
             builder.Property(u => u.ImageRef)
                 .HasMaxLength(50);
             
             builder.HasMany(p => p.UserOwnerPlaylists)
                 .WithOne(u => u.Owner)
-                .HasForeignKey(p => p.OwnerId);
+                .HasForeignKey(p => p.OwnerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

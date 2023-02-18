@@ -10,6 +10,5 @@ namespace WebApp_Data.Models.DbConnections
         public User User { get; set; }
         public Guid PlaylistId  { get; set; }
         public Playlist Playlist  { get; set; }
-        
     }
 }

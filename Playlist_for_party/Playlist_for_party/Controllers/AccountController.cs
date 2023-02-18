@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Playlist_for_party.Exceptions.AppExceptions.DataExceptions;
 using Playlist_for_party.Interfaсes.Services.Managers.DataManagers;
 using Playlist_for_party.Interfaсes.Services.Managers.UserManagers;
+using WebApp_Data.Models.DbConnections;
 using WebApp_Data.Models.DTO;
 using WebApp_Data.Models.UserData;
 
@@ -100,18 +101,18 @@ namespace Playlist_for_party.Controllers
                 return View(singUpUserDto);
             }
 
-            var roles = new List<Role>()
-            {
-                new Role("User")
-            };
-
             var user = new User(singUpUserDto.UserName, singUpUserDto.Password);
+            user.UserRoles.Add(new UserRole()
+            {
+                User = user,
+                Role = new Role("User")
+            });
             
-            _dataManager.CreateUser(user, roles);
+            _dataManager.CreateUser(user);
             
             _authManager.SetToken(user, HttpContext, _configuration);
 
-            return RedirectToRoute("home");
+            return RedirectToAction("Home", "Home");
         }
 
         private IActionResult LoginValidation(UserDto userDto)
@@ -132,7 +133,7 @@ namespace Playlist_for_party.Controllers
 
             _authManager.SetToken(user, HttpContext, _configuration);
 
-            return RedirectToRoute("home");
+            return RedirectToAction("Home", "Home");
         }
     }
 }

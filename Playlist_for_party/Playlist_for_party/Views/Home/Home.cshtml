@@ -5,8 +5,15 @@
 @inject IEnumerable<Playlist> PlaylistsAsOwner;
 @inject IEnumerable<Playlist> PlaylistsAsRedactor;
 @{
-    PlaylistsAsOwner = ViewBag.PlaylistsAsOwner;
-    PlaylistsAsRedactor = ViewBag.PlaylistsAsRedactor;
+    if (ViewBag.PlaylistsAsOwner != null)
+    {
+        PlaylistsAsOwner = ViewBag.PlaylistsAsOwner;
+    }    
+    
+    if (ViewBag.PlaylistsAsRedactor != null)
+    {
+        PlaylistsAsRedactor = ViewBag.PlaylistsAsRedactor;
+    }
 }
 @section Styles{
     <link href="~/css/Home.css" rel="stylesheet" type="text/css"/>

@@ -71,7 +71,7 @@ namespace Playlist_for_party.Migrations
                         column: x => x.OwnerId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,13 +89,13 @@ namespace Playlist_for_party.Migrations
                         column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "RoleId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_UserRole_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -113,37 +113,37 @@ namespace Playlist_for_party.Migrations
                         column: x => x.PlaylistId,
                         principalTable: "Playlists",
                         principalColumn: "PlaylistId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_PlaylistTracks_Tracks_TrackId",
                         column: x => x.TrackId,
                         principalTable: "Tracks",
                         principalColumn: "TrackId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "UserEditorPlaylists",
                 columns: table => new
                 {
-                    UserEditorId = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
                     PlaylistId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserEditorPlaylists", x => new { x.PlaylistId, x.UserEditorId });
+                    table.PrimaryKey("PK_UserEditorPlaylists", x => new { x.PlaylistId, x.UserId });
                     table.ForeignKey(
                         name: "FK_UserEditorPlaylists_Playlists_PlaylistId",
                         column: x => x.PlaylistId,
                         principalTable: "Playlists",
                         principalColumn: "PlaylistId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_UserEditorPlaylists_Users_UserEditorId",
-                        column: x => x.UserEditorId,
+                        name: "FK_UserEditorPlaylists_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -157,9 +157,9 @@ namespace Playlist_for_party.Migrations
                 column: "TrackId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserEditorPlaylists_UserEditorId",
+                name: "IX_UserEditorPlaylists_UserId",
                 table: "UserEditorPlaylists",
-                column: "UserEditorId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRole_RoleId",

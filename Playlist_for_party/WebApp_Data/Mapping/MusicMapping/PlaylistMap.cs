@@ -17,8 +17,7 @@ namespace WebApp_Data.Mapping.MusicMapping
                 .HasMaxLength(50)
                 .IsRequired();
             builder.Property(p => p.Href)
-                .HasMaxLength(50)
-                .IsRequired();
+                .HasMaxLength(50);
             builder.Property(p => p.ImageUrl)
                 .HasMaxLength(80);
 

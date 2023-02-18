@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WebApp_Data.Models.DbConnections;
+using WebApp_Data.Models.Music;
 
 namespace WebApp_Data.Mapping.ConnectionsMapping
 {
@@ -13,12 +14,12 @@ namespace WebApp_Data.Mapping.ConnectionsMapping
             builder.HasOne(up => up.Playlist)
                 .WithMany(p => p.UserEditorPlaylists)
                 .HasForeignKey(pt => pt.PlaylistId)
-                .OnDelete(DeleteBehavior.ClientNoAction);
+                .OnDelete(DeleteBehavior.Restrict);
             
             builder.HasOne(ps => ps.User)
                 .WithMany(p => p.UserEditorPlaylists)
                 .HasForeignKey(pt => pt.UserId)
-                .OnDelete(DeleteBehavior.ClientNoAction);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

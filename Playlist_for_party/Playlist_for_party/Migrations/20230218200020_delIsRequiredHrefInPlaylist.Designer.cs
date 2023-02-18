@@ -10,8 +10,8 @@ using Playlist_for_party.Data;
 namespace Playlist_for_party.Migrations
 {
     [DbContext(typeof(MusicContext))]
-    [Migration("20230218123146_UpdateInitial2")]
-    partial class UpdateInitial2
+    [Migration("20230218200020_delIsRequiredHrefInPlaylist")]
+    partial class delIsRequiredHrefInPlaylist
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,12 +41,12 @@ namespace Playlist_for_party.Migrations
                     b.Property<Guid>("PlaylistId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserEditorId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("PlaylistId", "UserEditorId");
+                    b.HasKey("PlaylistId", "UserId");
 
-                    b.HasIndex("UserEditorId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserEditorPlaylists");
                 });
@@ -75,7 +75,6 @@ namespace Playlist_for_party.Migrations
                         .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Href")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -172,7 +171,6 @@ namespace Playlist_for_party.Migrations
                         .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -200,13 +198,13 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.Music.Playlist", "Playlist")
                         .WithMany("PlaylistTracks")
                         .HasForeignKey("PlaylistId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("WebApp_Data.Models.Music.Track", "Track")
                         .WithMany("PlaylistTracks")
                         .HasForeignKey("TrackId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -215,13 +213,13 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.Music.Playlist", "Playlist")
                         .WithMany("UserEditorPlaylists")
                         .HasForeignKey("PlaylistId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("WebApp_Data.Models.UserData.User", "UserEditor")
+                    b.HasOne("WebApp_Data.Models.UserData.User", "User")
                         .WithMany("UserEditorPlaylists")
-                        .HasForeignKey("UserEditorId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -230,13 +228,13 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.UserData.Role", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("WebApp_Data.Models.UserData.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -245,7 +243,7 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.UserData.User", "Owner")
                         .WithMany("UserOwnerPlaylists")
                         .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

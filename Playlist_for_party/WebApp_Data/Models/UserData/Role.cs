@@ -8,7 +8,7 @@ namespace WebApp_Data.Models.UserData
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public ICollection<UserRole> UserRoles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 
         public Role(string name)
         {

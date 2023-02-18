@@ -10,8 +10,8 @@ using Playlist_for_party.Data;
 namespace Playlist_for_party.Migrations
 {
     [DbContext(typeof(MusicContext))]
-    [Migration("20230218130114_UpdateInitial7")]
-    partial class UpdateInitial7
+    [Migration("20230218181745_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -215,13 +215,13 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.Music.Playlist", "Playlist")
                         .WithMany("UserEditorPlaylists")
                         .HasForeignKey("PlaylistId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("WebApp_Data.Models.UserData.User", "User")
                         .WithMany("UserEditorPlaylists")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -245,7 +245,7 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.UserData.User", "Owner")
                         .WithMany("UserOwnerPlaylists")
                         .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

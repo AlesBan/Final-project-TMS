@@ -8,14 +8,14 @@ namespace Playlist_for_party.Interfaсes.Services.Managers.DataManagers
 {
     public interface IDataManager
     {
-        void CreateUser(User user, List<Role> roles);
+        void CreateUser(User user);
         Playlist CreatePlaylist(User user);
         User GetUserByUserName(string userName);
         IEnumerable<User> GetUsers();
         Track GetTrackById(string trackId);
         Playlist GetPlaylistById(Guid playlistId);
         UserEditorPlaylist GetUserEditorPlaylistByPlaylistId(Guid playlistId);
-        IEnumerable<Playlist> GetUserOwnerPlaylists(User user);
-        IEnumerable<UserEditorPlaylist> GetUserEditorPlaylists(User user);
+        IEnumerable<Playlist> GetPlaylistsWhereUserOwner(User user);
+        IEnumerable<Playlist> GetPlaylistsWhereUserEditor(User user);
     }
 }

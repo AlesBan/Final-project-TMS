@@ -73,7 +73,6 @@ namespace Playlist_for_party.Migrations
                         .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Href")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -170,7 +169,6 @@ namespace Playlist_for_party.Migrations
                         .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -213,13 +211,13 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.Music.Playlist", "Playlist")
                         .WithMany("UserEditorPlaylists")
                         .HasForeignKey("PlaylistId")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("WebApp_Data.Models.UserData.User", "User")
                         .WithMany("UserEditorPlaylists")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -243,7 +241,7 @@ namespace Playlist_for_party.Migrations
                     b.HasOne("WebApp_Data.Models.UserData.User", "Owner")
                         .WithMany("UserOwnerPlaylists")
                         .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

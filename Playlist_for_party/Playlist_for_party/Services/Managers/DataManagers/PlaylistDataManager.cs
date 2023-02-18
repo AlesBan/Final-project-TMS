@@ -33,11 +33,11 @@ namespace Playlist_for_party.Services.Managers.DataManagers
             _musicContext.SaveChanges();
         }
 
-        public IEnumerable<Track> GetTracks(Playlist playlist)
+        public IEnumerable<Track> GetTracksFromPlaylist(Playlist playlist)
         {
             return _musicContext.PlaylistTracks
-                .Where(p => p.Equals(playlist))
-                .Select(p => p.Track);
+                .Where(p => p.PlaylistId == playlist.Id)
+                .Select(p => p.Track).ToList();
         }
 
         public bool IsOwner(User user, Playlist playlist)
@@ -67,9 +67,7 @@ namespace Playlist_for_party.Services.Managers.DataManagers
 
         public int GetNumOfEditors(Playlist playlist)
         {
-            return _musicContext.Playlists
-                .SingleOrDefault(p => p.Equals(playlist))!
-                .UserEditorPlaylists.Count;
+            return playlist.UserEditorPlaylists.Count;
         }
 
         public string GetResultOfAddingAbility(User user, Playlist playlist, Track track)

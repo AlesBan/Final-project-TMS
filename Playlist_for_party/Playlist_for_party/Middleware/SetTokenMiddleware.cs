@@ -14,7 +14,6 @@ namespace Playlist_for_party.Middleware
         
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            
             var jwToken = context.Session.GetString("Authorization");
             if (!string.IsNullOrEmpty(jwToken))
             {
@@ -22,9 +21,7 @@ namespace Playlist_for_party.Middleware
                 _logger.LogInformation("Set token: {JwToken}", jwToken);
             }
             
-            
             await next(context);
         }
-
     }
 }

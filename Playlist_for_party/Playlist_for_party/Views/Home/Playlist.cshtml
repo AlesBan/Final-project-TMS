@@ -1,6 +1,7 @@
+@using WebApp_Data.Models.Music
 @{
     ViewData["Title"] = "Playlist";
-    var tracks = ViewBag.Tracks;
+    List<Track> tracksList = ViewBag.Tracks;
     var index = 0;
 }
 
@@ -12,7 +13,7 @@
 <div class="playlist-songs">
 
     <table>
-        @if (tracks.Any())
+        @if (tracksList.Any())
         {
             <tr>
                 <th>#</th>
@@ -27,7 +28,7 @@
                 <th>Редакторы</th>
             </tr>
 
-            @foreach (var item in tracks)
+            @foreach (var item in tracksList)
             {
                 index++;
 
@@ -45,7 +46,7 @@
                     </td>
                     <td class="song-album">@item.ArtistName</td>
                     <td class="song-popularity">@item.Popularity</td>
-                    <td class="song-duration">@item.Duration</td>
+                    <td class="song-duration">@item.Duration/60</td>
                 </tr>
             }
         }

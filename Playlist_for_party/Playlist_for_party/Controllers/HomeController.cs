@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions.NotFoundExceptions;
 using Playlist_for_party.Filters.ExceptionFilters;
@@ -37,8 +38,8 @@ namespace Playlist_for_party.Controllers
                 return Unauthorized();
             }
 
-            ViewBag.PlaylistsAsOwner = _dataManager.GetUserOwnerPlaylists(user);
-            ViewBag.PlaylistsAsRedactor = _dataManager.GetUserEditorPlaylists(user);
+            ViewBag.PlaylistsAsOwner = _dataManager.GetPlaylistsWhereUserOwner(user);
+            ViewBag.PlaylistsAsRedactor = _dataManager.GetPlaylistsWhereUserEditor(user);
             return View();
         }
 
@@ -62,6 +63,8 @@ namespace Playlist_for_party.Controllers
             ViewBag.query = query;
             ViewBag.Artists = searchItems.ArtistsDto;
             ViewBag.Tracks = searchItems.TracksDto;
+            ViewBag.Playlists = _dataManager.GetPlaylistsWhereUserEditor(user);
+            
             return View();
         }
 
@@ -84,7 +87,7 @@ namespace Playlist_for_party.Controllers
             }
 
             playlist = _dataManager.GetPlaylistById(id);
-            ViewBag.Tracks = _playlistDataManager.GetTracks(playlist);
+            ViewBag.Tracks = _playlistDataManager.GetTracksFromPlaylist(playlist);
 
             if (playlist is null)
             {

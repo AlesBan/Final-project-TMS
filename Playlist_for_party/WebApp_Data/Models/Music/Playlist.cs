@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text.Json;
 using WebApp_Data.Models.DbConnections;
@@ -25,16 +26,30 @@ namespace WebApp_Data.Models.Music
         {
             get { return PlaylistTracks.Select(pt => pt.Track).Sum(track => track.Duration); }
         }
-
-        public Dictionary<Guid, IEnumerable<Track>> UserTracks;
-
-        public string UserTracksJson
+        
+        [NotMapped]
+        public Dictionary<Guid, IEnumerable<Track>> UserTracks
         {
-            get => JsonSerializer.Serialize(UserTracks);
-            set => UserTracks = JsonSerializer.Deserialize<Dictionary<Guid, IEnumerable<Track>>>(value);
+            get
+            {
+                try
+                {
+                    return JsonSerializer.Deserialize<Dictionary<Guid, IEnumerable<Track>>>(UserTracksJson);
+                }
+                catch
+                {
+                    return new Dictionary<Guid, IEnumerable<Track>>();
+                }
+            }
+            private set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                UserTracksJson = JsonSerializer.Serialize(UserTracks);
+            }
         }
 
-        public ICollection<PlaylistTrack> PlaylistTracks { get; set; }
+        public string UserTracksJson { get; set; } = string.Empty;
+        public ICollection<PlaylistTrack> PlaylistTracks { get; set; } = new List<PlaylistTrack>();
 
         public ICollection<UserEditorPlaylist> UserEditorPlaylists { get; set; }
 

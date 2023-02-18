@@ -11,78 +11,85 @@ namespace Playlist_for_party.Services.Managers.DataManagers
 {
     public class DataManager : IDataManager
     {
-        private readonly MusicContext _musicContext;
+        private MusicContext MusicContext { get; set; }
 
         public DataManager(MusicContext musicContext)
         {
-            _musicContext = musicContext;
+            MusicContext = musicContext;
         }
 
-        public void CreateUser(User user, List<Role> roles)
+        public void CreateUser(User user)
         {
-            roles.ForEach(r => _musicContext.Users.SingleOrDefault(u => u.UserName == user.UserName)!.UserRoles.Add(
-                new UserRole()
-                {
-                    User = user,
-                    Role = r
-                })
-            );
-            _musicContext.Users.Add(user);
-            _musicContext.SaveChangesAsync();
+            MusicContext.Users.Add(user);
+            MusicContext.SaveChanges();
         }
 
         public Playlist CreatePlaylist(User user)
         {
             var playlist = new Playlist();
-            _musicContext.Playlists.Add(playlist);
-            AddUserOwnerPlaylists(user, playlist);
-            _musicContext.SaveChangesAsync();
+            MusicContext.Playlists.Add(playlist);
+            AddOwnerAndEditorToPlaylists(user, playlist);
+            MusicContext.SaveChanges();
             return playlist;
         }
 
         public User GetUserByUserName(string userName)
         {
-            var user = _musicContext.Users.FirstOrDefault(p => p.UserName.Equals(userName));
+            var user = MusicContext.Users
+                .FirstOrDefault(p => p.UserName.Equals(userName));
             return user;
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return _musicContext.Users;
+            return MusicContext.Users;
         }
 
         public Track GetTrackById(string trackId)
         {
-            return _musicContext.Tracks.SingleOrDefault(t => t.Id == trackId);
+            return MusicContext.Tracks
+                .SingleOrDefault(t => t.Id == trackId);
         }
 
         public Playlist GetPlaylistById(Guid playlistId)
         {
-            var playlist = _musicContext.Playlists.FirstOrDefault(p => p.Id.Equals(playlistId));
+            var playlist = MusicContext.Playlists
+                .FirstOrDefault(p => p.Id.Equals(playlistId));
             return playlist;
         }
 
         public UserEditorPlaylist GetUserEditorPlaylistByPlaylistId(Guid playlistId)
         {
-            var userPlaylist = _musicContext.UserEditorPlaylists.Single(up => up.PlaylistId == playlistId);
+            var userPlaylist = MusicContext.UserEditorPlaylists.Single(up => up.PlaylistId == playlistId);
             return userPlaylist;
         }
 
-        public IEnumerable<Playlist> GetUserOwnerPlaylists(User user)
+        public IEnumerable<Playlist> GetPlaylistsWhereUserOwner(User user)
         {
-            return _musicContext.Users.Single(u => u.Equals(user)).UserOwnerPlaylists;
+            return MusicContext.Users
+                .Single(u => u.Equals(user))
+                .UserOwnerPlaylists;
         }
 
-        public IEnumerable<UserEditorPlaylist> GetUserEditorPlaylists(User user)
+        public IEnumerable<Playlist> GetPlaylistsWhereUserEditor(User user)
         {
-            return _musicContext.UserEditorPlaylists.Where(x => x.UserId == user.Id);
+            return MusicContext.UserEditorPlaylists
+                .Where(x => x.UserId == user.Id)
+                .Select(x => x.Playlist);
         }
 
-        private void AddUserOwnerPlaylists(User user, Playlist playlist)
+        private void AddOwnerAndEditorToPlaylists(User user, Playlist playlist)
         {
-            var userDb = _musicContext.Users.Single(u => u.Equals(user));
-            userDb.UserOwnerPlaylists.Add(playlist);
-            _musicContext.SaveChangesAsync();
+            var userDb = MusicContext.Users
+                .Single(u => u.Equals(user));
+            userDb.UserEditorPlaylists
+                .Add(new UserEditorPlaylist()
+                {
+                    User = user,
+                    Playlist = playlist
+                });
+            userDb.UserOwnerPlaylists
+                .Add(playlist);
         }
     }
 }
