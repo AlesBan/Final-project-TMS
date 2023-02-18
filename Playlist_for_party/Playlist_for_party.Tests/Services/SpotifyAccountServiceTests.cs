@@ -1,16 +1,10 @@
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using Moq;
-using Newtonsoft.Json;
-using Playlist_for_party.Exceptions.AppExceptions;
-using Playlist_for_party.Models.SpotifyApiConnection;
 using Playlist_for_party.Services;
 using Xunit;
-    using Microsoft.Extensions.Configuration;
-using Moq.Protected;
-using Playlist_for_party.Interfaсes.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace Playlist_for_party.Tests.Services
 {
@@ -23,7 +17,7 @@ namespace Playlist_for_party.Tests.Services
             const string clientId = "test-clientSecret";
             const string clientSecret = "test-clientSecret";
             const string expectedAccessToken = "test-expectedAccessToken";
-        
+
             var configurationMock = new Mock<IConfiguration>();
             configurationMock
                 .SetupGet(c => c["Spotify:ClientId"])
@@ -31,24 +25,24 @@ namespace Playlist_for_party.Tests.Services
             configurationMock
                 .SetupGet(c => c["Spotify:ClientSecret"])
                 .Returns(clientSecret);
-        
+
             var httpResponse = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = new StringContent(expectedAccessToken)
             };
-            
+
             var httpClientMock = new Mock<HttpClient>();
-            
+
             httpClientMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>()))
                 .ReturnsAsync(httpResponse);
-            
+
             var spotifyAccountService =
                 new SpotifyAccountService(httpClientMock.Object, configurationMock.Object);
-        
+
             // Act
             var resultAccessToken = await spotifyAccountService.GetAccessToken();
-        
+
             // Assert
             Assert.NotNull(resultAccessToken);
             Assert.NotEmpty(resultAccessToken);

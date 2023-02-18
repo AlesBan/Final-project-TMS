@@ -2,48 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using Playlist_for_party.Interfaсes.Services;
-using WebApp_Data.Models;
-using WebApp_Data.Models.Data;
+using Playlist_for_party.Exceptions.AppExceptions.DataExceptions;
+using Playlist_for_party.Interfaсes.Services.Managers.DataManagers;
+using Playlist_for_party.Interfaсes.Services.Managers.UserManagers;
+using WebApp_Data.Models.DTO;
+using WebApp_Data.Models.UserData;
 
 namespace Playlist_for_party.Controllers
 {
     [Route("auth")]
- 
     public class AccountController : Controller
     {
         private readonly IAuthManager _authManager;
         private readonly IConfiguration _configuration;
-        private readonly IMusicDataManagerService _dataManager;
+        private readonly IDataManager _dataManager;
         private const string FieldsMustBeEnteredMessage = "All fields must be entered ";
-        
-        public static readonly MusicRepository MusicRepository = new MusicRepository()
-        {
-            Users = new List<User>()
-            {
-                new User()
-                {
-                    UserId = Guid.Parse("596fcae8-7491-4940-b39c-8e86c2561dea"),
-                    UserName = "ales",
-                    Password = "ales"
-                },
-                new User()
-                {
-                    UserId = Guid.Parse("e24f63bc-a8eb-4fe3-a7d6-5844c1b30ab4"),
-                    UserName = "pavel",
-                    Password = "pavel"
-                },
-                new User()
-                {
-                    UserId = Guid.Parse("1afeeb58-2f69-422e-842d-0759a7b6825d"),
-                    UserName = "dima",
-                    Password = "dima"
-                }
-            }
-        };
-        
-        public AccountController(IAuthManager authManager,IConfiguration configuration, IMusicDataManagerService dataManager)
+        private const string UserExistedMessage = "User with this username is existed";
+
+        public AccountController(IAuthManager authManager, IConfiguration configuration,
+            IDataManager dataManager)
         {
             _authManager = authManager;
             _configuration = configuration;
@@ -62,6 +41,10 @@ namespace Playlist_for_party.Controllers
             try
             {
                 return SingUpValidation(singUpUserDto);
+            }
+            catch (SqlException)
+            {
+                throw new DataBaseConnectionException();
             }
             catch (Exception e)
             {
@@ -92,14 +75,21 @@ namespace Playlist_for_party.Controllers
 
         private IActionResult SingUpValidation(SingUpUserDto singUpUserDto)
         {
-            if (string.IsNullOrEmpty(singUpUserDto.UserName) 
-                || string.IsNullOrEmpty(singUpUserDto.Password) 
+            if (string.IsNullOrEmpty(singUpUserDto.UserName)
+                || string.IsNullOrEmpty(singUpUserDto.Password)
                 || string.IsNullOrEmpty(singUpUserDto.ReEnterPassword))
             {
-                ViewBag.ExceptionMessage = FieldsMustBeEnteredMessage ;
+                ViewBag.ExceptionMessage = FieldsMustBeEnteredMessage;
                 return View(singUpUserDto);
             }
-            
+
+            var usersDb = _dataManager.GetUsers();
+            if (usersDb.Any(u => u.UserName == singUpUserDto.UserName))
+            {
+                ViewBag.ExceptionMessage = UserExistedMessage;
+                return View(singUpUserDto);
+            }
+
             try
             {
                 _authManager.ValidateSingUpData(singUpUserDto);
@@ -110,17 +100,15 @@ namespace Playlist_for_party.Controllers
                 return View(singUpUserDto);
             }
 
-            var user = new User()
+            var roles = new List<Role>()
             {
-                UserId = Guid.NewGuid(),
-                UserName = singUpUserDto.UserName,
-                Password = singUpUserDto.Password
+                new Role("User")
             };
 
-            user.Roles.Add("user");
-
-            _dataManager.AddUser(user);
-
+            var user = new User(singUpUserDto.UserName, singUpUserDto.Password);
+            
+            _dataManager.CreateUser(user, roles);
+            
             _authManager.SetToken(user, HttpContext, _configuration);
 
             return RedirectToRoute("home");
@@ -132,24 +120,19 @@ namespace Playlist_for_party.Controllers
             {
                 return (View(userDto));
             }
-
-            if (!MusicRepository.Users.Any(u =>
+            
+            var usersDb = _dataManager.GetUsers();
+            if (!usersDb.Any(u =>
                     u.UserName == userDto.UserName && u.Password == userDto.Password))
             {
                 return BadRequest();
             }
 
-            var user = new User()
-            {
-                UserId = Guid.NewGuid(),
-                UserName = userDto.UserName,
-                Password = userDto.Password
-            };
-            
+            var user = _dataManager.GetUserByUserName(userDto.UserName);
+
             _authManager.SetToken(user, HttpContext, _configuration);
 
             return RedirectToRoute("home");
-
         }
     }
 }

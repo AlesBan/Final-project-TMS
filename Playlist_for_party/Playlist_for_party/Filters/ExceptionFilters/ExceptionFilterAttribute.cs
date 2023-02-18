@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Playlist_for_party.Exceptions.AppExceptions;
+using Playlist_for_party.Exceptions.AppExceptions.DataExceptions;
+using Playlist_for_party.Exceptions.AppExceptions.MusicApiConnectionExceptions;
 using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions;
 using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions.NotFoundExceptions;
 using Playlist_for_party.Exceptions.UserExceptions;
@@ -35,6 +37,7 @@ namespace Playlist_for_party.Filters.ExceptionFilters
                 typeof(PlaylistNotFoundException),
                 typeof(TrackNotFoundException),
                 typeof(UserNotFoundException),
+                typeof(DataBaseConnectionException)
             };
 
             public ExceptionFilterImplementation(ILogger<ExceptionFilterImplementation> logger)

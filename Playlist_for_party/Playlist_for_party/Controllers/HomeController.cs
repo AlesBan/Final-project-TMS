@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions.NotFoundExceptions;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
+using Playlist_for_party.Interfaсes.Services.Managers.DataManagers;
+using Playlist_for_party.Interfaсes.Services.Managers.UserManagers;
 using WebApp_Data.Models.Music;
 
 namespace Playlist_for_party.Controllers
@@ -12,15 +14,17 @@ namespace Playlist_for_party.Controllers
     public class HomeController : Controller
     {
         private readonly IMusicService _musicService;
-        private readonly IMusicDataManagerService _dataManager;
-        private readonly IUserManagerService _userManager;
+        private readonly IDataManager _dataManager;
+        private readonly IUserManager _userManager;
+        private readonly IPlaylistDataManager _playlistDataManager;
 
-        public HomeController(IMusicService spotifyService, IMusicDataManagerService dataManager,
-            IUserManagerService userManager)
+        public HomeController(IMusicService spotifyService, IDataManager dataManager,
+            IUserManager userManager, IPlaylistDataManager playlistDataManager)
         {
             _musicService = spotifyService;
             _dataManager = dataManager;
             _userManager = userManager;
+            _playlistDataManager = playlistDataManager;
         }
 
         [Route("home")]
@@ -33,8 +37,8 @@ namespace Playlist_for_party.Controllers
                 return Unauthorized();
             }
 
-            ViewBag.PlaylistsAsOwner = user.PlaylistsAsOwner;
-            ViewBag.PlaylistsAsRedactor = user.PlaylistsAsRedactor;
+            ViewBag.PlaylistsAsOwner = _dataManager.GetUserOwnerPlaylists(user);
+            ViewBag.PlaylistsAsRedactor = _dataManager.GetUserEditorPlaylists(user);
             return View();
         }
 
@@ -54,9 +58,8 @@ namespace Playlist_for_party.Controllers
                 return View();
             }
 
-            var searchItems = _musicService.GetItems(query).Result;
+            var searchItems = _musicService.GetItemsFromSpotifyApi(query).Result;
             ViewBag.query = query;
-            ViewBag.Playlists = _dataManager.GetPlaylists();
             ViewBag.Artists = searchItems.ArtistsDto;
             ViewBag.Tracks = searchItems.TracksDto;
             return View();
@@ -76,25 +79,26 @@ namespace Playlist_for_party.Controllers
             Playlist playlist;
             if (id == Guid.Empty)
             {
-                playlist = _userManager.CreatePlaylist(user);
-                return Redirect($"playlist/{playlist.PlaylistId}");
+                playlist = _dataManager.CreatePlaylist(user);
+                return Redirect($"playlist/{playlist.Id}");
             }
 
-            playlist = _dataManager.GetPlaylist(id);
+            playlist = _dataManager.GetPlaylistById(id);
+            ViewBag.Tracks = _playlistDataManager.GetTracks(playlist);
 
             if (playlist is null)
             {
                 throw new PlaylistNotFoundException();
             }
 
-            if (user.IsOwner(playlist) || user.IsRedactor(playlist))
+            if (_playlistDataManager.IsOwner(user, playlist) || _playlistDataManager.IsRedactor(user, playlist))
             {
-                return View(playlist);
+                return View();
             }
-
-            _userManager.SetRedactor(user, playlist);
-
-            return View(playlist);
+            
+            _playlistDataManager.SetRedactorToPlaylist(user, playlist);
+            
+            return View();
         }
 
         [Route("forbidden")]

@@ -23,25 +23,11 @@
                 <div class="card m-1" style="width:200px;">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8">@playlist.Name</h6>
-                        <a asp-controller="Home" asp-action="Playlist" asp-route-id="@playlist.PlaylistId">
-                            <p class="card-text" style="color:white">@playlist.PlaylistId</p>
+                        <a asp-controller="Home" asp-action="Playlist" asp-route-id="@playlist.Id">
+                            <p class="card-text" style="color:white">@playlist.Id</p>
                         </a>
                     </div>
                 </div>
-                foreach (var track in playlist.Tracks)
-                {
-                    <div class="track">
-                        <div class="trackInfo">
-                            <a href=@track.Href>
-                                <img src="@track.ImageUrl" alt="Track picture">
-                            </a>
-                        </div>
-                        <div class="track-content">
-                            <div class="trackName">@track.Name</div>
-                            <div class="artist">@track.ArtistName</div>
-                        </div>
-                    </div>
-                }
             }
         }
         else
@@ -60,25 +46,11 @@
                     <div class="card m-1" style="width:200px;">
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2 text-muted" style="color: #a2ded8">@playlist.Name</h6>
-                            <a asp-controller="Home" asp-action="Playlist" asp-route-id="@playlist.PlaylistId">
-                                <p class="card-text" style="color: #a2ded8">@playlist.PlaylistId</p>
+                            <a asp-controller="Home" asp-action="Playlist" asp-route-id="@playlist.Id">
+                                <p class="card-text" style="color: #a2ded8">@playlist.Id</p>
                             </a>
                         </div>
                     </div>
-                    foreach (var track in playlist.Tracks)
-                    {
-                        <div class="track">
-                            <div class="trackInfo">
-                                <a href=@track.Href>
-                                    <img src="@track.ImageUrl" alt="Track picture">
-                                </a>
-                            </div>
-                            <div class="track-content">
-                                <div class="trackName">@track.Name</div>
-                                <div class="artist">@track.ArtistName</div>
-                            </div>
-                        </div>
-                    }
                 }
             }
             else

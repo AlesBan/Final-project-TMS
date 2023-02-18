@@ -1,47 +1,57 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions;
 using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions.NotFoundExceptions;
 using Playlist_for_party.Interfaсes.Services;
-using WebApp_Data.Models;
+using Playlist_for_party.Interfaсes.Services.Managers.DataManagers;
+using Playlist_for_party.Interfaсes.Services.Managers.UserManagers;
 using WebApp_Data.Models.Music;
+using WebApp_Data.Models.UserData;
 
 namespace Playlist_for_party.Controllers
 {
     public class TrackController : Controller
     {
-        private readonly IMusicDataManagerService _dataManager;
-        private readonly IUserManagerService _userManager;
+        private readonly IUserManager _userManager;
+        private readonly IPlaylistDataManager _playlistDataManager;
+        private readonly IMusicService _musicService;
+        private readonly IDataManager _dataManager;
 
-        public TrackController(IMusicDataManagerService dataManager, IUserManagerService userManager)
+        public TrackController(IUserManager userManager, IPlaylistDataManager playlistDataManager, 
+            IMusicService musicService, IDataManager dataManager)
         {
-            _dataManager = dataManager;
             _userManager = userManager;
+            _playlistDataManager = playlistDataManager;
+            _musicService = musicService;
+            _dataManager = dataManager;
         }
 
         [HttpPost]
-        public IActionResult AddTrackToPlaylist(string trackId, string playlistId)
+        public async Task<IActionResult> AddTrackToPlaylist(string trackId, string playlistId)
         {
             ValidateIncomeData_AddTrackToPlaylist(trackId, playlistId);
 
             var user = _userManager.GetCurrentUser(HttpContext);
-            _userManager.GetPlaylistAndTrack(HttpContext, trackId, playlistId, out var playlist, out var track);
+            var track = await _musicService.GetTrackFromSpotifyApi(trackId);
+            var playlist = _dataManager.GetPlaylistById(Guid.Parse(playlistId));
 
             ValidateMusicData_AddTrackToPlaylist(user, playlist, track);
 
-            _dataManager.AddTrack(user, playlist, track);
+            _playlistDataManager.AddTrack(user, playlist, track);
 
             return NoContent();
         }
 
         [HttpGet]
-        public ActionResult<string> CheckTrackAbilityToBeAdded(string trackId, string playlistId)
+        public async Task<ActionResult<string>> CheckTrackAbilityToBeAdded(string trackId, string playlistId)
         {
             var user = _userManager.GetCurrentUser(HttpContext);
 
-            _userManager.GetPlaylistAndTrack(HttpContext, trackId, playlistId, out var playlist, out var track);
+            var track = await _musicService.GetTrackFromSpotifyApi(trackId);
+            var playlist = _dataManager.GetPlaylistById(Guid.Parse(playlistId));
 
-            return _userManager.GetResultOfAddingAbility(user, playlist, track);
+            return _playlistDataManager.GetResultOfAddingAbility(user, playlist, track);
         }
         
         private static void ValidateMusicData_AddTrackToPlaylist(User user, Playlist playlist, Track track)

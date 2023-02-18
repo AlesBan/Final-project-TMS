@@ -1,6 +1,6 @@
-@model WebApp_Data.Models.Music.Playlist
 @{
     ViewData["Title"] = "Playlist";
+    var tracks = ViewBag.Tracks;
     var index = 0;
 }
 
@@ -12,7 +12,7 @@
 <div class="playlist-songs">
 
     <table>
-        @if (Model.Tracks.Any())
+        @if (tracks.Any())
         {
             <tr>
                 <th>#</th>
@@ -27,7 +27,7 @@
                 <th>Редакторы</th>
             </tr>
 
-            @foreach (var item in Model.Tracks)
+            @foreach (var item in tracks)
             {
                 index++;
 
@@ -35,17 +35,17 @@
                     <td>@index</td>
                     <td class="song-title">
                         <div class="song-image">
-                            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt=""/>
+                            <img src="@item.ImageUrl" alt=""/>
                         </div>
                         <div class="song-name-artist">
                             <div class="song-name">
-                                @Html.DisplayFor(modelItem => item.Name)
+                                @item.Name
                             </div>
                         </div>
                     </td>
-                    <td class="song-album">@Html.DisplayFor(modelItem => item.ArtistName)</td>
-                    <td class="song-popularity">@Html.DisplayFor(modelItem => item.Popularity)</td>
-                    <td class="song-duration">@Html.DisplayFor(modelItem => item.Duration)</td>
+                    <td class="song-album">@item.ArtistName</td>
+                    <td class="song-popularity">@item.Popularity</td>
+                    <td class="song-duration">@item.Duration</td>
                 </tr>
             }
         }

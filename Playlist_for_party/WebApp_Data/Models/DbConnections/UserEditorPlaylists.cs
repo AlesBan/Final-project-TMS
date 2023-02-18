@@ -1,12 +1,13 @@
 using System;
 using WebApp_Data.Models.Music;
+using WebApp_Data.Models.UserData;
 
 namespace WebApp_Data.Models.DbConnections
 {
-    public class UserEditorPlaylists
+    public class UserEditorPlaylist
     {
-        public Guid UserEditorId { get; set; }
-        public User UserEditor { get; set; }
+        public Guid UserId { get; set; }
+        public User User { get; set; }
         public Guid PlaylistId  { get; set; }
         public Playlist Playlist  { get; set; }
         

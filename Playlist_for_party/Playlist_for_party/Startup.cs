@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,11 +11,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes.Services;
+using Playlist_for_party.Interfaсes.Services.Managers.DataManagers;
+using Playlist_for_party.Interfaсes.Services.Managers.UserManagers;
 using Playlist_for_party.Middleware;
 using Playlist_for_party.Services;
 using Playlist_for_party.Policies;
-using WebApp_Data.Interfaces;
-using WebApp_Data.Models.Data;
+using Playlist_for_party.Services.Managers.DataManagers;
+using Playlist_for_party.Services.Managers.UserManagers;
 
 namespace Playlist_for_party
 {
@@ -47,13 +48,12 @@ namespace Playlist_for_party
 
             services.AddControllersWithViews();
 
-            services.AddSingleton<IMusicRepository, MusicRepository>();
-            services.AddSingleton<IMusicDataManagerService, MusicDataManagerService>();
-            services.AddSingleton<IUserManagerService, UserManagerService>();
+            services.AddScoped<IDataManager, DataManager>();
+            services.AddScoped<IUserManager, UserManager>();
             services.AddSingleton<IAuthManager, AuthManager>();
+            services.AddScoped<IPlaylistDataManager, PlaylistDataManager>();
 
-
-            services.AddScoped<SetTokenMiddleware>();
+            services.AddSingleton<SetTokenMiddleware>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -109,10 +109,6 @@ namespace Playlist_for_party
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Home}/{Id?}");
-                endpoints.MapControllerRoute(
-                    name: "home",
-                    pattern: "home",
-                    defaults: new { controller = "Home", action = "Home" });
             });
         }
     }
