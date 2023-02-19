@@ -1,7 +1,8 @@
 .header {
     position: fixed;
     top: 0;
-    left: 244px; /* sidebar width */
+    left: 244px;
+    /* sidebar width */
     right: 0;
     height: 60px;
     background-color: rgb(18, 18, 18);
@@ -88,7 +89,6 @@
     z-index: 1;
 }
 
-
 .dropdown-content a {
     display: block;
     color: #fff;
@@ -118,7 +118,8 @@
     width: 45%;
 }
 
-.playlist table tr td, .playlist-songs tr th {
+.playlist table tr td,
+.playlist-songs tr th {
     color: #CACACA;
 }
 
@@ -160,7 +161,11 @@
     padding-left: 15px;
 }
 
-.song-artist, .song-album, .song-popularity, tr td:first-of-type, .song-duration {
+.song-artist,
+.song-album,
+.song-popularity,
+tr td:first-of-type,
+.song-duration {
     font-size: 14px;
     margin-top: 6px;
     color: white;
@@ -188,13 +193,17 @@
     transition: .3s;
 }
 
-.song-title, .song-popularity, .song-duration, .song-dropdown {
+.song-title,
+.song-popularity,
+.song-duration,
+.song-dropdown {
     padding-right: 45px;
 }
 
 .floating-button:hover {
     background: darkgrey;
 }
+
 
 
 .table-dropdown {
@@ -299,7 +308,3 @@
     font-weight: 400;
     padding-left: 10px;
 }
-
-
-
-

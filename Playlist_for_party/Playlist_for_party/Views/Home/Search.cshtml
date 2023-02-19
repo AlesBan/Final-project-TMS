@@ -17,19 +17,18 @@
     <div class="header-actions">
         <div class="header-search input-group has-left-icon has-right-icon can-delete">
             <span class="left-icon-search"></span>
-            <input type="text" id="search-field" class="input" placeholder="Найти трек">
+            <input type="text" id="search-field" class="input" placeholder="Search">
             <span class="right-icon-search"></span>
         </div>
-        <button onclick="Search()">Поиск</button>
+        <button onclick="Search()">Search</button>
     </div>
 }
-
 
 <div class="main-playlist">
     <div class="playlist-artists">
         <table>
             <tr>
-                <th>Исполнители</th>
+                <th>Artists</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -69,7 +68,7 @@
         <table>
             <tr>
                 <th>Треки</th>
-                <th class="rating">Рейтинг</th>
+                <th class="rating">Rating</th>
                 <th>
                     <div class="time-image">
                         <img src="https://icones.pro/wp-content/uploads/2021/03/icone-d-horloge-gris.png" alt="">
@@ -99,7 +98,7 @@
                         <td class="song-duration">4:11</td>
                         <td>
                             <div class="table-dropdown">
-                                <button type="button" class="floating-button">Добавить</button>
+                                <button type="button" class="floating-button">Add</button>
                                 <div class="table-dropdown-content" id="@item.Id">
                                     @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
                                     {
