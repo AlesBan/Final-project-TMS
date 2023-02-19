@@ -32,18 +32,25 @@
                 <th></th>
                 <th></th>
             </tr>
-            <tr>
-                <td>
-                    <div class="artist-container">
-                        <div class="artist-img">
-                            <img src="https://nownownow.ru/wp-content/uploads/2022/08/90180023-scaled-e1661173059329.jpg" alt="">
-                        </div>
-                        <div class="artist-name">Boulevard Depo</div>
-                    </div>
-                </td>
-            </tr>
+            @if (Artists.Any())
+            {
+                foreach (var artist in Artists)
+                {
+                    <tr>
+                        <td>
+                            <div class="artist-container">
+                                <div class="artist-img">
+                                    <img src="@artist.ImageRef" alt="">
+                                </div>
+                                <div class="artist-name">@artist.Name</div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
         </table>
     </div>
+    
     <div class="playlist-songs">
         <table>
             <tr>

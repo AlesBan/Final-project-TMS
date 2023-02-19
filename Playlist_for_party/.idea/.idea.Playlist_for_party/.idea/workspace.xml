@@ -10,18 +10,10 @@
     <projectFile profileName="WebApplication1">WebApplication1/WebApplication1.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
+    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="home html">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plaulist_for_party.Tests/Plaulist_for_party.Tests.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Account/SingUp.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Authentication/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Authentication/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Authentication/SingUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Authentication/SingUp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +126,7 @@
     <setting file="file://$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/AuthManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/UserManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/Managers/UserManagers/IAuthManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Репозитории/Финальный_проект/Final-project-TMS/Playlist_for_party/Playlist_for_party/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp_Data/Models/DTO/UserDto.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -335,7 +328,7 @@
       <workItem from="1676722449357" duration="2432000" />
       <workItem from="1676735047872" duration="19980000" />
       <workItem from="1676757049083" duration="250000" />
-      <workItem from="1676798512947" duration="3461000" />
+      <workItem from="1676798512947" duration="4241000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -484,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676757161655</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="home html">
+      <created>1676802049803</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1676802049803</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +538,8 @@
     <MESSAGE value="singUp validation" />
     <MESSAGE value="refactoring + creating migrations + tests&#10;(bag with db updating)" />
     <MESSAGE value="connection to database" />
-    <option name="LAST_COMMIT_MESSAGE" value="connection to database" />
+    <MESSAGE value="home html" />
+    <option name="LAST_COMMIT_MESSAGE" value="home html" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
