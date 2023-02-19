@@ -24,6 +24,7 @@
     </div>
 }
 
+
 <div class="main-playlist">
     <div class="playlist-artists">
         <table>
@@ -34,9 +35,9 @@
             </tr>
             @if (Artists.Any())
             {
-                foreach (var artist in Artists)
-                {
-                    <tr>
+                <tr>
+                    @foreach (var artist in Artists.Take(3))
+                    {
                         <td>
                             <div class="artist-container">
                                 <div class="artist-img">
@@ -45,12 +46,25 @@
                                 <div class="artist-name">@artist.Name</div>
                             </div>
                         </td>
-                    </tr>
-                }
+                    }
+                </tr>
+                <tr>
+                    @foreach (var artist in Artists.Skip(3).Take(3))
+                    {
+                        <td>
+                            <div class="artist-container">
+                                <div class="artist-img">
+                                    <img src="@artist.ImageRef" alt="">
+                                </div>
+                                <div class="artist-name">@artist.Name</div>
+                            </div>
+                        </td>
+                    }
+                </tr>
             }
         </table>
     </div>
-    
+
     <div class="playlist-songs">
         <table>
             <tr>
@@ -76,13 +90,15 @@
                                 <div class="song-name">
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </div>
-                                <div class="song-artist">@Html.DisplayFor(modelItem => item.ArtistName)</div>
+                                <div class="song-artist">
+                                    @Html.DisplayFor(modelItem => item.ArtistName)
+                                </div>
                             </div>
                         </td>
                         <td class="song-popularity">13</td>
                         <td class="song-duration">4:11</td>
                         <td>
-                            <div class="dropdown">
+                            <div class="table-dropdown">
                                 <button type="button" class="floating-button">Добавить</button>
                                 <div class="table-dropdown-content" id="@item.Id">
                                     @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
@@ -102,10 +118,11 @@
 @section Scripts
 {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="~/js/Search.js"></script>
     <script>
     function Search(){
-        let serchQuery = document.getElementById("search-field").value;
-        window.open("/search/"+serchQuery, "_self");
+        let searchQuery = document.getElementById("search-field").value;
+        window.open("/search/" + searchQuery, "_self");
     }
     
      $(function (){

@@ -9,7 +9,7 @@
 
 .header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -188,3 +188,5 @@
 .section-body-item.section-body-item-1.category-item a {
     font-size: 25px;
 }
+
+

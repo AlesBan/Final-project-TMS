@@ -10,10 +10,20 @@
     <projectFile profileName="WebApplication1">WebApplication1/WebApplication1.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="home html">
+    <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/js/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Home.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Playlist.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Home/Search.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Playlist.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/css/Search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/js/Layout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/wwwroot/js/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/wwwroot/js/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Фронт_Клима/frontend-for-ppp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -126,7 +136,6 @@
     <setting file="file://$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/AuthManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/UserManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/Managers/UserManagers/IAuthManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Репозитории/Финальный_проект/Final-project-TMS/Playlist_for_party/Playlist_for_party/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party/wwwroot/lib/jquery/dist/jquery.min.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApp_Data/Models/DTO/UserDto.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -328,7 +337,8 @@
       <workItem from="1676722449357" duration="2432000" />
       <workItem from="1676735047872" duration="19980000" />
       <workItem from="1676757049083" duration="250000" />
-      <workItem from="1676798512947" duration="4241000" />
+      <workItem from="1676798512947" duration="5114000" />
+      <workItem from="1676808660951" duration="2269000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -484,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676802049803</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="search html css">
+      <created>1676802840187</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1676802840187</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +556,8 @@
     <MESSAGE value="refactoring + creating migrations + tests&#10;(bag with db updating)" />
     <MESSAGE value="connection to database" />
     <MESSAGE value="home html" />
-    <option name="LAST_COMMIT_MESSAGE" value="home html" />
+    <MESSAGE value="search html css" />
+    <option name="LAST_COMMIT_MESSAGE" value="search html css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -725,6 +743,20 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="369" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Playlist_for_party/Views/Shared/_Layout.cshtml</url>
+          <line>23</line>
+          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Views\Shared\_Layout.cshtml" initialLine="23" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <option value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="370" />
         </line-breakpoint>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints">
           <properties exception="System.NotSupportedException" isInternal="false" displayValue="NotSupportedException" namespaceName="System">
