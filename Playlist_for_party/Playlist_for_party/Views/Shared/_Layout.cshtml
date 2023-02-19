@@ -40,34 +40,7 @@
 
 <div class="header">
     @await RenderSectionAsync("SearchDiv", false)
-    <div class="dropdown">
-        <button class="dropdown-button" id="open-search-form">
-            <span class="user-icon">
-                <i class="user"></i>
-            </span>
-            @{
-                try
-                {
-                    <span class="text-bold">
-                        @Context.User.Claims.Single(i => i.Type == ClaimTypes.Name)?.Value
-                    </span>
-                }
-                catch
-                {
-                    <span class="text-bold">
-                        username
-                    </span>
-                }
-            }
-            <span>
-                <i class="chevron-down"></i>
-            </span>
-        </button>
-        <ul class="dropdown-content" id="open-dropdown">
-            <div>Account</div>
-            <div>Logout</div>
-        </ul>
-    </div>
+    @await RenderSectionAsync("DropDownDiv", false);
 </div>
 
 <main>

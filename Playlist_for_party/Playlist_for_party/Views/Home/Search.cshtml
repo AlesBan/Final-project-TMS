@@ -24,55 +24,73 @@
     </div>
 }
 
-
-<section class="section">
-    <table class="table">
-        <tr>
-            <th>
-                <h2 class="section-title">Треки</h2>
-            </th>
-            <th>
-                <h4 class="popularity">Популярность</h4>
-            </th>
-        </tr>
-
-
-        @if (Tracks.Any())
-        {
-            foreach (var item in Tracks)
+<div class="main-playlist">
+    <div class="playlist-artists">
+        <table>
+            <tr>
+                <th>Исполнители</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="artist-container">
+                        <div class="artist-img">
+                            <img src="https://nownownow.ru/wp-content/uploads/2022/08/90180023-scaled-e1661173059329.jpg" alt="">
+                        </div>
+                        <div class="artist-name">Boulevard Depo</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="playlist-songs">
+        <table>
+            <tr>
+                <th>Треки</th>
+                <th class="rating">Рейтинг</th>
+                <th>
+                    <div class="time-image">
+                        <img src="https://icones.pro/wp-content/uploads/2021/03/icone-d-horloge-gris.png" alt="">
+                    </div>
+                </th>
+                <th></th>
+            </tr>
+            @if (Tracks.Any())
             {
-                <tr>
-                    <td>
-                        <div class="track">
-                            <div class="trackInfo">
-                                <a href=@Html.DisplayFor(modelItem => item.Href)>
-                                    <img src="@Html.DisplayFor(modelItem => item.ImageRef)" alt="">
-                                </a>
+                foreach (var item in Tracks)
+                {
+                    <tr style="height: 20px">
+                        <td class="song-title">
+                            <div class="song-image">
+                                <img src="=@Html.DisplayFor(modelItem => item.ImageRef)" alt="">
                             </div>
-                            <div class="track-content">
-                                <div class="trackName">@Html.DisplayFor(modelItem => item.Name)</div>
-                                <div class="artist">@Html.DisplayFor(modelItem => item.ArtistName)</div>
+                            <div class="song-name-artist">
+                                <div class="song-name">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </div>
+                                <div class="song-artist">@Html.DisplayFor(modelItem => item.ArtistName)</div>
                             </div>
-                        </div>
-                    </td>
-                    <td>13</td>
-                    <td>4:11</td>
-                    <td>
-                        <div class="dropdown">
-                            <button type="button" class="floating-button">Добавить</button>
-                            <div class="dropdown-content" id="@item.Id">
-                                @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
-                                {
-                                    <a class="dropdown-a" id="@playlist.Id">@playlist.Name</a>
-                                }
+                        </td>
+                        <td class="song-popularity">13</td>
+                        <td class="song-duration">4:11</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="floating-button">Добавить</button>
+                                <div class="table-dropdown-content" id="@item.Id">
+                                    @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
+                                    {
+                                        <a id="@playlist.Id">@playlist.Name</a>
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
             }
-        }
-    </table>
-</section>
+        </table>
+    </div>
+</div>
 
 @section Scripts
 {

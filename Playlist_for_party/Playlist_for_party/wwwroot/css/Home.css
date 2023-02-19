@@ -9,7 +9,7 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -29,6 +29,23 @@
     margin-right: 10px;
 }
 
+.arrow {
+    border: solid hsl(0, 0%,50%);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
 
 .dropdown {
     position: relative;
@@ -171,5 +188,3 @@
 .section-body-item.section-body-item-1.category-item a {
     font-size: 25px;
 }
-
-
