@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Playlist_for_party.Data;
 using Playlist_for_party.Exceptions.AppExceptions.MusicPartsExceptions.NotFoundExceptions;
 using Playlist_for_party.Filters.ExceptionFilters;
 using Playlist_for_party.Interfaсes.Services;
@@ -18,14 +19,16 @@ namespace Playlist_for_party.Controllers
         private readonly IDataManager _dataManager;
         private readonly IUserManager _userManager;
         private readonly IPlaylistDataManager _playlistDataManager;
+        private readonly MusicContext _musicContext;
 
         public HomeController(IMusicService spotifyService, IDataManager dataManager,
-            IUserManager userManager, IPlaylistDataManager playlistDataManager)
+            IUserManager userManager, IPlaylistDataManager playlistDataManager, MusicContext musicContext)
         {
             _musicService = spotifyService;
             _dataManager = dataManager;
             _userManager = userManager;
             _playlistDataManager = playlistDataManager;
+            _musicContext = musicContext;
         }
 
         [Route("home")]
@@ -58,12 +61,18 @@ namespace Playlist_for_party.Controllers
             {
                 return View();
             }
+            
 
-            var searchItems = _musicService.GetItemsFromSpotifyApi(query).Result;
+            var searchItems = _musicService.GetItemsFromSpotifyApi(_musicContext, query).Result;
+            
             ViewBag.query = query;
             ViewBag.Artists = searchItems.ArtistsDto;
             ViewBag.Tracks = searchItems.TracksDto;
-            ViewBag.Playlists = _dataManager.GetPlaylistsWhereUserEditor(user);
+            
+            var playlists = _dataManager.GetPlaylistsWhereUserEditor(user)?.ToList();
+            playlists?.AddRange(_dataManager.GetPlaylistsWhereUserOwner(user));
+            
+            ViewBag.Playlists = playlists;
             
             return View();
         }
@@ -88,6 +97,9 @@ namespace Playlist_for_party.Controllers
 
             playlist = _dataManager.GetPlaylistById(id);
             ViewBag.Tracks = _playlistDataManager.GetTracksFromPlaylist(playlist);
+            ViewBag.Editors = _playlistDataManager.GetEditors(playlist);
+            ViewData["PlaylistName"] = playlist.Name;
+            ViewData["PlaylistOwner"] = playlist.Owner.UserName;
 
             if (playlist is null)
             {

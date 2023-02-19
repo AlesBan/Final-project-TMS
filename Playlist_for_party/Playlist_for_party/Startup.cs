@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes.Services;
@@ -44,7 +45,11 @@ namespace Playlist_for_party
             });
 
             var connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<MusicContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<MusicContext>(options =>
+            {
+                options.UseSqlServer(connection);
+                // options.EnableSensitiveDataLogging(true);
+            });
 
             services.AddControllersWithViews();
 

@@ -26,14 +26,15 @@
 
 <div class="main-playlist">
     <div class="playlist-artists">
-        <table>
-            <tr>
-                <th>Artists</th>
-                <th></th>
-                <th></th>
-            </tr>
-            @if (Artists.Any())
-            {
+        @if (Artists.Any())
+        {
+            <table>
+                <tr>
+                    <th>Artists</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
                 <tr>
                     @foreach (var artist in Artists.Take(3))
                     {
@@ -60,57 +61,60 @@
                         </td>
                     }
                 </tr>
-            }
-        </table>
+
+            </table>
+        }
     </div>
 
     <div class="playlist-songs">
-        <table>
-            <tr>
-                <th>Треки</th>
-                <th class="rating">Rating</th>
-                <th>
-                    <div class="time-image">
-                        <img src="https://icones.pro/wp-content/uploads/2021/03/icone-d-horloge-gris.png" alt="">
-                    </div>
-                </th>
-                <th></th>
-            </tr>
-            @if (Tracks.Any())
-            {
-                foreach (var item in Tracks)
+        @if (Tracks.Any())
+        {
+            <table>
+                <tr>
+                    <th>Треки</th>
+                    <th class="rating">Rating</th>
+                    <th>
+                        <div class="time-image">
+                            <img src="https://icones.pro/wp-content/uploads/2021/03/icone-d-horloge-gris.png" alt="">
+                        </div>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Tracks)
                 {
-                    <tr style="height: 20px">
-                        <td class="song-title">
-                            <div class="song-image">
-                                <img src="=@Html.DisplayFor(modelItem => item.ImageRef)" alt="">
+                <tr style="height: 20px">
+                    <td class="song-title">
+                        <div class="song-image">
+                            <img src="@item.ImageRef" alt="">
+                        </div>
+                        <div class="song-name-artist">
+                            <div class="song-name">
+                                @item.Name
                             </div>
-                            <div class="song-name-artist">
-                                <div class="song-name">
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </div>
-                                <div class="song-artist">
-                                    @Html.DisplayFor(modelItem => item.ArtistName)
-                                </div>
+                            <div class="song-artist">
+                                @item.ArtistName
                             </div>
-                        </td>
-                        <td class="song-popularity">13</td>
-                        <td class="song-duration">4:11</td>
-                        <td>
-                            <div class="table-dropdown">
-                                <button type="button" class="floating-button">Add</button>
-                                <div class="table-dropdown-content" id="@item.Id">
-                                    @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
-                                    {
-                                        <a id="@playlist.Id">@playlist.Name</a>
-                                    }
-                                </div>
+                        </div>
+                    </td>
+                    <td class="song-popularity">@item.Rating</td>
+                    <td class="song-duration">@item.Duration</td>
+                    <td>
+                        <div class="table-dropdown">
+                            <button type="button" class="floating-button">Add</button>
+                            <div class="table-dropdown-content" id="@item.Id">
+                                @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
+                                {
+                                    <a class="dropdown-a" id="@playlist.Id">@playlist.Name</a>
+                                }
                             </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </td>
+                </tr>
                 }
-            }
-        </table>
+
+            </table>
+        }
     </div>
 </div>
 

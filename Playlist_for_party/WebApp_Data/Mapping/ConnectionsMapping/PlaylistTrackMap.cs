@@ -13,12 +13,12 @@ namespace WebApp_Data.Mapping.ConnectionsMapping
             builder.HasOne(ps => ps.Playlist)
                 .WithMany(p => p.PlaylistTracks)
                 .HasForeignKey(pt => pt.PlaylistId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
  
             builder.HasOne(ps => ps.Track)
                 .WithMany(p => p.PlaylistTracks)
                 .HasForeignKey(pt => pt.TrackId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Playlist_for_party.Controllers
 
             ValidateMusicData_AddTrackToPlaylist(user, playlist, track);
 
-            _playlistDataManager.AddTrack(user, playlist, track);
+            _playlistDataManager.AddTrackToPlaylist(user, playlist, track);
 
             return NoContent();
         }
@@ -49,8 +49,10 @@ namespace Playlist_for_party.Controllers
             var user = _userManager.GetCurrentUser(HttpContext);
 
             var track = await _musicService.GetTrackFromSpotifyApi(trackId);
+            
             var playlist = _dataManager.GetPlaylistById(Guid.Parse(playlistId));
-
+            playlist.UserTracks = _playlistDataManager.SetUserTracksToPlaylist(playlist);
+            
             return _playlistDataManager.GetResultOfAddingAbility(user, playlist, track);
         }
         
@@ -72,7 +74,7 @@ namespace Playlist_for_party.Controllers
             }
         }
 
-        private void ValidateIncomeData_AddTrackToPlaylist(string trackId, string playlistId)
+        private static void ValidateIncomeData_AddTrackToPlaylist(string trackId, string playlistId)
         {
             if (string.IsNullOrEmpty(trackId))
             {
@@ -89,6 +91,5 @@ namespace Playlist_for_party.Controllers
                 throw new InvalidPlaylistIdProvidedException("Playlist id not invalid");
             }
         }
-
     }
 }

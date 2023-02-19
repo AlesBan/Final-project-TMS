@@ -1,7 +1,10 @@
 @using WebApp_Data.Models.Music
+@using WebApp_Data.Models.UserData
 @{
     ViewData["Title"] = "Playlist";
     List<Track> tracksList = ViewBag.Tracks;
+
+    List<User> editors = ViewBag.Editors;
     var index = 0;
 }
 
@@ -16,8 +19,8 @@
         </a>
     </div>
     <div class="header-image-text">
-        <h1 class="h1-img-text">Мой плейлист № 1</h1>
-        <h5 class="h5-img-text">Klim</h5>
+        <h1 class="h1-img-text">@ViewData["PlaylistName"]</h1>
+        <h5 class="h5-img-text">@ViewData["PlaylistOwner"]</h5>
     </div>
 </div>
 <div class="playlist-songs">
@@ -52,8 +55,10 @@
                         </div>
                     </td>
                     <td class="song-album">@item.ArtistName</td>
-                    <td class="song-popularity">@item.Popularity</td>
-                    <td class="song-duration">@item.Duration/60</td>
+                    <td class="song-popularity">@item.Rating</td>
+                    <td class="song-duration">
+                       @item.Duration
+                    </td>
                 </tr>
             }
         }
@@ -63,13 +68,10 @@
         }
     </table>
     <div class="redactors">
-        @* @foreach (var VARIABLE in COLLECTION) *@
-        @* { *@
-        @*      *@
-        @* }  *@
         <div class="redactor">Редакторы</div>
-        <div class="redactor-name-first">Алесь</div>
-        <div class="redactor-name">Алесь</div>
-        <div class="redactor-name">Алесь</div>
+        @foreach (var red in editors)
+        {
+            <div class="redactor-name">@red.UserName</div>
+        }
     </div>
 </div>

@@ -5,4 +5,4 @@ document.addEventListener('DOMContentLoaded', (e) => {
         });
 });
 
-document.querySelector('.menu-item').addEventListener('click', )
+document.querySelector('.menu-item').addEventListener('click')

@@ -16,9 +16,9 @@ namespace WebApp_Data.Mapping.MusicMapping
             builder.Property(b => b.Name)
                 .HasMaxLength(50)
                 .IsRequired();
-            builder.Property(b => b.Popularity)
+            builder.Property(b => b.Rating)
                 .HasDefaultValue(0);
-            builder.Property(b => b.Duration)
+            builder.Property(b => b.DurationMs)
                 .HasDefaultValue(0);
             builder.Property(b => b.ImageUrl)
                 .HasMaxLength(80)

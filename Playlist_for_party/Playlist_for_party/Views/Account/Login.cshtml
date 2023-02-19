@@ -22,3 +22,13 @@
         </div>
     }
 </div>
+
+@section Scripts
+{
+    @if (ViewBag.ExceptionMessage != null)
+    {
+        <script>
+                alert("@ViewBag.ExceptionMessage")
+        </script>
+    }
+}

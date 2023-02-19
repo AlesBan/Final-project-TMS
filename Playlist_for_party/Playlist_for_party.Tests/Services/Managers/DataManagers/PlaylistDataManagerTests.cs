@@ -24,7 +24,7 @@ namespace Playlist_for_party.Tests.Services.Managers.DataManagers
         public PlaylistDataManagerTests()
         {
             _user = new User("test-userName", "test-Password");
-            _playlist = new Playlist { Name = "Test Playlist" };
+            _playlist = new Playlist() { Name = "Test Playlist" , };
             _track = new Track { Id = "testTrackId", Name = "Test Track" };
             
             _mockContext = new Mock<MusicContext>();

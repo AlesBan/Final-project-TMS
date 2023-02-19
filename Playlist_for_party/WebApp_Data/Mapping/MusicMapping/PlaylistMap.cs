@@ -23,6 +23,8 @@ namespace WebApp_Data.Mapping.MusicMapping
 
             builder.Property(p => p.UserTracksJson)
                 .HasColumnName("UserTracks");
+            builder.Property(p => p.TracksRatingJson)
+                .HasColumnName("TracksRating");
         }
     }
 }

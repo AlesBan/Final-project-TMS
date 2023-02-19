@@ -6,7 +6,9 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Playlist_for_party.Data;
 using Playlist_for_party.Exceptions.AppExceptions.MusicApiConnectionExceptions;
 using Playlist_for_party.Exceptions.UserExceptions;
 using Playlist_for_party.Interfaсes.Services;
@@ -21,7 +23,7 @@ namespace Playlist_for_party.Services
     {
         private readonly HttpClient _httpClient;
         private readonly ISpotifyAccountService _spotifyAccountService;
-        private const int Limit = 6;
+        private const int Limit = 3;
 
         private const string DefImageUrl =
             @"https://media.wired.com/photos/5f9ca518227dbb78ec30dacf/master/w_2560%2Cc_limit/Gear-RIP-Google-Music-1194411695.jpg";
@@ -30,6 +32,7 @@ namespace Playlist_for_party.Services
         {
             _httpClient = httpClient;
             _spotifyAccountService = spotifyAccountService;
+            
         }
 
         public async Task<Track> GetTrackFromSpotifyApi(string trackId)
@@ -47,7 +50,7 @@ namespace Playlist_for_party.Services
                 Name = responseObj.Name,
                 ArtistName = string.Join(", ", responseObj.Artists.Select(a => a.Name)),
                 Album = responseObj.Album.Name,
-                Duration = responseObj.DurationMs,
+                DurationMs = responseObj.DurationMs,
                 ImageUrl = firstImage?.Url ?? DefImageUrl,
                 Href = responseObj.Href
             };
@@ -55,7 +58,7 @@ namespace Playlist_for_party.Services
             return track;
         }
 
-        public async Task<ItemsDto> GetItemsFromSpotifyApi(string query)
+        public async Task<ItemsDto> GetItemsFromSpotifyApi(MusicContext musicContext, string query)
         {
             var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
@@ -64,10 +67,10 @@ namespace Playlist_for_party.Services
             var response = await GetResponse(requestMessage);
             var responseObject = await DeserializationAsync<Search>(response);
             
-            return GetItemsDtoList(responseObject);
+            return GetItemsDtoList(musicContext, responseObject);
         }
 
-        private static ItemsDto GetItemsDtoList(Search responseObj)
+        private static ItemsDto GetItemsDtoList(MusicContext musicContext, Search responseObj)
         {
             var artistsDto = responseObj?.Artists.Items.Where(i => i.Images?.Length > 0)
                 .Select(i => new ArtistDto()
@@ -84,7 +87,9 @@ namespace Playlist_for_party.Services
                     ImageRef = i.Album.Images[0].Url,
                     Href = i.Href,
                     Id = i.Id,
-                    ArtistName = string.Join(", ", i.Artists.Select(a => a.Name))
+                    ArtistName = string.Join(", ", i.Artists.Select(a => a.Name)),
+                    Rating = GetTrackRating(musicContext, i.Id),
+                    DurationMs = i.DurationMs
                 });
 
             var itemsDto = new ItemsDto()
@@ -94,6 +99,19 @@ namespace Playlist_for_party.Services
             };
 
             return itemsDto;
+        }
+
+        private static int GetTrackRating(MusicContext musicContext, string trackId)
+        {
+            try
+            {
+                return musicContext.Tracks
+                    .SingleOrDefault(t => t.Id == trackId)!.Rating;
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         private void Authorization(string accessToken)

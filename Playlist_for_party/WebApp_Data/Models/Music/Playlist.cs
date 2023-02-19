@@ -24,33 +24,18 @@ namespace WebApp_Data.Models.Music
 
         public double Duration
         {
-            get { return PlaylistTracks.Select(pt => pt.Track).Sum(track => track.Duration); }
+            get { return PlaylistTracks.Select(pt => pt.Track).Sum(track => track.DurationMs); }
         }
+
+        [NotMapped]
+        public Dictionary<string, int> TracksRating { get; set; }
+
+        public string TracksRatingJson { get; set; }
         
         [NotMapped]
-        public Dictionary<Guid, IEnumerable<Track>> UserTracks
-        {
-            get
-            {
-                try
-                {
-                    return JsonSerializer.Deserialize<Dictionary<Guid, IEnumerable<Track>>>(UserTracksJson);
-                }
-                catch
-                {
-                    return new Dictionary<Guid, IEnumerable<Track>>();
-                }
-            }
-            private set
-            {
-                if (value == null) throw new ArgumentNullException(nameof(value));
-                UserTracksJson = JsonSerializer.Serialize(UserTracks);
-            }
-        }
-
-        public string UserTracksJson { get; set; } = string.Empty;
+        public Dictionary<Guid, IEnumerable<Track>> UserTracks { get; set; }
+        public string UserTracksJson { get; set; } 
         public ICollection<PlaylistTrack> PlaylistTracks { get; set; } = new List<PlaylistTrack>();
-
         public ICollection<UserEditorPlaylist> UserEditorPlaylists { get; set; }
 
         public Playlist()
@@ -60,25 +45,6 @@ namespace WebApp_Data.Models.Music
             UserTracks = new Dictionary<Guid, IEnumerable<Track>>();
         }
 
-        public void AddTrackToUserTracks(User user, Track track)
-        {
-            var userTracksList = GetUserTracks(user);
-
-            userTracksList.Add(track);
-            UserTracks[user.Id] = userTracksList;
-        }
-
-        private List<Track> GetUserTracks(User user)
-        {
-            var userTracks = new List<Track>();
-            if (UserTracks.ContainsKey(user.Id))
-            {
-                userTracks = UserTracks[user.Id].ToList();
-                return userTracks;
-            }
-
-            UserTracks.Add(user.Id, new List<Track>());
-            return userTracks;
-        }
+        
     }
 }

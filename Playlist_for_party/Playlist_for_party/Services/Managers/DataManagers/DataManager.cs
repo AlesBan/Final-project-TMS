@@ -26,23 +26,34 @@ namespace Playlist_for_party.Services.Managers.DataManagers
 
         public Playlist CreatePlaylist(User user)
         {
-            var playlist = new Playlist();
+            var playlist = new Playlist()
+            {
+                OwnerId = user.Id
+            };
+            
             MusicContext.Playlists.Add(playlist);
-            AddOwnerAndEditorToPlaylists(user, playlist);
             MusicContext.SaveChanges();
+            SetOwnerToPlaylist(user, playlist);
             return playlist;
         }
 
         public User GetUserByUserName(string userName)
         {
             var user = MusicContext.Users
-                .FirstOrDefault(p => p.UserName.Equals(userName));
+                .FirstOrDefault(p => p.UserName == userName);
             return user;
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return MusicContext.Users;
+            try
+            {
+                return MusicContext.Users;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public Track GetTrackById(string trackId)
@@ -51,24 +62,38 @@ namespace Playlist_for_party.Services.Managers.DataManagers
                 .SingleOrDefault(t => t.Id == trackId);
         }
 
+        public int GetTrackRating(string trackId)
+        {
+            try
+            {
+                return MusicContext.Tracks
+                    .SingleOrDefault(t => t.Id == trackId)!.Rating;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public Playlist GetPlaylistById(Guid playlistId)
         {
             var playlist = MusicContext.Playlists
-                .FirstOrDefault(p => p.Id.Equals(playlistId));
+                .FirstOrDefault(p => p.Id == playlistId);
             return playlist;
         }
 
         public UserEditorPlaylist GetUserEditorPlaylistByPlaylistId(Guid playlistId)
         {
-            var userPlaylist = MusicContext.UserEditorPlaylists.Single(up => up.PlaylistId == playlistId);
+            var userPlaylist = MusicContext
+                .UserEditorPlaylists
+                .Single(up => up.PlaylistId == playlistId);
             return userPlaylist;
         }
 
         public IEnumerable<Playlist> GetPlaylistsWhereUserOwner(User user)
         {
-            return MusicContext.Users
-                .Single(u => u.Equals(user))
-                .UserOwnerPlaylists;
+            return MusicContext.Playlists
+                .Where(u => u.OwnerId == user.Id);
         }
 
         public IEnumerable<Playlist> GetPlaylistsWhereUserEditor(User user)
@@ -78,18 +103,12 @@ namespace Playlist_for_party.Services.Managers.DataManagers
                 .Select(x => x.Playlist);
         }
 
-        private void AddOwnerAndEditorToPlaylists(User user, Playlist playlist)
+        private void SetOwnerToPlaylist(User user, Playlist playlist)
         {
-            var userDb = MusicContext.Users
-                .Single(u => u.Equals(user));
-            userDb.UserEditorPlaylists
-                .Add(new UserEditorPlaylist()
-                {
-                    User = user,
-                    Playlist = playlist
-                });
-            userDb.UserOwnerPlaylists
-                .Add(playlist);
+            var playlistDb = MusicContext.Playlists
+                .SingleOrDefault(u => u.Id == playlist.Id);
+            playlistDb!.Owner = user;
+            MusicContext.SaveChanges();
         }
     }
 }

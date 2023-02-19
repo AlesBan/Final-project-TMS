@@ -13,6 +13,7 @@ namespace Playlist_for_party.Interfaсes.Services.Managers.DataManagers
         User GetUserByUserName(string userName);
         IEnumerable<User> GetUsers();
         Track GetTrackById(string trackId);
+        int GetTrackRating(string trackId);
         Playlist GetPlaylistById(Guid playlistId);
         UserEditorPlaylist GetUserEditorPlaylistByPlaylistId(Guid playlistId);
         IEnumerable<Playlist> GetPlaylistsWhereUserOwner(User user);
