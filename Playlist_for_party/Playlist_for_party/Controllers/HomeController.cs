@@ -9,6 +9,7 @@ using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Interfaсes.Services.Managers.DataManagers;
 using Playlist_for_party.Interfaсes.Services.Managers.UserManagers;
 using WebApp_Data.Models.Music;
+using WebApp_Data.Models.UserData;
 
 namespace Playlist_for_party.Controllers
 {
@@ -61,19 +62,18 @@ namespace Playlist_for_party.Controllers
             {
                 return View();
             }
-            
 
             var searchItems = _musicService.GetItemsFromSpotifyApi(_musicContext, query).Result;
-            
+
             ViewBag.query = query;
             ViewBag.Artists = searchItems.ArtistsDto;
             ViewBag.Tracks = searchItems.TracksDto;
-            
+
             var playlists = _dataManager.GetPlaylistsWhereUserEditor(user)?.ToList();
             playlists?.AddRange(_dataManager.GetPlaylistsWhereUserOwner(user));
-            
+
             ViewBag.Playlists = playlists;
-            
+
             return View();
         }
 
@@ -96,10 +96,10 @@ namespace Playlist_for_party.Controllers
             }
 
             playlist = _dataManager.GetPlaylistById(id);
-            
+
             ViewBag.Tracks = _playlistDataManager
                 .GetTracksFromPlaylist(playlist);
-            
+
             ViewBag.Editors = _playlistDataManager
                 .GetEditors(playlist);
             ViewData["PlaylistName"] = playlist.Name;
@@ -112,13 +112,21 @@ namespace Playlist_for_party.Controllers
                 throw new PlaylistNotFoundException();
             }
 
-            if (_playlistDataManager.IsOwner(user, playlist) || _playlistDataManager.IsRedactor(user, playlist))
+            return CheckAbilitiesAndReturnView(user, playlist);
+        }
+
+        private IActionResult CheckAbilitiesAndReturnView(User user, Playlist playlist)
+        {
+            var isOwner = _playlistDataManager.IsOwner(user, playlist);
+            var isRedactor = _playlistDataManager.IsRedactor(user, playlist);
+            
+            if (isOwner || isRedactor)
             {
                 return View();
             }
-            
+
             _playlistDataManager.SetRedactorToPlaylist(user, playlist);
-            
+
             return View();
         }
 

@@ -31,7 +31,7 @@ namespace Playlist_for_party.Services.Managers.DataManagers
             {
                 OwnerId = user.Id
             };
-            
+
             MusicContext.Playlists
                 .Add(playlist);
             MusicContext.SaveChanges();

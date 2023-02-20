@@ -6,7 +6,6 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Playlist_for_party.Data;
 using Playlist_for_party.Exceptions.AppExceptions.MusicApiConnectionExceptions;
@@ -23,7 +22,7 @@ namespace Playlist_for_party.Services
     {
         private readonly HttpClient _httpClient;
         private readonly ISpotifyAccountService _spotifyAccountService;
-        private const int Limit = 3;
+        private const int Limit = 10;
 
         private const string DefImageUrl =
             @"https://media.wired.com/photos/5f9ca518227dbb78ec30dacf/master/w_2560%2Cc_limit/Gear-RIP-Google-Music-1194411695.jpg";
@@ -32,18 +31,17 @@ namespace Playlist_for_party.Services
         {
             _httpClient = httpClient;
             _spotifyAccountService = spotifyAccountService;
-            
         }
 
         public async Task<Track> GetTrackFromSpotifyApi(string trackId)
         {
             var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
-            
+
             var response = await GetResponse($"tracks/{trackId}");
             var responseObj = await DeserializationAsync<Item>(response);
             var firstImage = responseObj.Album.Images?[0];
-            
+
             var track = new Track
             {
                 Id = responseObj.Id,
@@ -54,7 +52,7 @@ namespace Playlist_for_party.Services
                 ImageUrl = firstImage?.Url ?? DefImageUrl,
                 Href = responseObj.Href
             };
-            
+
             return track;
         }
 
@@ -62,11 +60,11 @@ namespace Playlist_for_party.Services
         {
             var accessToken = await _spotifyAccountService.GetAccessToken();
             Authorization(accessToken);
-            
+
             var requestMessage = CreateRequest(query, true, true);
             var response = await GetResponse(requestMessage);
             var responseObject = await DeserializationAsync<Search>(response);
-            
+
             return GetItemsDtoList(musicContext, responseObject);
         }
 
@@ -123,7 +121,7 @@ namespace Playlist_for_party.Services
         {
             var response = await _httpClient.GetAsync(requestMessage);
             CheckResponse(response);
-            
+
             return response;
         }
 
@@ -132,7 +130,7 @@ namespace Playlist_for_party.Services
             var decodedQuery = HttpUtility.UrlEncode(query);
             var requestType = needTracks && needArtists ? "track" + "%2C" + "artist" : needArtists ? "artist" : "track";
             var requestUri = $"search?q={decodedQuery}&type={requestType}&market=BY&limit={Limit}";
-            
+
             return requestUri;
         }
 
@@ -150,7 +148,7 @@ namespace Playlist_for_party.Services
         private static async Task<T> DeserializationAsync<T>(HttpResponseMessage response)
         {
             T responseObj;
-            
+
             try
             {
                 responseObj = await response.Content.ReadFromJsonAsync<T>();

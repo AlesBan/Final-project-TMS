@@ -78,9 +78,11 @@ namespace Playlist_for_party.Controllers
 
         private IActionResult SingUpValidation(SingUpUserDto singUpUserDto)
         {
-            if (string.IsNullOrEmpty(singUpUserDto.UserName)
-                || string.IsNullOrEmpty(singUpUserDto.Password)
-                || string.IsNullOrEmpty(singUpUserDto.ReEnterPassword))
+            var userNameIsNull = string.IsNullOrEmpty(singUpUserDto.UserName);
+            var passwordIsNull = string.IsNullOrEmpty(singUpUserDto.Password);
+            var reEnterPasswordIsNull = string.IsNullOrEmpty(singUpUserDto.ReEnterPassword);
+            
+            if (userNameIsNull || passwordIsNull || reEnterPasswordIsNull)
             {
                 ViewBag.ExceptionMessage = FieldsMustBeEnteredMessage;
                 return View(singUpUserDto);
@@ -106,16 +108,7 @@ namespace Playlist_for_party.Controllers
                 return View(singUpUserDto);
             }
 
-            var user = new User(singUpUserDto.UserName, singUpUserDto.Password);
-            user.UserRoles.Add(new UserRole()
-            {
-                User = user,
-                Role = new Role("User")
-            });
-
-            _dataManager.CreateUser(user);
-
-            _authManager.SetToken(user, HttpContext, _configuration);
+            CreateUserAndSetToken(singUpUserDto);
 
             return RedirectToAction("Home", "Home");
         }
@@ -128,7 +121,9 @@ namespace Playlist_for_party.Controllers
             }
 
             var usersDb = _dataManager.GetUsers();
-            if (usersDb.All(u => u.UserName != userDto.UserName))
+            
+            var userExistsInDb = usersDb.All(u => u.UserName != userDto.UserName);
+            if (userExistsInDb)
             {
                 throw new UserWithInvalidInputDataException();
             }
@@ -138,6 +133,20 @@ namespace Playlist_for_party.Controllers
             _authManager.SetToken(user, HttpContext, _configuration);
 
             return RedirectToAction("Home", "Home");
+        }
+        
+        private void CreateUserAndSetToken(SingUpUserDto singUpUserDto)
+        {
+            var user = new User(singUpUserDto.UserName, singUpUserDto.Password);
+            user.UserRoles.Add(new UserRole()
+            {
+                User = user,
+                Role = new Role("User")
+            });
+
+            _dataManager.CreateUser(user);
+
+            _authManager.SetToken(user, HttpContext, _configuration);
         }
     }
 }

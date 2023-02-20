@@ -18,7 +18,7 @@ namespace Playlist_for_party.Controllers
         private readonly IMusicService _musicService;
         private readonly IDataManager _dataManager;
 
-        public TrackController(IUserManager userManager, IPlaylistDataManager playlistDataManager, 
+        public TrackController(IUserManager userManager, IPlaylistDataManager playlistDataManager,
             IMusicService musicService, IDataManager dataManager)
         {
             _userManager = userManager;
@@ -49,13 +49,13 @@ namespace Playlist_for_party.Controllers
             var user = _userManager.GetCurrentUser(HttpContext);
 
             var track = await _musicService.GetTrackFromSpotifyApi(trackId);
-            
+
             var playlist = _dataManager.GetPlaylistById(Guid.Parse(playlistId));
             playlist.UserTracks = _playlistDataManager.GetUserTracksFromPlaylist(playlist);
-            
+
             return _playlistDataManager.GetResultOfAddingAbility(user, playlist, track);
         }
-        
+
         private static void ValidateMusicData_AddTrackToPlaylist(User user, Playlist playlist, Track track)
         {
             if (user == null)

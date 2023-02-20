@@ -24,14 +24,14 @@ namespace Playlist_for_party.Services.Managers.UserManagers
         };
 
         private const int ExpiresDays = 3;
-        
+
         public void SetToken(User user, HttpContext context, IConfiguration configuration)
         {
             var token = CreateToken(user, configuration);
 
             context.Session.Set("Authorization", Encoding.UTF8.GetBytes(token));
         }
-        
+
         public void ValidateSingUpData(SingUpUserDto singUpUserDto)
         {
             if (singUpUserDto.UserName.Length < 4)
@@ -54,7 +54,7 @@ namespace Playlist_for_party.Services.Managers.UserManagers
                 throw new PasswordConfirmationException("Please confirm your password");
             }
         }
-        
+
         private static string CreateToken(User user, IConfiguration configuration)
         {
             var roles = new List<string>() { "user" };
@@ -69,10 +69,12 @@ namespace Playlist_for_party.Services.Managers.UserManagers
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
 
-        private static JwtSecurityToken GetJwtSecurityToken(IConfiguration configuration, User user, IEnumerable<string> roles)
+        private static JwtSecurityToken GetJwtSecurityToken(IConfiguration configuration, User user,
+            IEnumerable<string> roles)
         {
             var jwtClaims = GetClaims(user, roles);
-            var singingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["JWTSettings:SecretKey"]));
+            var singingKey = new SymmetricSecurityKey(Encoding.ASCII
+                .GetBytes(configuration["JWTSettings:SecretKey"] ?? string.Empty));
             var credentials = new SigningCredentials(singingKey, SecurityAlgorithms.HmacSha256);
             var expires = DateTime.Now.AddDays(ExpiresDays);
 

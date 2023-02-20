@@ -19,19 +19,14 @@ body {
 }
 
 .sidebar .logo img {
-    width: 110px;
-
-}
-
-.menu {
-    padding-top: 50px;
+    width: 100%;
+    margin-top: -50px;
 }
 
 .menu-item {
     color: white;
     text-decoration: none;
-    font-size: 15px;
-
+    font-size: 16px;
 }
 
 .menu-li {
@@ -39,7 +34,7 @@ body {
 }
 
 main {
-    min-height: 100vh;
+    min-height: 130vh;
     background: #101010;
 }
 

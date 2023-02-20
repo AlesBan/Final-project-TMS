@@ -9,44 +9,9 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
-
-.header-btn {
-    background: rgb(7, 7, 7);
-    color: #fff;
-    border: 0;
-    border-radius: 50%;
-    height: 34px;
-    width: 34px;
-    cursor: pointer;
-    outline: 0;
-}
-
-.header-btn.previous {
-    margin-left: 30px;
-    margin-right: 10px;
-}
-
-.arrow {
-    border: solid hsl(0, 0%,50%);
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-
-}
-
-.right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-}
-
-.left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-}
-
 
 .dropdown {
     position: relative;

@@ -1,8 +1,7 @@
 .header {
     position: fixed;
     top: 0;
-    left: 244px;
-    /* sidebar width */
+    left: 244px; /* sidebar width */
     right: 0;
     height: 60px;
     background-color: rgb(18, 18, 18);
@@ -85,9 +84,10 @@
     font-size: 12px;
     color: #fff;
     overflow: auto;
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
     z-index: 1;
 }
+
 
 .dropdown-content a {
     display: block;
@@ -118,8 +118,7 @@
     width: 45%;
 }
 
-.playlist table tr td,
-.playlist-songs tr th {
+.playlist table tr td, .playlist-songs tr th {
     color: #CACACA;
 }
 
@@ -161,11 +160,7 @@
     padding-left: 15px;
 }
 
-.song-artist,
-.song-album,
-.song-popularity,
-tr td:first-of-type,
-.song-duration {
+.song-artist, .song-album, .song-popularity, tr td:first-of-type, .song-duration {
     font-size: 14px;
     margin-top: 6px;
     color: white;
@@ -193,10 +188,7 @@ tr td:first-of-type,
     transition: .3s;
 }
 
-.song-title,
-.song-popularity,
-.song-duration,
-.song-dropdown {
+.song-title, .song-popularity, .song-duration, .song-dropdown {
     padding-right: 45px;
 }
 
@@ -227,14 +219,12 @@ tr td:first-of-type,
     font-size: 12px;
     color: #fff;
     overflow: auto;
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
     z-index: 1;
 }
-
 .table-dropdown:hover .table-dropdown-content {
     display: block;
 }
-
 .table-dropdown-content a {
     display: block;
     color: #000000;
@@ -246,24 +236,6 @@ tr td:first-of-type,
 .playlist-artists {
     padding-left: 280px;
     padding-top: 100px;
-
-}
-
-.playlist-artists table {
-    border-collapse: collapse;
-}
-
-.playlist-artists table th {
-    color: #CACACA;
-}
-
-.playlist-artists table tr th {
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.playlist-artists table th {
-    text-align: left;
 }
 
 .artists {
@@ -273,9 +245,10 @@ tr td:first-of-type,
 }
 
 .playlist-artists-container {
-
+    display: flex;
     justify-content: space-between;
-    padding-right: 600px;
+    padding-right: 00px;
+
 }
 
 .artist-container {
@@ -308,3 +281,7 @@ tr td:first-of-type,
     font-weight: 400;
     padding-left: 10px;
 }
+
+
+
+

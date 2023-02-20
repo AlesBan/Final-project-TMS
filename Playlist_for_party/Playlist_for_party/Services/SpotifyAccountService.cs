@@ -16,7 +16,7 @@ namespace Playlist_for_party.Services
     {
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
-        
+
         public SpotifyAccountService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
@@ -34,7 +34,7 @@ namespace Playlist_for_party.Services
                 throw new InvalidTokensProvided();
             }
         }
-        
+
         private static HttpRequestMessage CreateRequest(IReadOnlyList<object> parameters)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "token");
@@ -53,10 +53,10 @@ namespace Playlist_for_party.Services
             response.EnsureSuccessStatusCode();
             return response;
         }
-        
+
         private async Task<string> GetToken(string clientId, string clientSecret)
         {
-            var responseMessage = CreateRequest(new List<object>(){clientId, clientSecret});
+            var responseMessage = CreateRequest(new List<object>() { clientId, clientSecret });
             var authResult = await GetResponse(responseMessage).Result.Content.ReadFromJsonAsync<AuthResult>();
             return authResult?.AccessToken;
         }

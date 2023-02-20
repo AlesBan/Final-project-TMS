@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Moq;
 using Newtonsoft.Json;
+using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes.Services;
 using Playlist_for_party.Services;
 using WebApp_Data.Models.SpotifyModels.DTO;
@@ -35,9 +36,9 @@ namespace Playlist_for_party.Tests.Services
                 .ReturnsAsync("test_access_token");
         
             var spotifyService = new SpotifyService(mockHttpClient.Object, mockSpotifyAccountService.Object);
-        
+            var musicContext = new Mock<MusicContext>();
             // Act
-            var result = await spotifyService.GetItemsFromSpotifyApi(query);
+            var result = await spotifyService.GetItemsFromSpotifyApi(musicContext.Object, query);
         
             // Assert
             Assert.Equal(expectedResult, result);
