@@ -11,6 +11,7 @@ namespace Playlist_for_party.Interfaсes.Services.Managers.DataManagers
         void CreateUser(User user);
         Playlist CreatePlaylist(User user);
         User GetUserByUserName(string userName);
+        User GetUserById(Guid userId);
         IEnumerable<User> GetUsers();
         Track GetTrackById(string trackId);
         int GetTrackRating(string trackId);

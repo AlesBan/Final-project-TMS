@@ -14,12 +14,12 @@ namespace WebApp_Data.Mapping.ConnectionsMapping
             builder.HasOne(up => up.Role)
                 .WithMany(p => p.UserRoles)
                 .HasForeignKey(pt => pt.RoleId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
  
             builder.HasOne(ps => ps.User)
                 .WithMany(p => p.UserRoles)
                 .HasForeignKey(pt => pt.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

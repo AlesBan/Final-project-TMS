@@ -17,8 +17,6 @@ namespace Playlist_for_party
 
         private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                // .ConfigureLogging(logging => logging.AddConsole()
-                //     .AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Information))
                 .ConfigureLogging(logging=>logging.AddDebug())
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }

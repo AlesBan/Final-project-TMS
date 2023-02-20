@@ -51,7 +51,7 @@ namespace Playlist_for_party.Controllers
             var track = await _musicService.GetTrackFromSpotifyApi(trackId);
             
             var playlist = _dataManager.GetPlaylistById(Guid.Parse(playlistId));
-            playlist.UserTracks = _playlistDataManager.SetUserTracksToPlaylist(playlist);
+            playlist.UserTracks = _playlistDataManager.GetUserTracksFromPlaylist(playlist);
             
             return _playlistDataManager.GetResultOfAddingAbility(user, playlist, track);
         }

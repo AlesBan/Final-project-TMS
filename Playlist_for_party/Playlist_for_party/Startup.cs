@@ -51,7 +51,9 @@ namespace Playlist_for_party
                 // options.EnableSensitiveDataLogging(true);
             });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddScoped<IDataManager, DataManager>();
             services.AddScoped<IUserManager, UserManager>();
@@ -59,9 +61,6 @@ namespace Playlist_for_party
             services.AddScoped<IPlaylistDataManager, PlaylistDataManager>();
 
             services.AddSingleton<SetTokenMiddleware>();
-
-            services.AddMvc().AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

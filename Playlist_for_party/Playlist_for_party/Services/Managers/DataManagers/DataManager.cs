@@ -20,7 +20,8 @@ namespace Playlist_for_party.Services.Managers.DataManagers
 
         public void CreateUser(User user)
         {
-            MusicContext.Users.Add(user);
+            MusicContext.Users
+                .Add(user);
             MusicContext.SaveChanges();
         }
 
@@ -31,7 +32,8 @@ namespace Playlist_for_party.Services.Managers.DataManagers
                 OwnerId = user.Id
             };
             
-            MusicContext.Playlists.Add(playlist);
+            MusicContext.Playlists
+                .Add(playlist);
             MusicContext.SaveChanges();
             SetOwnerToPlaylist(user, playlist);
             return playlist;
@@ -39,8 +41,15 @@ namespace Playlist_for_party.Services.Managers.DataManagers
 
         public User GetUserByUserName(string userName)
         {
-            var user = MusicContext.Users
+            var user = MusicContext.Users!
                 .FirstOrDefault(p => p.UserName == userName);
+            return user;
+        }
+
+        public User GetUserById(Guid userId)
+        {
+            var user = MusicContext.Users!
+                .FirstOrDefault(p => p.Id == userId);
             return user;
         }
 
@@ -58,7 +67,7 @@ namespace Playlist_for_party.Services.Managers.DataManagers
 
         public Track GetTrackById(string trackId)
         {
-            return MusicContext.Tracks
+            return MusicContext.Tracks!
                 .SingleOrDefault(t => t.Id == trackId);
         }
 
@@ -66,7 +75,7 @@ namespace Playlist_for_party.Services.Managers.DataManagers
         {
             try
             {
-                return MusicContext.Tracks
+                return MusicContext.Tracks!
                     .SingleOrDefault(t => t.Id == trackId)!.Rating;
             }
             catch
@@ -78,15 +87,15 @@ namespace Playlist_for_party.Services.Managers.DataManagers
         public Playlist GetPlaylistById(Guid playlistId)
         {
             var playlist = MusicContext.Playlists
-                .FirstOrDefault(p => p.Id == playlistId);
+                .SingleOrDefault(p => p.Id == playlistId);
             return playlist;
         }
 
         public UserEditorPlaylist GetUserEditorPlaylistByPlaylistId(Guid playlistId)
         {
             var userPlaylist = MusicContext
-                .UserEditorPlaylists
-                .Single(up => up.PlaylistId == playlistId);
+                .UserEditorPlaylists!
+                .SingleOrDefault(up => up.PlaylistId == playlistId);
             return userPlaylist;
         }
 

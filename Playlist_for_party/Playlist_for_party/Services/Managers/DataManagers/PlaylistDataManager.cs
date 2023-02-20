@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes.Services.Managers.DataManagers;
+using WebApp_Data.Models;
 using WebApp_Data.Models.DbConnections;
 using WebApp_Data.Models.Music;
 using WebApp_Data.Models.TrackAbilities;
 using WebApp_Data.Models.UserData;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Playlist_for_party.Services.Managers.DataManagers
 {
@@ -26,9 +30,9 @@ namespace Playlist_for_party.Services.Managers.DataManagers
         public void AddTrackToPlaylist(User user, Playlist playlist, Track track)
         {
             CreateNewPlaylistTrack(out var playlistDb, playlist, track);
-
+            _musicContext.SaveChanges();
             AddTrackToUserTracks(user, playlistDb, track);
-
+            _musicContext.SaveChanges();
             SetPopularityOnTrack(playlistDb, track);
 
             _musicContext.SaveChanges();
@@ -38,7 +42,7 @@ namespace Playlist_for_party.Services.Managers.DataManagers
         {
             return _musicContext.PlaylistTracks
                 .Where(p => p.PlaylistId == playlist.Id)
-                .Select(p => p.Track).ToList();
+                .Select(p => p.Track).OrderByDescending(p=>p.Rating).ToList();
         }
 
         public bool IsOwner(User user, Playlist playlist)
@@ -49,31 +53,34 @@ namespace Playlist_for_party.Services.Managers.DataManagers
         public bool IsRedactor(User user, Playlist playlist)
         {
             var playlistDb = _dataManager.GetUserEditorPlaylistByPlaylistId(playlist.Id);
-
+            
+            if (playlistDb == null)
+            {
+                return false;
+            }
+            
             return playlistDb.UserId == user.Id;
         }
 
         public IEnumerable<User> GetEditors(Playlist playlist)
         {
-            var editors = _musicContext.Playlists
-                .SingleOrDefault(p => p.Id == playlist.Id)!
-                .UserEditorPlaylists?
-                .Select(u => u.User);
+            var editors = _musicContext.UserEditorPlaylists
+                .Where(p => p.PlaylistId == playlist.Id)!
+                .Select(u => u.User).ToList();
 
-            return editors ?? new List<User>();
+            return editors;
         }
 
         public void SetRedactorToPlaylist(User user, Playlist playlist)
         {
-            var userDb = _dataManager.GetUserByUserName(user.UserName);
-
-            userDb.UserEditorPlaylists.Add(new UserEditorPlaylist()
+            _musicContext.UserEditorPlaylists
+                .Add(new UserEditorPlaylist()
             {
                 User = user,
                 Playlist = playlist
             });
 
-            _musicContext.SaveChangesAsync();
+            _musicContext.SaveChanges();
         }
 
         public int GetNumOfEditors(Playlist playlist)
@@ -100,38 +107,63 @@ namespace Playlist_for_party.Services.Managers.DataManagers
             return SerializeCheckTrackAbility(false, existingTrack != null);
         }
 
-        public Dictionary<Guid, IEnumerable<Track>> SetUserTracksToPlaylist(Playlist playlist)
+        public Dictionary<Guid, IEnumerable<Track>> GetUserTracksFromPlaylist(Playlist playlist)
         {
             var userTracksJson = _musicContext.Playlists
                 .SingleOrDefault(p => p.Id == playlist.Id)!
                 .UserTracksJson;
 
-            if (userTracksJson != null)
+            if (userTracksJson == null)
             {
-                return JsonSerializer
-                    .Deserialize<Dictionary<Guid, IEnumerable<Track>>>(userTracksJson);
+                return new Dictionary<Guid, IEnumerable<Track>>();
             }
 
-            return new Dictionary<Guid, IEnumerable<Track>>();
+            var userTracksForDis = JsonSerializer
+                .Deserialize<Dictionary<string, IEnumerable<Track>>>(userTracksJson);
+                
+            var userTracksKeyGuid = new Dictionary<Guid, IEnumerable<Track>>();
+
+            if (userTracksForDis == null)
+            {
+                return userTracksKeyGuid;
+            }
+            
+            foreach (var userTrack in userTracksForDis)
+            {
+                userTracksKeyGuid.Add(Guid.Parse(userTrack.Key), userTrack.Value);
+            }
+
+            return userTracksKeyGuid;
         }
+        
 
         private void AddTrackToUserTracks(User user, Playlist playlist, Track track)
         {
             var userTracksList = GetUserTracks(playlist, user);
-            
+
             userTracksList.Add(track);
+            _musicContext.SaveChanges();
 
             playlist.UserTracks[user.Id] = userTracksList;
             
+            var userTracks = playlist.UserTracks;
+            
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true
+            };
+            var userTracksJson = JsonSerializer.Serialize(userTracks, options);
+
             _musicContext.Playlists.SingleOrDefault(p => p.Id == playlist.Id)!
-                .UserTracksJson = JsonSerializer.Serialize(playlist.UserTracks);
+                .UserTracksJson = userTracksJson ;
         }
 
         private List<Track> GetUserTracks(Playlist playlist, User user)
         {
             var userTracks = new List<Track>();
 
-            playlist.UserTracks = SetUserTracksToPlaylist(playlist);
+            playlist.UserTracks = GetUserTracksFromPlaylist(playlist);
 
             if (playlist.UserTracks != null && playlist.UserTracks.ContainsKey(user.Id))
             {
@@ -147,9 +179,9 @@ namespace Playlist_for_party.Services.Managers.DataManagers
         {
             playlistDb = _dataManager.GetPlaylistById(playlist.Id);
 
-            if (playlistDb.PlaylistTracks.All(p => p.TrackId != track.Id))
+            if (_musicContext.PlaylistTracks.All(p => p.TrackId != track.Id))
             {
-                playlistDb?.PlaylistTracks
+                _musicContext.PlaylistTracks
                     .Add(new PlaylistTrack()
                     {
                         Playlist = playlist,
@@ -166,13 +198,11 @@ namespace Playlist_for_party.Services.Managers.DataManagers
             {
                 trackDb.Rating++;
             }
-
-            var trackInPlaylist = playlist.PlaylistTracks
-                .SingleOrDefault(t => t.TrackId == track.Id)?
-                .Track;
+            _musicContext.SaveChanges();
 
             var playlistDb = _musicContext.Playlists
                 .SingleOrDefault(p => p.Id == playlist.Id);
+            
             if (playlistDb!.TracksRating != null)
             {
                 playlist.TracksRating = JsonSerializer
@@ -190,18 +220,18 @@ namespace Playlist_for_party.Services.Managers.DataManagers
                     playlist.TracksRating[track.Id]++;
                 }
             }
-            catch 
+            catch
             {
                 track.Rating = 1;
-                
-                if (_musicContext.Tracks.SingleOrDefault(t=>t.Id == track.Id) == null)
+
+                if (_musicContext.Tracks.SingleOrDefault(t => t.Id == track.Id) == null)
                 {
                     _musicContext.Tracks.Add(track);
                 }
-                
+
                 playlist.TracksRating?.Add(track.Id, 1);
             }
-
+            _musicContext.SaveChanges();
             playlistDb!.TracksRatingJson = JsonSerializer.Serialize(playlist.TracksRating);
             _musicContext.SaveChanges();
         }

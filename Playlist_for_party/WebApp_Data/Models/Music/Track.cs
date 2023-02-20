@@ -25,7 +25,7 @@ namespace WebApp_Data.Models.Music
 
         public string ImageUrl { get; set; }
         public string Href { get; set; }
-        public ICollection<PlaylistTrack> PlaylistTracks { get; set; }
+        public ICollection<PlaylistTrack> PlaylistTracks { get; set; } = new List<PlaylistTrack>();
 
         public Track()
         {

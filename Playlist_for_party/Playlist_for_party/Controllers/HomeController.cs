@@ -96,10 +96,16 @@ namespace Playlist_for_party.Controllers
             }
 
             playlist = _dataManager.GetPlaylistById(id);
-            ViewBag.Tracks = _playlistDataManager.GetTracksFromPlaylist(playlist);
-            ViewBag.Editors = _playlistDataManager.GetEditors(playlist);
+            
+            ViewBag.Tracks = _playlistDataManager
+                .GetTracksFromPlaylist(playlist);
+            
+            ViewBag.Editors = _playlistDataManager
+                .GetEditors(playlist);
             ViewData["PlaylistName"] = playlist.Name;
-            ViewData["PlaylistOwner"] = playlist.Owner.UserName;
+            ViewData["PlaylistOwner"] = _dataManager
+                .GetUserById(playlist.OwnerId)
+                .UserName;
 
             if (playlist is null)
             {

@@ -15,6 +15,6 @@ namespace Playlist_for_party.Interfaсes.Services.Managers.DataManagers
         int GetNumOfEditors(Playlist playlist);
         void SetRedactorToPlaylist(User user, Playlist playlist);
         string GetResultOfAddingAbility(User user, Playlist playlist, Track track);
-        Dictionary<Guid, IEnumerable<Track>> SetUserTracksToPlaylist(Playlist playlist);
+        Dictionary<Guid, IEnumerable<Track>> GetUserTracksFromPlaylist(Playlist playlist);
     }
 }

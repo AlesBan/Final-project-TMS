@@ -22,21 +22,16 @@ namespace WebApp_Data.Models.Music
 
         public string ImageUrl { get; set; }
 
-        public double Duration
-        {
-            get { return PlaylistTracks.Select(pt => pt.Track).Sum(track => track.DurationMs); }
-        }
-
         [NotMapped]
         public Dictionary<string, int> TracksRating { get; set; }
 
         public string TracksRatingJson { get; set; }
-        
+
         [NotMapped]
         public Dictionary<Guid, IEnumerable<Track>> UserTracks { get; set; }
-        public string UserTracksJson { get; set; } 
+        public string UserTracksJson { get; set; }
         public ICollection<PlaylistTrack> PlaylistTracks { get; set; } = new List<PlaylistTrack>();
-        public ICollection<UserEditorPlaylist> UserEditorPlaylists { get; set; }
+        public ICollection<UserEditorPlaylist> UserEditorPlaylists { get; set; } = new List<UserEditorPlaylist>();
 
         public Playlist()
         {
@@ -44,7 +39,5 @@ namespace WebApp_Data.Models.Music
             Name = new string(Enumerable.Repeat(Chars, 8).Select(s => s[Random.Next(s.Length)]).ToArray());
             UserTracks = new Dictionary<Guid, IEnumerable<Track>>();
         }
-
-        
     }
 }
