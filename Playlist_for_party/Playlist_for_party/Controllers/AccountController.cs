@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -45,9 +44,10 @@ namespace Playlist_for_party.Controllers
             {
                 return SingUpValidation(singUpUserDto);
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 throw new DataBaseConnectionException();
+                
             }
             catch (Exception e)
             {
@@ -69,7 +69,7 @@ namespace Playlist_for_party.Controllers
             {
                 return LoginValidation(userDto);
             }
-            catch (UserWithInvalidInputDataException e)
+            catch (UserWithInvalidInputDataException)
             {
                 ViewBag.ExceptionMessage = InvalidInputData;
                 return View(userDto);

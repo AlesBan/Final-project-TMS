@@ -24,9 +24,10 @@
     </div>
 </div>
 <div class="playlist-songs">
-    <table>
-        @if (tracksList.Any())
-        {
+    @if (tracksList.Any())
+    {
+        <table>
+
             <tr>
                 <th>#</th>
                 <th>Название</th>
@@ -57,21 +58,22 @@
                     <td class="song-album">@item.ArtistName</td>
                     <td class="song-popularity">@item.Rating</td>
                     <td class="song-duration">
-                       @item.Duration
+                        @item.Duration
                     </td>
                 </tr>
             }
-        }
-        else
-        {
-            <p style="color: white">No data yet</p>
-        }
-    </table>
-    <div class="redactors">
-        <div class="redactor">Редакторы</div>
-        @foreach (var red in editors)
-        {
-            <div class="redactor-name">@red.UserName</div>
-        }
-    </div>
+
+        </table>
+        <div class="redactors">
+            <div class="redactor">Редакторы</div>
+            @foreach (var red in editors)
+            {
+                <div class="redactor-name">@red.UserName</div>
+            }
+        </div>
+    }
+    else
+    {
+        <p style="color: white">No data yet</p>
+    }
 </div>

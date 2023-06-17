@@ -4,6 +4,7 @@
 @inject IEnumerable<TrackDto> Tracks;
 
 @{
+    var placeHolder = ViewBag.query == null ? "Search" : ViewBag.query;
     ViewData["Title"] = "Search";
     Artists = ViewBag.Artists != null ? ((IEnumerable<ArtistDto>)ViewBag.Artists).ToList() : new List<ArtistDto>();
     Tracks = ViewBag.Tracks != null ? ((IEnumerable<TrackDto>)ViewBag.Tracks).ToList() : new List<TrackDto>();
@@ -17,7 +18,7 @@
     <div class="header-actions">
         <div class="header-search input-group has-left-icon has-right-icon can-delete">
             <span class="left-icon-search"></span>
-            <input type="text" id="search-field" class="input" placeholder="Search">
+            <input type="text" id="search-field" class="input" placeholder="@placeHolder">
             <span class="right-icon-search"></span>
         </div>
         <button onclick="Search()">Search</button>

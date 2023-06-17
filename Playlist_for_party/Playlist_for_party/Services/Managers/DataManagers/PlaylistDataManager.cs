@@ -176,7 +176,8 @@ namespace Playlist_for_party.Services.Managers.DataManagers
         {
             playlistDb = _dataManager.GetPlaylistById(playlist.Id);
 
-            if (_musicContext.PlaylistTracks.All(p => p.TrackId != track.Id))
+            if (!_musicContext.PlaylistTracks.Any(p => p.TrackId == track.Id && 
+                                                      p.PlaylistId == playlist.Id))
             {
                 _musicContext.PlaylistTracks
                     .Add(new PlaylistTrack()
@@ -185,6 +186,8 @@ namespace Playlist_for_party.Services.Managers.DataManagers
                         Track = track
                     });
             }
+
+            _musicContext.SaveChanges();
         }
 
         private void SetPopularityOnTrack(Playlist playlist, Track track)
