@@ -1,0 +1,199 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 244px; /* sidebar width */
+    right: 0;
+    height: 200px;
+    background-color: rgb(18, 18, 18);
+}
+
+.header {
+    display: flex;
+}
+
+.header-image-container {
+    display: flex;
+}
+
+.header-image img {
+    height: 150px;
+    width: 150px;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.h5-img-text {
+    padding-left: 10px;
+    padding-top: 12px;
+    color: white;
+}
+.h1-img-text {
+    padding-left: 10px;
+    padding-top: 65px;
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-button {
+    border: 0;
+    color: #fff;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(45, 45, 45);
+    padding: 6px 14px 6px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 1px 1px 1px 3px;
+    width: 70px;
+    background-color: rgb(45, 45, 45);
+    border-radius: 5px;
+    font-size: 12px;
+    color: #fff;
+    overflow: auto;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    display: block;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.dropdown-content-show {
+    display: block;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+
+}
+
+
+/*
+.h2-text {
+   color: white;
+   font-size: 20px;
+}
+
+
+.input-actions {
+   padding-top: 10px;
+
+}
+
+.input-playlist {
+   margin: 0;
+   border: 0;
+   position: relative;
+   z-index: 1;
+   height: 35px;
+   border-radius: 25px;
+   width: 250px;
+}
+
+.input-actions .input-playlist {
+   padding-left: 50px;
+}
+*/
+
+.playlist-songs {
+    display: flex;
+    padding: 230px 0 0 300px;
+}
+
+.playlist-songs table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.playlist table tr td, .playlist-songs tr th {
+    color: #CACACA;
+}
+
+.playlist-songs table tr th {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.playlist-songs table th {
+    text-align: left;
+}
+
+.time-image img {
+    width: 15px;
+    height: 15px;
+}
+
+.song-title {
+    margin-top: 10px;
+}
+
+.song-image img {
+    width: 34px;
+    height: 34px;
+}
+
+.song-name {
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+}
+
+.song-name-artist {
+    padding-left: 15px;
+}
+
+.song-album, .song-popularity, tr td:first-of-type, .song-duration, .song-redactor {
+    font-size: 14px;
+    margin-top: 6px;
+    color: white;
+}
+
+
+.song-title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+
+.redactors {
+    margin-top: 3px;
+    padding-right: 45px;
+}
+
+.redactor {
+    color: #CACACA;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 17px;
+}
+
+.redactor-name-first {
+    font-size: 14px;
+    color: white;
+}
+
+.redactor-name {
+    font-size: 14px;
+    padding-top: 33px;
+    color: white;
+}
+

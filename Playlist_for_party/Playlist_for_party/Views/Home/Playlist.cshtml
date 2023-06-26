@@ -1,0 +1,79 @@
+@using WebApp_Data.Models.Music
+@using WebApp_Data.Models.UserData
+@{
+    ViewData["Title"] = "Playlist";
+    List<Track> tracksList = ViewBag.Tracks;
+
+    List<User> editors = ViewBag.Editors;
+    var index = 0;
+}
+
+@section Styles{
+    <link href="~/css/Playlist.css" rel="stylesheet" type="text/css"/>
+}
+
+<div class="header">
+    <div class="header-image">
+        <a href="#">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GI3NRvHnUGQ5JQbL_jMyzAHaHa%26pid%3DApi&f=1&ipt=abd0f22d9399ee7da25207eabe089390181bb1bc3fc43b26f09bbef550b8afb6&ipo=images" alt="">
+        </a>
+    </div>
+    <div class="header-image-text">
+        <h1 class="h1-img-text">@ViewData["PlaylistName"]</h1>
+        <h5 class="h5-img-text">@ViewData["PlaylistOwner"]</h5>
+    </div>
+</div>
+<div class="playlist-songs">
+    @if (tracksList.Any())
+    {
+        <table>
+
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Исполнитель</th>
+                <th>Популярность</th>
+                <th>
+                    <div class="time-image">
+                        <img src="https://icones.pro/wp-content/uploads/2021/03/icone-d-horloge-gris.png" alt="">
+                    </div>
+                </th>
+            </tr>
+
+            @foreach (var item in tracksList)
+            {
+                index++;
+                <tr style="height: 20px">
+                    <td>@index</td>
+                    <td class="song-title">
+                        <div class="song-image">
+                            <img src="@item.ImageUrl" alt=""/>
+                        </div>
+                        <div class="song-name-artist">
+                            <div class="song-name">
+                                @item.Name
+                            </div>
+                        </div>
+                    </td>
+                    <td class="song-album">@item.ArtistName</td>
+                    <td class="song-popularity">@item.Rating</td>
+                    <td class="song-duration">
+                        @item.Duration
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div class="redactors">
+            <div class="redactor">Редакторы</div>
+            @foreach (var red in editors)
+            {
+                <div class="redactor-name">@red.UserName</div>
+            }
+        </div>
+    }
+    else
+    {
+        <p style="color: white">No data yet</p>
+    }
+</div>

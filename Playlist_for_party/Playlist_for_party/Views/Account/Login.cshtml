@@ -1,0 +1,34 @@
+@model WebApp_Data.Models.DTO.UserDto
+
+@{
+    Layout = "_Layout";
+}
+
+@section Styles{
+    <link href="~/css/Authentication/Login.css" rel="stylesheet" type="text/css"/>
+}
+
+<div class="wrapper">
+    <h1>Login</h1>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.UserName, new { @type = "text", @placeholder = "Username" })
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+        <div class="terms">
+            <button class="wrapper-SignUp" type="submit">Login</button>
+            <div class="member">
+                Not a member? <a href="@Url.Action("SingUp", "Account")">Register Now</a>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts
+{
+    @if (ViewBag.ExceptionMessage != null)
+    {
+        <script>
+                alert("@ViewBag.ExceptionMessage")
+        </script>
+    }
+}

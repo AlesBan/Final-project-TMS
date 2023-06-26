@@ -1,0 +1,85 @@
+@using WebApp_Data.Models.Music
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Home";
+}
+@inject IEnumerable<Playlist> PlaylistsAsOwner;
+@inject IEnumerable<Playlist> PlaylistsAsRedactor;
+@{
+    if (ViewBag.PlaylistsAsOwner != null)
+    {
+        PlaylistsAsOwner = ViewBag.PlaylistsAsOwner;
+    }
+
+    if (ViewBag.PlaylistsAsRedactor != null)
+    {
+        PlaylistsAsRedactor = ViewBag.PlaylistsAsRedactor;
+    }
+}
+
+@section Styles{
+    <link href="~/css/Home.css" rel="stylesheet" type="text/css"/>
+}
+
+@section HeaderButtonsDiv
+{
+    <div class="header-buttons">
+        <button class="header-btn previous">
+            <i class="arrow left"></i>
+        </button>
+        <button class="header-btn next">
+            <a class="arrow right" href=""></a>
+        </button>
+    </div>
+}
+
+
+<section class="section">
+    <h2 class="section-title">Ваши плейлисты</h2>
+    <div class="section-body">
+        @if (PlaylistsAsOwner.Any())
+        {
+            @foreach (var playlist in PlaylistsAsOwner)
+            {
+                <div class="section-body-item category-item">
+                    <a asp-controller="Home" asp-action="Playlist" asp-route-id="@playlist.Id">
+                        <h3>@playlist.Name</h3>
+                        <img src="@playlist.ImageUrl"
+                             alt="">
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="color: white">No data available</p>
+        }
+    </div>
+
+    <h2 class="section-title-2">Плейлисты где вы редактор</h2>
+    <div class="section-body">
+        @if (PlaylistsAsRedactor.Any())
+        {
+            @foreach (var playlist in PlaylistsAsRedactor)
+            {
+                <div class="section-body-item category-item">
+                    <a asp-controller="Home" asp-action="Playlist" asp-route-id="@playlist.Id">
+                        <h3>@playlist.Name</h3>
+                        <img src="@playlist.ImageUrl"
+                             alt="">
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="color: white">No data available</p>
+        }
+    </div>
+</section>
+
+@section Scripts
+{
+    <script src="~/js/Home.js"></script>
+}

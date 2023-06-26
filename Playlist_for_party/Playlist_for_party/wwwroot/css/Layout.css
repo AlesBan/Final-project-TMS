@@ -1,0 +1,67 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: black;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 196px;
+    background-color: black;
+    padding: 24px;
+}
+
+.sidebar .logo img {
+    width: 100%;
+    margin-top: -50px;
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menu-li {
+    padding-bottom: 5px;
+}
+
+main {
+    min-height: 130vh;
+    background: #101010;
+}
+
+
+
+a {
+    position: relative;
+    color: darkgrey;
+    overflow: hidden;
+}
+
+a {
+    background: linear-gradient(to right, slategrey,
+    slategrey 50%, darkgrey 50%);
+}
+
+a {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+}
+
+a {
+    transition: background-position 275ms ease;
+}
+
+a:hover {
+    background-position: 0 100%;
+}

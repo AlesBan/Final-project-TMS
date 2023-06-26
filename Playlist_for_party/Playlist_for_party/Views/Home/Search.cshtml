@@ -1,0 +1,157 @@
+@using WebApp_Data.Models.Music
+@using WebApp_Data.Models.SpotifyModels.DTO
+@inject IEnumerable<ArtistDto> Artists;
+@inject IEnumerable<TrackDto> Tracks;
+
+@{
+    var placeHolder = ViewBag.query == null ? "Search" : ViewBag.query;
+    ViewData["Title"] = "Search";
+    Artists = ViewBag.Artists != null ? ((IEnumerable<ArtistDto>)ViewBag.Artists).ToList() : new List<ArtistDto>();
+    Tracks = ViewBag.Tracks != null ? ((IEnumerable<TrackDto>)ViewBag.Tracks).ToList() : new List<TrackDto>();
+}
+
+@section Styles{
+    <link href="~/css/Search.css" rel="stylesheet" type="text/css"/>
+}
+
+@section Searchdiv{
+    <div class="header-actions">
+        <div class="header-search input-group has-left-icon has-right-icon can-delete">
+            <span class="left-icon-search"></span>
+            <input type="text" id="search-field" class="input" placeholder="@placeHolder">
+            <span class="right-icon-search"></span>
+        </div>
+        <button onclick="Search()">Search</button>
+    </div>
+}
+
+<div class="main-playlist">
+    <div class="playlist-artists">
+        @if (Artists.Any())
+        {
+            <table>
+                <tr>
+                    <th>Artists</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    @foreach (var artist in Artists.Take(3))
+                    {
+                        <td>
+                            <div class="artist-container">
+                                <div class="artist-img">
+                                    <img src="@artist.ImageRef" alt="">
+                                </div>
+                                <div class="artist-name">@artist.Name</div>
+                            </div>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var artist in Artists.Skip(3).Take(3))
+                    {
+                        <td>
+                            <div class="artist-container">
+                                <div class="artist-img">
+                                    <img src="@artist.ImageRef" alt="">
+                                </div>
+                                <div class="artist-name">@artist.Name</div>
+                            </div>
+                        </td>
+                    }
+                </tr>
+
+            </table>
+        }
+    </div>
+
+    <div class="playlist-songs">
+        @if (Tracks.Any())
+        {
+            <table>
+                <tr>
+                    <th>Треки</th>
+                    <th class="rating">Rating</th>
+                    <th>
+                        <div class="time-image">
+                            <img src="https://icones.pro/wp-content/uploads/2021/03/icone-d-horloge-gris.png" alt="">
+                        </div>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Tracks)
+                {
+                <tr style="height: 20px">
+                    <td class="song-title">
+                        <div class="song-image">
+                            <img src="@item.ImageRef" alt="">
+                        </div>
+                        <div class="song-name-artist">
+                            <div class="song-name">
+                                @item.Name
+                            </div>
+                            <div class="song-artist">
+                                @item.ArtistName
+                            </div>
+                        </div>
+                    </td>
+                    <td class="song-popularity">@item.Rating</td>
+                    <td class="song-duration">@item.Duration</td>
+                    <td>
+                        <div class="table-dropdown">
+                            <button type="button" class="floating-button">Add</button>
+                            <div class="table-dropdown-content" id="@item.Id">
+                                @foreach (var playlist in (IEnumerable<Playlist>)ViewBag.Playlists)
+                                {
+                                    <a class="dropdown-a" id="@playlist.Id">@playlist.Name</a>
+                                }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+
+            </table>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="~/js/Search.js"></script>
+    <script>
+    function Search(){
+        let searchQuery = document.getElementById("search-field").value;
+        window.open("/search/" + searchQuery, "_self");
+    }
+    
+     $(function (){
+        let buttons = document.querySelectorAll("a.dropdown-a"); 
+            buttons.forEach((butt)=>{
+                butt.addEventListener("click", (e) => SendData(e), false)
+            })
+     })
+     
+    function SendData(event) {
+        let playlistId = event.target.id;
+        let parent = event.target.parentNode
+        let trackId = parent.id;
+        $.get("@Url.Action("CheckTrackAbilityToBeAdded", "Track")", {trackId: trackId, playlistId: playlistId}, function (CheckTrackAbility) {
+            let obj = JSON.parse(CheckTrackAbility);
+            if (obj.exceeding_the_limit === true){
+                alert("Лимит на добавление исчерпан (10)")
+            }
+            else if (obj.track_duplication === true){
+                alert("Этот трек вы уже добавили в плейлист")
+                }
+            else {
+                $.post("@Url.Action("AddTrackToPlaylist", "Track")", {trackId: trackId, playlistId: playlistId})
+            }
+        });   
+    }
+    </script>
+}

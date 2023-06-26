@@ -1,0 +1,72 @@
+@model WebApp_Data.Models.DTO.SingUpUserDto
+
+@{
+    Layout = "_Layout";
+
+}
+
+@section Styles{
+    <link href="~/css/Authentication/SingUp.css" rel="stylesheet" type="text/css"/>
+}
+
+<div class="wrapper">
+    <h1>Sign Up</h1>
+    @using (Html.BeginForm("SingUp", "Account", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @type = "text", @id = "username", @placeholder = "Username" })
+        @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @type = "text", @id = "password", @placeholder = "Password" })
+        @Html.TextBoxFor(m => m.ReEnterPassword, htmlAttributes: new { @type = "text", @id = "repeatPassword", @placeholder = "Re-Enter Password" })
+        <div class="terms">
+            <button id="sing-up-button" class="wrapper-SignUp" type="submit">Sign up</button>
+            <div class="member">
+                Already a member? <a href="@Url.Action("Login", "Account")">Login here</a>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section Scripts
+{
+    @if (ViewBag.ExceptionMessage != null)
+    {
+        <script>
+                alert("@ViewBag.ExceptionMessage")
+        </script>
+    }
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script>
+     // $(function (){
+     //    let button = document.getElementById("sing-up-button"); 
+     //
+     //    button.addEventListener("click", (e) => SendData(e), false)
+     // })
+
+                 
+   function SendData(event) {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let repeatPassword = document.getElementById("repeatPassword").value;
+        
+
+        if (password === repeatPassword){
+            let userDto = {
+                UserName: username,
+                Password: password
+            };
+              fetch('/auth/singup', {
+                method: "POST",
+                body: JSON.stringify(userDto),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+                
+        }
+        else{
+            alert("Password don't equal Re-Enter Password");
+        }
+    }
+    </script>
+}
