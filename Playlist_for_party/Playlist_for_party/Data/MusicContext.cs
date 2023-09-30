@@ -12,7 +12,6 @@ namespace Playlist_for_party.Data
     {
         public MusicContext(DbContextOptions<MusicContext> options) : base(options)
         {
-            
         }
 
         public DbSet<User> Users { get; set; }

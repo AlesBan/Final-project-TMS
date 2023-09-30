@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Playlist_for_party.Data;
 using Playlist_for_party.Interfaсes.Services;
@@ -70,7 +69,8 @@ namespace Playlist_for_party
                         ValidIssuer = Configuration["JWTSettings:Issuer"],
                         ValidAudience = Configuration["JWTSettings:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.ASCII.GetBytes(Configuration["JWTSettings:SecretKey"])),
+                            Encoding.ASCII.GetBytes(Configuration["JWTSettings:SecretKey"] 
+                                                    ?? string.Empty)),
                         ValidateAudience = true,
                         ValidateIssuer = true,
                         ValidateIssuerSigningKey = true
@@ -109,6 +109,7 @@ namespace Playlist_for_party
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

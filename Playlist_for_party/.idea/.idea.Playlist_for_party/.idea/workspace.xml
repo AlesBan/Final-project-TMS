@@ -12,6 +12,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ca795d30-d8a0-4cbf-968b-f2e131059b98" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Playlist_for_party/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/DataManagers/PlaylistDataManagerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/DataManagers/PlaylistDataManagerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/AuthManagerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/AuthManagerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Data/MusicContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Data/MusicContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Services/Managers/UserManagers/AuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Services/Managers/UserManagers/AuthManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Playlist_for_party/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,112 +37,6 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/40c1dff99d704acdaed4a52a2533ad2a13388/a7/fdf9efee/02000006pdb5.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/ad010a730b8e4d9b85224bcde58a60a991e180/1d/9247b1bc/020007CEpdb1015.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/026f34eabaf34417a4d1fee03b87196617b048/d5/eb68073a/ClrPropertyGetter`2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/05fef05a188a4580b312521f975b37b68b4a0/1e/069d183b/JsonConverter`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/05fef05a188a4580b312521f975b37b68b4a0/90/80507eb6/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/293bebabbbd243c7bc4146dce165458d98790/94/aa57d75f/EndpointMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2a925edfe5584632978e98fd8509cdf4d7a8/9a/e4a44797/ExceptionAggregator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/377b61b613ea444f826f377d9474ffca3c9a8/14/ffe050be/ExecutionTimer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/377b61b613ea444f826f377d9474ffca3c9a8/57/3ac138f5/TestInvoker`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/531e8ea0c56349fd83fd13d1c9709bb8b5990/5a/0d7742a1/IHtmlHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/60da6fc3a33742959a5c168b54b0c4d21aed88/2d/c3bee42f/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8517f607c12a4b508364c3f896f0fe6f11da8/50/a8a96f81/Assert.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad010a730b8e4d9b85224bcde58a60a991e180/89/c0fddbf2/IEnumerable`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad010a730b8e4d9b85224bcde58a60a991e180/b5/6458e5f3/Guid.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad010a730b8e4d9b85224bcde58a60a991e180/d8/dce691d4/InvalidOperationException.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c88e0832645448ae87f1705979c7cc6225200/5b/4e841bb7/Json.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ce2f0143afe44f50aa62466e2d7a75cc66fb0/cb/676ccc21/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/11df216dfddb5acebd87b54e64ac744f8a9b231b28aa9f66c4b8d1ea722a89d/TypeFilterAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18f2e7df8ff8da165c02e941a49438c85114c198782d77946befed5d8b25fa/Guid.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1af51483c9bf18871cce649b9f966dd7be686536f998c33bba3c5fc4adea4a0/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/20b34b9a328994f3f3e215764dac6af1b2a66fdca278f58f1b4f3addcb29f4f/ViewDataDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27b91272f348469b8fccc471c1ccd767f57a64f55a44975790bfae805b4ebb/Future.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/27eb1e53c33f2e16ba4fd6114faaf6118a2f30d7bb3d8d1d95c22e3ef3ca3156/HttpRuleParser.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2d04e2ae4c478fc42e0209765a31dcd4c177f45f5d4718f042c0fe7567ca12/Guard.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e2897d3acf4eab3445d6a2258faa35bbfdcf2f4e1c4a3ff98c447933ca40/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/33ce9818a9d64ef295864723b14cb15abc6a92eefb61a1ccc294c51c2328a/EqualityComparer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/34fd92264bbf14c1ee41bb6d626cb823475b82065a07a35951651affe4d38/ExceptionHandlerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3788a8b649a0858c2f8bb8c57fb5b434decfdaef5d9742cb16ef831574b5bef4/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3c47bb336c326e5ee17c16f73883559f7eb05679032d9581f3456368994f4/AuthenticationHeaderValue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3d01f114455568af59359da57dd47792bc75178c3d8c14b79b7536f79efbc2d/List.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4379b25d9c271430aa90fd5f1bc2c4af4b7651972e9f796513b93a44a943/ITempDataDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4716f69b3843e9dade7ac4108af9cd44312187deb38188cf623cc75a565b/AsyncValueTaskMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/47cb1bfc29fe6f51c0eb1510cdc23b246b62e0606fd09abd26c6251e246c1e/ActionResultOfT.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a4bf4aa6ea39357dd57894a6e70dd71191a5dea93ac7a6e2b865f19b75d3845/DataProtectionCommonExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4eae6449caa21e90c2ff2d63846343457a0e4192fb25892da80d78feb4774f/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/513539921dfbf00cff6b6dbcbf0b9df2ca95c17a66517b082ed594830657c/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/53662f4e35419db733369bd73cb1c37f8825ee93577377558102653ec73d026/ISession.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6652aabbac8c579825cc3a5985a1c071d9c38e158b52117786fcdaefb766443c/JsonSerializer.Read.Stream.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/692b9e70ebaa191c484b819c1b049383c4bf3a2915e896ba24dcb1ccaf2eac/Debug.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6959bd89af8aaca4bba91ffc6d3f079166142c44649554e678ee69376e14591/SecurityTokenDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69953389281b5412a48d3a4b5404cfa307da3fcdff34a92b61d9c3ece87b09/JsonConverterOfT.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6e3a08843dfa5aa7f6deaa5a0bfc7b62adadde68273d8ca1f8b1b32885a9c/HttpRequestHeaders.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6fa8dfbcaa8aaa9273d2c0cfefc14c0f97abe91161b4ee80db3c7f39ac12/ConcurrentDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70c0533b43aefe5c8a4e89cd9bdaca3d1a1bc8165b30788eb2f51061f7fe2a9d/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/711da91848ef49798bfc5e2d7e30f4f4e7bcb4dc247b116ede6452ec70853/JwtBearerOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/77c8669b61fbbb7ec7a8aa8d1f54a01d716bbecb9e2ebd646d43d558af39e57f/JsonSerializer.Helpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/78503335551ef77b35bad30bcdc5fdf4e017e7e707dabb9ab7c80fc4b6374/ViewDataDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b2b87dbcf56d87de79cf698946879b1b8728d51675ee8a5c253ab4f9e4e4a/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b52e52e9461eef74d96cb18431b65da59ec6af4cab028e3adf87fdae211c8e/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7b5a1af99f5ea07164de5aa95892ff79955c0ccf3bcc4bc1973b4c06d3e766/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7c92466961aa8cdea7514acac7987159e5466dcd06dfc6f1dc1f5e9bf2b7cce/First.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/81161e3e34ee42aca48ce89ff9e1d572e67e17793cf25a13a7416e575e9128/JsonSerializer.Write.String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/83c19ad3acd28b4b09c4d9e889ee66e119b0013fccd6542425d45713691d/Mock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85205d343f2b81cde14cc45fc7fe9bbd4a4f2a96f2691fc52bdb336baacea0/HttpContent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/882f3ad15673d0f7709dd2af6fb10eeca924a50d24672ae52698820234d6eff/Environment.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/892683eea5f29a8e7cd335a3a51b4f10efe38ffd33c22c3e3b20b78ee990b9b3/JsonSerializerOptions.Caching.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/89944b5f48d1781dad0a6ed3630525f6080b1fdb6f0cbf9e9b3f0f348843a/DiagnosticListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a221793e4b13ae450dccb6e74f6985a273b27d67dca5c4bc2c2e56df33bfe7/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8ae9874c852d85d64795ca37ac7b2f821d3c4ac8dec6044a6c82b5bb91f41e1/Claim.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8b7fb876911ea0a458c92232d5e433bfa9a5f75f912064966e313fcb57eecbd/JsonClassInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8d415afbb22842cbaef64d937f4bf58e32add6e16259dc1dd09e48eb49894c/Future.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/928d4059ee3142d583b9391f138ee6ac8f5988/_7a17c/IDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/93f2c1582b3dd7848a474fc2ed7f5d94236dfd1937866857eb2e9ce3b3651/EntityTypeBuilder`.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/947b7577dd65d32258ec6476865fcc8a5d7396105578b94412d69ff2beb310/TempDataDictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99f34ec5afd41f934c9189792e189b0fc486f6cfb7716f14f8e1aed88784/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ba8573a0ddcd452a9e72c9f3a285ac17e6cfdbeadbd3b14b76112ec4965b5/ViewResult.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9eb442402eac95a95a738aeed73e302a9b1a9345b22a8b1eac7a2bc6450f8b1/ResourceInvoker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9f7c1bd7e6fd28981cdd67a69785ab253b163c2eb519c469dbd25277b2419e3/Where.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a1161e8fe65232ef6e8be0af22da47258086fcc9b636c25bd41ee79b2653265f/NullReferenceException.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a57fcf99ba9061842b51b7d98d5a8974f4a9e99c176295df9335825841fbe3e7/SessionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a5f6a8a40f3360dfc161ee28fe15a79a2fe12d55c8464d7f843666453af217/String.Manipulation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a9c5c7129ee39ce29bead23aa8f6014e679f91a81f3cb5208f9ffdd8d1b428/RazorView.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aacc74311ca994f12b71cddb22241be9d6654c65e94f5985c5488dee396916f/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad010a730b8e4d9b85224bcde58a60a991e180/_d9a9a/IEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad010a730b8e4d9b85224bcde58a60a991e180/_eb98f/IEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad6e415ef4c43f7d240b5ad1494767d12346253aac8c946c163b539f30f77c/JwtSecurityToken.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/af47127c2aa37eca51894189436b2dd9f0588cc79cbdb8b39b58dc539dbdd/ViewExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/afdb9066c2224c2ca693b338c57624786b5a84c757a9c562c9a61297c6e/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b5de6aadfd520b9bb89cf7babe01f9e6348bc669cbba35ff13e8da88880f4/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b66fb3cd92676af8e27945ac1af7ff99dd3430fd59013755a7c92de132e4c59/RuntimeType.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b8398ea2593d0ce96fce65af07a483b98eb96b13be3a3525fdcc975dbb865ff/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b866fbe48e2f40f5b3adab50a5af5402d51cc806f9afac894af2af68e405/HttpResponseMessage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bfb56d107d19f991f45fdb5df9ed42625d2b96a62658bcac2a548cff9965af/ExceptionHandlerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6354d55b4c1fdbe22621ea48185af62cdeadcf4f28d9ed0890dfdf36c6/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c640601d9bf7327d784747471ad25afa36ff162c148ec9bcea55cedc64835ae0/String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6a6fadca71b70bdb47ebb11f4faa66c1fa56fe80109f3544271788f52f93e7/DefaultHttpContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c8b72390685142cfe63f1b8576d55b9137c308bbbaa1f373eb959b420385bf/CallSiteFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c9f6235cc881609f329c23732f9eca4274db173283b965d5782adb6fd5d4b8/AsyncMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cce60274c3c3f69f6fcac859b75e928437187947112bd98c52ac78124fb7/HtmlHelperDisplayExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cceabf587de3bd94fdc73919b1182ac089a5532b43dbc116257a41a653a4/JsonSerializerOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd09738949a15e2edccbb43ff90b84cf93f136befe96bb95dabd2ac3befc79a/IAsyncExceptionFilter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd4658679135d6bfae2a2d758cacd738e857f683199e3b9be85528fb2f05d/JsonClassInfo.Helpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cfbc2c7cbffac53e11f497d87ca62277a792ac45a3c7ab5315812344cb857d/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d445bdfcc85826d82a5fc6a3c87a42d39209a625c575eb37b7147452a9dde4/Select.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d9d9faea5e6ed6438a777ef8c6eed41261f81d8e86488ed923ad92564f54e/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ddd8ce7065c8dd4961dba048e46afbe713f8faf7642ac26122fa2679090aed/Controller.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df15455a7bd8a562a67ed5cdd3bbc19ef42ff5024d084354a7798bb44234686/SymmetricSignatureProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e172353254e0bfe3be1ba5c23169c077538a61a827da59499f4a6ee971cb4642/ParamsArray.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e24e13047cb8a617775c15bad26ec4e66ab31de790c1499535cc6b5b3e8cc/JsonPropertyInfoOfT.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e3a35a65af782e4119bae8cfaab0197495fcad104e7544f9133787168f89cb7/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eaf48d290b118e4b123edeca9152a696d26d4e2f25b8287c37d64b15a5c17b/ViewResult.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1ccf7738c74ce1b77ed3f844a1c673f3ee387e03737f71726ae92da6773b/Uri.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4708639776589f5ac2739f6fcbfc67343b1f9dac51cc1dbfdb003eef77cc1c/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f87426b4ab2c8252f85051ebe8b86f17872e7ca469534c8e40cee723bb9a2294/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f884c46a73e1ad3e9875316636e346755a1d258ad84d2590d92de3bc6cfcd9cb/TokenValidationParameters.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/AuthManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party.Tests/Services/Managers/UserManagers/UserManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Playlist_for_party/Interfaсes/Services/Managers/UserManagers/IAuthManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -358,6 +259,34 @@
       <workItem from="1687028282908" duration="852000" />
       <workItem from="1687634157233" duration="161000" />
       <workItem from="1687777331896" duration="47000" />
+      <workItem from="1687983665280" duration="216000" />
+      <workItem from="1689592947414" duration="53000" />
+      <workItem from="1689600850290" duration="8212000" />
+      <workItem from="1689678475942" duration="844000" />
+      <workItem from="1689701139410" duration="210000" />
+      <workItem from="1689701534015" duration="55000" />
+      <workItem from="1689850993553" duration="723000" />
+      <workItem from="1689865534605" duration="924000" />
+      <workItem from="1689875864157" duration="63000" />
+      <workItem from="1689882375475" duration="2074000" />
+      <workItem from="1689929586853" duration="60000" />
+      <workItem from="1690801519699" duration="598000" />
+      <workItem from="1691096099099" duration="460000" />
+      <workItem from="1691154378950" duration="3021000" />
+      <workItem from="1691176614528" duration="42000" />
+      <workItem from="1691230654471" duration="2421000" />
+      <workItem from="1691233247466" duration="1223000" />
+      <workItem from="1691234556650" duration="1323000" />
+      <workItem from="1691241573583" duration="622000" />
+      <workItem from="1691244225645" duration="2258000" />
+      <workItem from="1691496628180" duration="1262000" />
+      <workItem from="1694611620143" duration="16000" />
+      <workItem from="1695384672801" duration="24000" />
+      <workItem from="1695464896754" duration="5182000" />
+      <workItem from="1695494837332" duration="1406000" />
+      <workItem from="1695572506400" duration="1361000" />
+      <workItem from="1695835336623" duration="1281000" />
+      <workItem from="1695931608092" duration="582000" />
     </task>
     <task id="LOCAL-00001" summary="Add home and playlist Views, change some tables in db">
       <created>1674467104736</created>
@@ -616,18 +545,6 @@
           <option name="timeStamp" value="314" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>87</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="82" containingFunctionPresentation="method 'SingUpValidation'" />
-          <option name="timeStamp" value="319" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>107</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="99" containingFunctionPresentation="method 'SingUpValidation'" />
-          <option name="timeStamp" value="322" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/HomeController.cs</url>
           <line>41</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\HomeController.cs" initialLine="36" containingFunctionPresentation="method 'Home'" />
@@ -649,33 +566,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>74</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="72" containingFunctionPresentation="method 'Login'" />
-          <option name="timeStamp" value="398" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>93</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="89" containingFunctionPresentation="method 'SingUpValidation'" />
-          <option name="timeStamp" value="402" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
-          <line>48</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="47" containingFunctionPresentation="method 'SingUp'" />
-          <option name="timeStamp" value="403" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Playlist_for_party/Controllers/AccountController.cs</url>
           <line>127</line>
           <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\Playlist_for_party\Controllers\AccountController.cs" initialLine="132" containingFunctionPresentation="method 'LoginValidation'" />
           <option name="timeStamp" value="435" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/WebApp_Data/Models/Music/Playlist.cs</url>
-          <line>29</line>
-          <properties documentPath="D:\Репозитории\Финальный_проект\Final-project-TMS\Playlist_for_party\WebApp_Data\Models\Music\Playlist.cs" initialLine="35" containingFunctionPresentation="property 'UserTracks'" />
-          <option name="timeStamp" value="497" />
         </line-breakpoint>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints">
           <properties exception="System.NotSupportedException" isInternal="false" displayValue="NotSupportedException" namespaceName="System">

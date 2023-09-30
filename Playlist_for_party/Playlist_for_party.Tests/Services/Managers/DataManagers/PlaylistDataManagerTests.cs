@@ -31,6 +31,5 @@ namespace Playlist_for_party.Tests.Services.Managers.DataManagers
             _mockDbSet = new Mock<DbSet<Track>>();
             _dataManagerMock = new Mock<IDataManager>();
         }
-
     }
 }

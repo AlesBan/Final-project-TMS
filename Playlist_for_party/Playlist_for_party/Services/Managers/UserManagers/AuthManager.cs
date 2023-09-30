@@ -97,7 +97,9 @@ namespace Playlist_for_party.Services.Managers.UserManagers
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
             };
 
-            roles.ToList().ForEach(role => jwtClaims.Add(new Claim(ClaimTypes.Role, role)));
+            roles.ToList()
+                .ForEach(role =>
+                    jwtClaims.Add(new Claim(ClaimTypes.Role, role)));
 
             return jwtClaims;
         }

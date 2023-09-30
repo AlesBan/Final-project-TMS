@@ -9,7 +9,7 @@ using WebApp_Data.Models.DTO;
 using WebApp_Data.Models.UserData;
 using Xunit;
 
-namespace Playlist_for_party.Tests.Services
+namespace Playlist_for_party.Tests.Services.Managers.UserManagers
 {
     public class AuthManagerTests
     {

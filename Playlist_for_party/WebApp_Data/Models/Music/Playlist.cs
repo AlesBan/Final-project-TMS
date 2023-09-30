@@ -22,13 +22,11 @@ namespace WebApp_Data.Models.Music
 
         public string ImageUrl { get; set; }
 
-        [NotMapped]
-        public Dictionary<string, int> TracksRating { get; set; }
+        [NotMapped] public Dictionary<string, int> TracksRating { get; set; }
 
         public string TracksRatingJson { get; set; }
 
-        [NotMapped]
-        public Dictionary<Guid, IEnumerable<Track>> UserTracks { get; set; }
+        [NotMapped] public Dictionary<Guid, IEnumerable<Track>> UserTracks { get; set; }
         public string UserTracksJson { get; set; }
         public ICollection<PlaylistTrack> PlaylistTracks { get; set; } = new List<PlaylistTrack>();
         public ICollection<UserEditorPlaylist> UserEditorPlaylists { get; set; } = new List<UserEditorPlaylist>();
@@ -36,7 +34,10 @@ namespace WebApp_Data.Models.Music
         public Playlist()
         {
             Id = Guid.NewGuid();
-            Name = new string(Enumerable.Repeat(Chars, 8).Select(s => s[Random.Next(s.Length)]).ToArray());
+            Name = new string(Enumerable.Repeat(Chars, 8)
+                .Select(s =>
+                    s[Random.Next(s.Length)])
+                .ToArray());
             UserTracks = new Dictionary<Guid, IEnumerable<Track>>();
         }
     }
